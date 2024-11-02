@@ -25,7 +25,7 @@ func _load_settings() -> void:
 		
 	var data  = file.get_var()
 	if data == null:
-		pass
+		return
 		
 	get_node("/root/Global").apply_config(data)
 	get_node("/root/Events").on_config_loaded()
