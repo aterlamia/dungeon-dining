@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj01pr6768lx"]
+
+[ext_resource type="Script" path="res://src/npc/npc.gd" id="1_misqj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b4hyn"]
+radius = 0.172515
+height = 1.09483
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ihwvs"]
+radius = 0.1
+height = 0.7
+
+[sub_resource type="SphereMesh" id="SphereMesh_crd8m"]
+radius = 0.25
+height = 0.5
+
+[node name="Npc" type="CharacterBody3D"]
+script = ExtResource("1_misqj")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.537592, 0)
+shape = SubResource("CapsuleShape3D_b4hyn")
+
+[node name="Npc" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Npc"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.353876, 0)
+mesh = SubResource("CapsuleMesh_ihwvs")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Npc"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.82512, 0)
+mesh = SubResource("SphereMesh_crd8m")

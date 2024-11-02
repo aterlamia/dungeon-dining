@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://tfo0klgn4pd5"]
+
+[ext_resource type="Script" path="res://src/objects/table.gd" id="1_tbimc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dskg5"]
+size = Vector3(0.45, 0.45, 0.53)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vsnpt"]
+size = Vector3(0.45, 0.45, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4ingx"]
+size = Vector3(0.7, 0.75, 0.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eljr6"]
+size = Vector3(0.76178, 1, 2.21851)
+
+[node name="Table" type="Node3D" node_paths=PackedStringArray("chair1", "chair2")]
+script = ExtResource("1_tbimc")
+chair1 = NodePath("Chair1/Marker3D")
+chair2 = NodePath("Chair2/Marker3D")
+
+[node name="Chair1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.219891, -0.762703)
+mesh = SubResource("BoxMesh_dskg5")
+skeleton = NodePath("../Table")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Chair1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43905, -0.233959)
+mesh = SubResource("BoxMesh_vsnpt")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="Marker3D" type="Marker3D" parent="Chair1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.219891, 1.42799)
+
+[node name="Chair2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.226335, 0.770331)
+mesh = SubResource("BoxMesh_dskg5")
+skeleton = NodePath("../Table")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Chair2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443847, 0.238753)
+mesh = SubResource("BoxMesh_vsnpt")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="Marker3D" type="Marker3D" parent="Chair2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.219891, -1.53212)
+
+[node name="Table" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.374452, 0)
+mesh = SubResource("BoxMesh_4ingx")
+
+[node name="Bounds" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0215759, 0, 0.106079)
+shape = SubResource("BoxShape3D_eljr6")

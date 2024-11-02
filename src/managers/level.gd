@@ -35,7 +35,7 @@ func switch_to_scene(scene: int) -> void:
 		-1:
 			set_current_scene("res://resources/scenes/ui/gameover_screen.tscn")
 		1:
-			set_current_scene("res://resources/scenes/levels/TestScene.tscn")
+			set_current_scene("res://resources/scenes/levels/Restaurant.tscn")	
 		_:
 			logger.log_error("Scene index not found: " + str(scene), logger.LogType.LOG_SCENE)
 			return
