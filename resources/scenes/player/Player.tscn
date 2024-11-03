@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfr4u784045c3"]
+
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_gyjmf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b4hyn"]
+radius = 0.172515
+height = 1.09483
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ihwvs"]
+radius = 0.1
+height = 0.7
+
+[sub_resource type="SphereMesh" id="SphereMesh_crd8m"]
+radius = 0.25
+height = 0.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_g6usg"]
+radius = 0.01
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yw35r"]
+height = 0.48397
+radius = 0.207521
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fkwe3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0mr17"]
+material = SubResource("StandardMaterial3D_fkwe3")
+radius = 0.05
+height = 0.3
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_gyjmf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.537592, 0)
+shape = SubResource("CapsuleShape3D_b4hyn")
+
+[node name="Player" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.353876, 0)
+mesh = SubResource("CapsuleMesh_ihwvs")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.82512, 0)
+mesh = SubResource("SphereMesh_crd8m")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.945297, -0.326212, 0, 0.326212, 0.945297, 0, 0.812716, -0.25361)
+mesh = SubResource("CapsuleMesh_g6usg")
+
+[node name="ColDetector" type="Area3D" parent="."]
+
+[node name="PLayerAura" type="CollisionShape3D" parent="ColDetector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396531, 0)
+shape = SubResource("CylinderShape3D_yw35r")
+
+[node name="Indicator" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.409995, -0.305257)
+visible = false
+mesh = SubResource("CapsuleMesh_0mr17")
+
+[connection signal="body_entered" from="ColDetector" to="." method="_on_col_detector_body_entered"]
+[connection signal="body_exited" from="ColDetector" to="." method="_on_col_detector_body_exited"]

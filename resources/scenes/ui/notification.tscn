@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://1auo1mcsyxv6"]
+
+[ext_resource type="Script" path="res://src/ui/notification.gd" id="1_y35hl"]
+[ext_resource type="Texture2D" uid="uid://d0n5s2y4b4jpb" path="res://assets/images/progressrect.png" id="3_a5efh"]
+[ext_resource type="Texture2D" uid="uid://di6npm2qnnau3" path="res://assets/images/bubble.png" id="4_5ia87"]
+[ext_resource type="Script" path="res://resources/scenes/ui/h_unger_timer.gd" id="5_3fq6n"]
+
+[node name="Notification" type="Node2D"]
+position = Vector2(106, 109)
+scale = Vector2(0.687023, 0.687023)
+script = ExtResource("1_y35hl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_5ia87")
+
+[node name="HungerTimerProgress" type="TextureProgressBar" parent="."]
+offset_left = -155.744
+offset_top = -167.389
+offset_right = 169.256
+offset_bottom = 62.6111
+fill_mode = 4
+nine_patch_stretch = true
+stretch_margin_left = 230
+stretch_margin_top = 230
+stretch_margin_right = 95
+texture_progress = ExtResource("3_a5efh")
+tint_progress = Color(0, 0.737255, 0, 1)
+script = ExtResource("5_3fq6n")
+metadata/_edit_use_anchors_ = true
+
+[node name="Wants" type="Node" parent="."]
+
+[node name="placeholder" type="Polygon2D" parent="Wants"]
+color = Color(0.215686, 1, 1, 1)
+polygon = PackedVector2Array(72, 54, 78, 106, 140, 46, 57, 30)

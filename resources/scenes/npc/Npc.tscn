@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cj01pr6768lx"]
+[gd_scene load_steps=9 format=3 uid="uid://cj01pr6768lx"]
 
 [ext_resource type="Script" path="res://src/npc/npc.gd" id="1_misqj"]
+[ext_resource type="Texture2D" uid="uid://di6npm2qnnau3" path="res://assets/images/bubble.png" id="2_7qirs"]
+[ext_resource type="PackedScene" uid="uid://1auo1mcsyxv6" path="res://resources/scenes/ui/notification.tscn" id="2_o1mxo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b4hyn"]
 radius = 0.172515
@@ -14,8 +16,20 @@ height = 0.7
 radius = 0.25
 height = 0.5
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_wayp2"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xopil"]
+
 [node name="Npc" type="CharacterBody3D"]
 script = ExtResource("1_misqj")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(259, 250)
+
+[node name="Notifications" parent="SubViewport" instance=ExtResource("2_o1mxo")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -32,3 +46,20 @@ mesh = SubResource("CapsuleMesh_ihwvs")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Npc"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.82512, 0)
 mesh = SubResource("SphereMesh_crd8m")
+
+[node name="Bubble" type="Sprite3D" parent="Npc"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.00185516, 1.40225, 0.00140531)
+visible = false
+billboard = 1
+texture = ExtResource("2_7qirs")
+
+[node name="Bubble2" type="Sprite3D" parent="Npc"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0375345, 1.31544, -0.00783183)
+billboard = 1
+texture = SubResource("ViewportTexture_wayp2")
+
+[node name="NpcAura" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcAura"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.743129, 0)
+shape = SubResource("CapsuleShape3D_xopil")
