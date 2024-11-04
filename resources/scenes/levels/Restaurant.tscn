@@ -190,6 +190,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00125408, -0.316697, -0.268
 shape = SubResource("BoxShape3D_8io62")
 
 [node name="Spawner" type="Marker3D" parent="FLoorPlan/floor" node_paths=PackedStringArray("npcContainer")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4683, 0, 8.63043)
 script = ExtResource("10_54lq6")
 npcContainer = NodePath("../../../Npcs")

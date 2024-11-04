@@ -42,8 +42,8 @@ func spawnUser() -> void:
 	var freeTable = tableManager.getRandomFreeTable()
 	
 	if(freeTable == null):
-		logger.log_error("No free tables found", logger.LogType.LOG_GENERAL)
 		return
+		
 	freeTable.setOccupied(true)
 	
 	var npc_resource = load("res://resources/scenes/npc/Npc.tscn")
@@ -53,5 +53,6 @@ func spawnUser() -> void:
 	
 	npc.position = self.global_transform.origin
 	npc.setWantsManager(wantsManager)
+	npc.setReturnPosition(self.global_transform.origin)
 	npcContainer.add_child(npc)
 	npc.updateTarget(freeTable)

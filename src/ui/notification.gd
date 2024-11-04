@@ -20,7 +20,7 @@ func setWant(want: String) -> void:
 	var man: WantsManager = get_node("/root/Wants")
 	var data = man.getWantData(want)
 	
-	var holder: Polygon2D = get_node("Wants/placeholder")
+	var holder: Polygon2D = get_node("Sprite2D/placeholder")
 	holder.color = data.color
 	pass
 	
@@ -28,9 +28,13 @@ func startTimer() -> void:
 	spawnTimer.start()
 	pass
 	
+func stopTimer() -> void:
+	spawnTimer.stop()
+	pass
+	
 func _on_spawnTimer_timeout() -> void:
 	if progressBar.value < 100:
-		progressBar.value += 1
+		progressBar.value += 0.3
 		var progress_ratio = (progressBar.value - 50) / 50.0 if progressBar.value >= 50 else 0
 		progressBar.tint_progress = Color(1 * progress_ratio, 1 * (1 - progress_ratio), 0)
 	else:

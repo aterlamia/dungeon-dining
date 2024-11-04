@@ -12,7 +12,15 @@ var isSeated: bool = false
 var wantsManager: WantsManager
 var customerName: String = "Npc"
 var want: String
+var happyness: int = 100
+var eatTimer: Timer
+var returnPosition: Vector3
+var finished: bool = false
+var deleting: bool = false
 
+func setReturnPosition(position: Vector3) -> void:
+	returnPosition = position
+	pass
 
 func _on_npc_aura_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
@@ -28,8 +36,15 @@ func setName(name: String) -> void:
 	pass
 	
 func _ready() -> void:
+	get_node("/root/Events").delivery_attempt.connect(_on_attempt)
 	notifications = get_node("SubViewport/Notifications")
 	notifications.visible = false
+	eatTimer = Timer.new()
+	eatTimer.set_wait_time(10.0) # Set the eating duration
+	eatTimer.set_one_shot(true)
+	eatTimer.connect("timeout", Callable(self, "_on_eatTimer_timeout"))
+	add_child(eatTimer)
+	print("ready")
 	pass
 
 func updateTarget(target: Table) -> void:
@@ -43,7 +58,18 @@ func _on_attempt(order) -> void:
 		
 	for body in overlapping_bodies:
 		if body.name == "Player":
-			print("Player is in the aura")
+			var deliveredOrder = body.delivered()
+			eatTimer.start()
+			notifications.visible = false
+			if deliveredOrder != null:
+				
+				if deliveredOrder.dish == want:
+					happyness = 100
+					return
+				else:
+					happyness = 0
+					return
+			
 			break
 	pass
 	
@@ -51,13 +77,20 @@ func _process(delta: float) -> void:
 	if targetTable == null:
 		return
 		
-	get_node("/root/Events").delivery_attempt.connect(_on_attempt)
-
 	look_at(target)
 	rotation.x = 0
 	rotation.z = 0
+	if deleting:
+		return
 
-	if agent.is_target_reached() and not isSeated:
+	if agent.is_target_reached() and finished:
+		print("deleting")
+		deleting = true
+		get_parent().remove_child(self)
+		queue_free()
+		return
+	
+	if agent.is_target_reached() and not isSeated and not finished:
 		want = wantsManager.getRandomWant()
 		notifications.setWant(want)
 		isSeated = true
@@ -82,3 +115,10 @@ func _physics_process(delta: float) -> void:
 		velocity = newVel
 		move_and_slide()
 	pass
+
+
+func _on_eatTimer_timeout() -> void:
+	isSeated = false
+	finished = true
+	notifications.visible = false
+	agent.set_target_position(returnPosition)

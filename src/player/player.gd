@@ -11,12 +11,18 @@ var gettingFood = false
 func _on_col_detector_body_entered(body: Node3D) -> void:
 	if body.name == "DispencerAura":
 		gettingFood = true
-		print("Getting food")
 		
 func _on_col_detector_body_exited(body: Node3D) -> void:
 	if body.name == "DispencerAura":
 		gettingFood = false
-		print("Stop Getting food")
+	
+func delivered():
+	var returnOrder = carringOrder
+	carringOrder = null
+	var indicator = get_node("Indicator")
+	indicator.visible = false
+	
+	return returnOrder
 	
 func _process(delta: float) -> void:
 	var direction = Vector3()
