@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bo7otv7k2dif3"]
+
+[ext_resource type="Script" path="res://src/levels/cellar.gd" id="1_evapf"]
+[ext_resource type="PackedScene" uid="uid://d16864y138ibj" path="res://assets/models/cellar.glb" id="4_x4feg"]
+[ext_resource type="Environment" uid="uid://1jq8e0qxe4xh" path="res://resources/new_environment.tres" id="12_ker2c"]
+[ext_resource type="PackedScene" uid="uid://cfr4u784045c3" path="res://resources/scenes/player/Player.tscn" id="13_lnjth"]
+
+[node name="Cellar" type="Node3D"]
+script = ExtResource("1_evapf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.689645, 0.724148, 0, -0.724148, 0.689645, 0, 5.84508, 6.88263)
+environment = ExtResource("12_ker2c")
+fov = 62.4
+size = 0.089
+near = 0.032
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.685081, 0.728467, 0, -0.728467, 0.685081, 0, 6.04551, 3.34648)
+light_bake_mode = 0
+shadow_enabled = true
+shadow_transmittance_bias = 0.126
+shadow_blur = 3.067
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("12_ker2c")
+
+[node name="Player" parent="." instance=ExtResource("13_lnjth")]
+transform = Transform3D(-0.00907556, 0, 0.999959, 0, 1, 0, -0.999959, 0, -0.00907556, -1.22752, 0.00353631, -0.288193)
+move_speed = 8.0
+acceleration = 200.0
+rotation_speed = 80.0
+
+[node name="cellar" parent="." instance=ExtResource("4_x4feg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333535, 0.0257308, 3.89572)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="cellar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.43132, 0, -2.42831)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="cellar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.52568, 0, -2.42831)

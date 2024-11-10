@@ -11,6 +11,7 @@ signal fps_displayed
 signal config_loaded
 signal customer_seated
 signal delivery_attempt
+signal camera_switch
 
 var log
 
@@ -21,6 +22,9 @@ func _ready() -> void:
 func on_customer_seated(customer: Npc)  -> void: 
 	self.log.log_info("Customer seated" + customer.customerName, log.LogType.LOG_SIGNAL)
 	emit_signal("customer_seated", customer)
+
+func on_camera_switch(camera: String)  -> void: 
+	emit_signal("camera_switch", camera)
 
 func on_deliver_attempt(order)  -> void: 
 	self.log.log_info("PLayer trying to offer " + order.dish, log.LogType.LOG_SIGNAL)
