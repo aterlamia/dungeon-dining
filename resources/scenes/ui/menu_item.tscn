@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://l0omggrymilv"]
+
+[ext_resource type="FontFile" uid="uid://dhnbw5oo8o7x1" path="res://assets/fonts/PeaberryBase.ttf" id="1_qdi0u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d3e7a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0avei"]
+bg_color = Color(0.0690429, 0.521194, 0.521723, 1)
+
+[node name="MenuItem" type="Panel"]
+custom_minimum_size = Vector2(0, 40)
+offset_right = 357.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d3e7a")
+
+[node name="MenuItem" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 2
+offset_top = 7.0
+offset_right = 305.0
+offset_bottom = 31.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_qdi0u")
+bbcode_enabled = true
+text = "MenuItem"
+
+[node name="Price" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 2
+offset_left = 254.0
+offset_top = 7.0
+offset_right = 333.0
+offset_bottom = 31.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_qdi0u")
+bbcode_enabled = true
+text = "[right]10[/right]
+"
+
+[node name="Subscript" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 2
+offset_left = -1.0
+offset_top = 23.0
+offset_right = 304.0
+offset_bottom = 47.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_qdi0u")
+theme_override_font_sizes/italics_font_size = 10
+theme_override_styles/fill = SubResource("StyleBoxFlat_0avei")
+bbcode_enabled = true
+text = "[i]MenuItem[/i]"

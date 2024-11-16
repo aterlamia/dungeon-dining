@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cqydt8lfb5sa6"]
+
+[ext_resource type="Texture2D" uid="uid://b6e54g17dcgt8" path="res://assets/ui/GUI_1.1/White/x4/Panel_no_frame.png" id="1_guoxc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2hnft"]
+texture = ExtResource("1_guoxc")
+modulate_color = Color(0.545098, 0.572549, 0.666667, 0.513726)
+
+[resource]
+Panel/styles/panel = SubResource("StyleBoxTexture_2hnft")

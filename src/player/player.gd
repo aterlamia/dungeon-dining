@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export_group("Movement")
 @export var move_speed := 8.0
 @export var acceleration := 20.0
-@export var rotation_speed := 12.0
+@export var rotation_speed := 62.0
 
 @export_group("Camera")
 @export_range(0.0, 1.0) var mouse_sensitivity := 0.25
@@ -87,7 +87,7 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	if move_direction.length() > 0.2:
+	if move_direction.length() > 0.05:
 		_last_movement_direction = move_direction
 	var target_angle := Vector3.BACK.signed_angle_to(_last_movement_direction, Vector3.UP)
 	_skin.global_rotation.y = lerp_angle(_skin.rotation.y, target_angle, rotation_speed * delta)
@@ -100,7 +100,7 @@ func _physics_process(delta: float) -> void:
 		var ground_speed := velocity.length()
 		if ground_speed > 0.0:
 			_skin.get_node("AnimationPlayer").play("Move")
-			_skin.get_node("AnimationPlayer").speed_scale = 2
+			_skin.get_node("AnimationPlayer").speed_scale = 2.5	
 		else:
 			_skin.get_node("AnimationPlayer").play("Walking")
 			_skin.get_node("AnimationPlayer").speed_scale = 1.2

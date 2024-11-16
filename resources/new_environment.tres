@@ -1,4 +1,9 @@
 [gd_resource type="Environment" format=3 uid="uid://1jq8e0qxe4xh"]
 
 [resource]
+ambient_light_energy = 0.0
+reflected_light_source = 1
+ssr_enabled = true
+ssil_enabled = true
 sdfgi_enabled = true
+sdfgi_use_occlusion = true

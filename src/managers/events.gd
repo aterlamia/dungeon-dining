@@ -12,6 +12,8 @@ signal config_loaded
 signal customer_seated
 signal delivery_attempt
 signal camera_switch
+signal recipe_selected
+signal recipe_added(recipe:String, amount:int)
 
 var log
 
@@ -25,7 +27,14 @@ func on_customer_seated(customer: Npc)  -> void:
 
 func on_camera_switch(camera: String)  -> void: 
 	emit_signal("camera_switch", camera)
-
+	
+func on_recipe_selected(recipe: String)  -> void: 
+	emit_signal("recipe_selected", recipe)
+    
+func on_recipe_added(recipe: String, amount:int)  -> void: 
+	self.log.log_info("Recipe added" + recipe + "(" + str(amount) + ")", log.LogType.LOG_SIGNAL)
+	recipe_added.emit(recipe, amount)
+    	
 func on_deliver_attempt(order)  -> void: 
 	self.log.log_info("PLayer trying to offer " + order.dish, log.LogType.LOG_SIGNAL)
 	emit_signal("delivery_attempt", order)

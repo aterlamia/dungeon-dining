@@ -32,20 +32,32 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"beam": {
+"use_external/enabled": true,
+"use_external/path": "res://assets/textures/beam.tres"
+}
+},
 "nodes": {
-"PATH:Cube": {
+"PATH:Cube_001": {
+"generate/physics": true
+},
+"PATH:Cube_002": {
+"generate/physics": true
+},
+"PATH:Cube_003": {
+"generate/physics": true
+},
+"PATH:Cube_004": {
 "generate/physics": true
 },
 "PATH:Cube_005": {
 "generate/physics": true
 },
 "PATH:Cube_006": {
-"import/skip_import": true
-},
-"PATH:Cube_007": {
 "generate/physics": true
 },
-"PATH:Cube_008": {
+"PATH:Cube_007": {
 "generate/physics": true
 },
 "PATH:Cube_009": {
@@ -57,16 +69,55 @@ _subresources={
 "PATH:Cube_011": {
 "generate/physics": true
 },
+"PATH:Cube_012": {
+"generate/physics": true
+},
+"PATH:Cube_013": {
+"generate/physics": true
+},
+"PATH:Cube_014": {
+"generate/physics": true
+},
+"PATH:Cube_015": {
+"generate/physics": true
+},
+"PATH:Cube_016": {
+"generate/physics": true
+},
+"PATH:Cube_017": {
+"generate/physics": true
+},
+"PATH:Cube_018": {
+"generate/physics": true
+},
+"PATH:Cube_019": {
+"generate/physics": true
+},
+"PATH:Cube_020": {
+"generate/physics": true
+},
+"PATH:Cube_021": {
+"generate/physics": true
+},
+"PATH:Cube_022": {
+"generate/physics": true
+},
+"PATH:Cube_023": {
+"generate/physics": true
+},
 "PATH:Floor": {
+"generate/physics": true
+},
+"PATH:Floor_001": {
 "generate/physics": true
 },
 "PATH:Stairs": {
 "generate/physics": true
 },
-"PATH:Wall2": {
+"PATH:Tunnle": {
 "generate/physics": true
 },
-"PATH:Wall4": {
+"PATH:Wall2": {
 "generate/physics": true
 },
 "PATH:wall": {
@@ -74,6 +125,10 @@ _subresources={
 },
 "PATH:wall3": {
 "generate/physics": true
+},
+"PATH:wall3_001": {
+"generate/physics": true,
+"physics/shape_type": 2
 }
 }
 }
