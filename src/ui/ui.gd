@@ -167,6 +167,22 @@ func _on_load_pressed():
 		if save_data != null:
 			setSaveData(i, save_data)
 	pass 
+	
+func _on_continue_pressed():
+	var saveItem = -1
+	var saveTime = -1
+	for i in range(1, 5):
+		var save_data = save.loadSave(i)
+		if save_data != null:
+			print("Save data found:" + save_data['date'])
+			var date_time = Time.get_unix_time_from_datetime_string(save_data['date'])
+			if(date_time > saveTime):
+				saveTime = date_time
+				saveItem = i
+	if saveItem != -1:
+		_on_load_save_pressed(saveItem)
+	
+	pass 
 
 
 func setSaveData(slot: int, save_data) -> void:

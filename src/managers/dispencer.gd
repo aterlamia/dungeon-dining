@@ -2,17 +2,17 @@ class_name Dispencer
 
 extends Node3D
 
-var order_queue: Array = []
-var done_order_queue: Array = []
+var order_queue: Array[CustomerOrder] = []
+var done_order_queue: Array[CustomerOrder] = []
 var chefs: Array = []
 var num_chefs: int = 2
-var indicator: MeshInstance3D
 var wantsManager: WantsManager
+@export var dishPositions: Array[Marker3D]
 
 func _ready() -> void:
 	wantsManager = get_node("/root/Wants")
 	get_node("/root/Events").customer_seated.connect(_on_customer_seated)
-	indicator = get_node("Indicator")
+	get_node("/root/Events").cooking_done.connect(_on_cooking_done)
 	for i in range(num_chefs):
 		var cooking_timer = Timer.new()
 		cooking_timer.set_one_shot(false)
@@ -23,14 +23,37 @@ func _ready() -> void:
 			"current_order": null
 		})
 
-func _on_customer_seated(customer: Npc) -> void:
 
-	var order = {
-		"customer": customer,	
-		"dish": customer.want,
-		"cooking_time": wantsManager.getWantData(customer.want).cookingTime,
-		"wants_color": wantsManager.getWantData(customer.want).color
-	}
+func _on_cooking_done(order) -> void:	
+	done_order_queue.append(order)
+	_updateQueue()
+	pass
+
+func _updateQueue():
+	# remove all childern from the positions
+	for pos in dishPositions:
+		if pos.get_child_count() != 0:
+			var child: Node3D = pos.get_child(0)
+			pos.remove_child(child)
+			child.queue_free()
+	if done_order_queue.size() > 0:
+		var i = 0
+		for doneOrder in done_order_queue:
+			if(i<=dishPositions.size()):
+				var pos = dishPositions[i]
+				
+				if pos.get_child_count() != 0:
+					pos.get_child(0).queue_free()
+					
+				var order_scene = load(doneOrder['model'])
+				var dish: Node3D = order_scene.instantiate()
+				pos.add_child(dish) 
+				i += 1
+		pass
+	
+			
+func _on_customer_seated(customer: Npc) -> void:
+	var order = CustomerOrder.create_order(customer, customer.want, wantsManager.getWantData(customer.want).cookingTime, wantsManager.getWantData(customer.want).model, wantsManager.getWantData(customer.want).image)
 	order_queue.append(order)
 	_process_next_order()
 
@@ -44,8 +67,8 @@ func _process_next_order() -> void:
 
 func pickup():
 	if done_order_queue.size() > 0:
-		indicator.visible = false
 		var order = done_order_queue.pop_front()
+		_updateQueue()
 		return order
 	else:
 		print("nope")
@@ -58,12 +81,13 @@ func _process(_delta: float) -> void:
 			var elapsed_time = current_time - chef["start_time"]
 			var progress = elapsed_time / chef["cooking_time"]
 			if elapsed_time >= chef["cooking_time"]:
-				done_order_queue.append(chef["current_order"])
+				get_node("/root/Events").on_cooking_done(chef["current_order"])
 				print("Finished cooking: %s for %s" % [chef["current_order"].dish, chef["current_order"].customer.name])
 				chef["current_order"] = null
 				_process_next_order()
 				
-	if done_order_queue.size() > 0 && indicator.visible == false:
-		indicator.visible = true
-		indicator.mesh.material.albedo_color = done_order_queue[0].wants_color
-				
+	
+			
+	
+	
+	

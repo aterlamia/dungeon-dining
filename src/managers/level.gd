@@ -35,7 +35,7 @@ func switch_to_scene(scene: int) -> void:
 		-1:
 			set_current_scene("res://resources/scenes/ui/gameover_screen.tscn")
 		1:
-			set_current_scene("res://resources/scenes/levels/Cellar.tscn")	
+			set_current_scene("res://resources/scenes/levels/Restaurant.tscn")	
 		2:
 			set_current_scene("res://resources/scenes/levels/Cellar.tscn")	
 		_:

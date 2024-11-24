@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Hide Uid files" pattern="file:*.uid" />
+</component>

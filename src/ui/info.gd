@@ -3,13 +3,18 @@ extends Control
 @export var baseIngredient: PackedScene = null
 var amount = 1
 var current: Recipe = null
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	get_node("/root/Events").recipe_selected.connect(_on_switch)
+	get_node("/root/Events").ingredients_updated.connect(_on_ingredients_updated)
 	get_node("Container").visible = false
 	pass
 
 
+func _on_ingredients_updated() -> void:
+	updateIngredients()
+	pass
+	
 func _on_switch(recipe: String) -> void:
 	amount = 1
 	current = null
@@ -80,5 +85,6 @@ func _on_text_edit_text_changed() -> void:
 	pass # Replace with function body.
 
 func _on_button_pressed() -> void:
+	var chosen: Recipe = get_node("/root/Global").addChosenDish(current.type, amount)
 	get_node("/root/Events").on_recipe_added(current.type, amount)
 	pass # Replace with function body.

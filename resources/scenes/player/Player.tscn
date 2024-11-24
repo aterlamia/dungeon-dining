@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cfr4u784045c3"]
 
-[ext_resource type="Script" path="res://src/player/player.gd" id="1_gyjmf"]
-[ext_resource type="PackedScene" uid="uid://bd352lparlgeg" path="res://assets/models/char.glb" id="2_6up1h"]
+[ext_resource type="Script" uid="uid://c65j5usrpu3xl" path="res://src/player/player.gd" id="1_gyjmf"]
+[ext_resource type="PackedScene" uid="uid://b6l4ba2mw5ptb" path="res://assets/models/people/player.glb" id="2_23cr1"]
 [ext_resource type="Environment" uid="uid://1jq8e0qxe4xh" path="res://resources/new_environment.tres" id="3_t7tmm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b4hyn"]
@@ -10,7 +10,7 @@ height = 1.3
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_yw35r"]
 height = 0.48397
-radius = 0.207521
+radius = 0.305664
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fkwe3"]
 
@@ -22,21 +22,21 @@ height = 0.3
 [sub_resource type="SphereShape3D" id="SphereShape3D_6fyah"]
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 135
+collision_mask = 15
 script = ExtResource("1_gyjmf")
-move_speed = 3.0
+move_speed = 1.5
 acceleration = 1.0
 rotation_speed = 50.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21128e-05, 0.6371, 0.000407938)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0188602, 0.6371, 0.000407938)
 shape = SubResource("CapsuleShape3D_b4hyn")
 
 [node name="ColDetector" type="Area3D" parent="."]
-transform = Transform3D(0.796, 0, 0, 0, 0.952, 0, 0, 0, 1, 0, 0, 0)
-visible = false
 
 [node name="PLayerAura" type="CollisionShape3D" parent="ColDetector"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21128e-05, 0.395634, 0.000407938)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21128e-05, 0.395634, 0.133863)
 shape = SubResource("CylinderShape3D_yw35r")
 
 [node name="Indicator" type="MeshInstance3D" parent="."]
@@ -44,8 +44,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.409995, -0.305257)
 visible = false
 mesh = SubResource("CapsuleMesh_0mr17")
 
-[node name="Char" parent="." instance=ExtResource("2_6up1h")]
-transform = Transform3D(0.205689, 0, 0, 0, 0.205689, 0, 0, 0, 0.205689, 0, 0, 0)
+[node name="player" parent="." instance=ExtResource("2_23cr1")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
 [node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.920827, 0)
@@ -69,5 +69,7 @@ light_specular = 1.537
 distance_fade_begin = 2467.26
 distance_fade_length = 2513.11
 
+[connection signal="area_entered" from="ColDetector" to="." method="_on_col_detector_area_entered"]
+[connection signal="area_exited" from="ColDetector" to="." method="_on_col_detector_area_exited"]
 [connection signal="body_entered" from="ColDetector" to="." method="_on_col_detector_body_entered"]
 [connection signal="body_exited" from="ColDetector" to="." method="_on_col_detector_body_exited"]

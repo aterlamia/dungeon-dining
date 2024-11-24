@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhbfvtfubyion"]
+
+[ext_resource type="PackedScene" uid="uid://8ixawwc0skhc" path="res://assets/models/food/soup.glb" id="1_m1t0u"]
+
+[node name="Soup" type="Node3D"]
+
+[node name="soup" parent="." instance=ExtResource("1_m1t0u")]
+transform = Transform3D(0.241, 0, 0, 0, 0.241, 0, 0, 0, 0.241, 0.105656, 0, 0.163929)

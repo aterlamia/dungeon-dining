@@ -1,8 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://cj01pr6768lx"]
+[gd_scene load_steps=17 format=3 uid="uid://cj01pr6768lx"]
 
-[ext_resource type="Script" path="res://src/npc/npc.gd" id="1_misqj"]
+[ext_resource type="Script" uid="uid://b8xi33q1vcirk" path="res://src/npc/npc.gd" id="1_misqj"]
 [ext_resource type="Texture2D" uid="uid://di6npm2qnnau3" path="res://assets/images/bubble.png" id="2_7qirs"]
 [ext_resource type="PackedScene" uid="uid://1auo1mcsyxv6" path="res://resources/scenes/ui/notification.tscn" id="2_o1mxo"]
+[ext_resource type="PackedScene" uid="uid://bykiv7e2kf338" path="res://assets/models/people/npc1.glb" id="3_kuxx5"]
+[ext_resource type="Script" uid="uid://bscayq6udx7tk" path="res://src/state/npc/NpcStateMachine.gd" id="5_lfg76"]
+[ext_resource type="Script" uid="uid://bb8xmst48lf2m" path="res://src/state/npc/walking.gd" id="6_8kye0"]
+[ext_resource type="Script" uid="uid://c5ywh7aq0qyuu" path="res://src/state/npc/entering.gd" id="7_bf8nm"]
+[ext_resource type="Script" uid="uid://cqxurs2r3q2qm" path="res://src/state/npc/seating.gd" id="8_2nnnt"]
+[ext_resource type="Script" uid="uid://cy5vf727rif4u" path="res://src/state/npc/idle.gd" id="9_gxxeu"]
+[ext_resource type="Script" uid="uid://cks6fk58jinkk" path="res://src/state/npc/ordering.gd" id="10_hti0r"]
+[ext_resource type="Script" uid="uid://b218bdhgsaytd" path="res://src/state/npc/eating.gd" id="11_hti0r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b4hyn"]
 radius = 0.172515
@@ -22,6 +30,9 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xopil"]
 
 [node name="Npc" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
+collision_layer = 15
+collision_mask = 15
 script = ExtResource("1_misqj")
 
 [node name="SubViewport" type="SubViewport" parent="."]
@@ -39,12 +50,17 @@ shape = SubResource("CapsuleShape3D_b4hyn")
 
 [node name="Npc" type="Node3D" parent="."]
 
+[node name="Mesh" parent="Npc" instance=ExtResource("3_kuxx5")]
+transform = Transform3D(-0.8, 0, -1.20797e-07, 0, 0.8, 0, 1.20797e-07, 0, -0.8, 0, 0, 0)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Npc"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.353876, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_ihwvs")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Npc"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.82512, 0)
+visible = false
 mesh = SubResource("SphereMesh_crd8m")
 
 [node name="Bubble" type="Sprite3D" parent="Npc"]
@@ -54,7 +70,7 @@ billboard = 1
 texture = ExtResource("2_7qirs")
 
 [node name="Bubble2" type="Sprite3D" parent="Npc"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0375345, 1.31544, -0.00783183)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.157884, 1.88287, -0.008)
 billboard = 1
 texture = SubResource("ViewportTexture_wayp2")
 
@@ -63,3 +79,27 @@ texture = SubResource("ViewportTexture_wayp2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NpcAura"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.743129, 0)
 shape = SubResource("CapsuleShape3D_xopil")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_lfg76")
+initial_state = NodePath("Entering")
+
+[node name="Walking" type="Node" parent="StateMachine"]
+script = ExtResource("6_8kye0")
+
+[node name="Entering" type="Node" parent="StateMachine"]
+script = ExtResource("7_bf8nm")
+
+[node name="Seating" type="Node" parent="StateMachine"]
+script = ExtResource("8_2nnnt")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("9_gxxeu")
+
+[node name="Ordering" type="Node" parent="StateMachine"]
+script = ExtResource("10_hti0r")
+
+[node name="Eating" type="Node" parent="StateMachine"]
+script = ExtResource("11_hti0r")
+
+[connection signal="stateChange" from="." to="StateMachine" method="_transition_to_next_state"]

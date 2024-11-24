@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl0jdadatwdhm"]
+
+[ext_resource type="PackedScene" uid="uid://r06rsjwusb05" path="res://assets/models/food/milkshake.glb" id="1_30shu"]
+
+[node name="Milkshake" type="Node3D"]
+
+[node name="milkshake" parent="." instance=ExtResource("1_30shu")]
+transform = Transform3D(0.241, 0, 0, 0, 0.241, 0, 0, 0, 0.241, 0, 0, 0)

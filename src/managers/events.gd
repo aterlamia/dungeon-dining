@@ -1,6 +1,9 @@
+class_name EventManager
+
 extends Node
 
 signal pauze
+signal in_menu
 signal game_started
 signal scene_done
 signal scene_started
@@ -10,11 +13,14 @@ signal play_music
 signal fps_displayed
 signal config_loaded
 signal customer_seated
+signal cooking_done
+signal delivery_pickup
 signal delivery_attempt
 signal camera_switch
 signal recipe_selected
+signal ingredients_updated
 signal recipe_added(recipe:String, amount:int)
-
+signal diner_opened
 var log
 
 func _ready() -> void: 
@@ -25,16 +31,28 @@ func on_customer_seated(customer: Npc)  -> void:
 	self.log.log_info("Customer seated" + customer.customerName, log.LogType.LOG_SIGNAL)
 	emit_signal("customer_seated", customer)
 
+
+func on_delivery_pickup(dish: String)  -> void: 
+	self.log.log_info("delivery_pickup " + dish, log.LogType.LOG_SIGNAL)
+	emit_signal("delivery_pickup", dish)
+
+func on_cooking_done(order: CustomerOrder)  -> void: 
+	self.log.log_info("Meal made" + order.dish, log.LogType.LOG_SIGNAL)
+	emit_signal("cooking_done", order)
+	
 func on_camera_switch(camera: String)  -> void: 
-	emit_signal("camera_switch", camera)
+	emit_signal("camera_switch", camera)	
 	
 func on_recipe_selected(recipe: String)  -> void: 
 	emit_signal("recipe_selected", recipe)
-    
+	
 func on_recipe_added(recipe: String, amount:int)  -> void: 
 	self.log.log_info("Recipe added" + recipe + "(" + str(amount) + ")", log.LogType.LOG_SIGNAL)
 	recipe_added.emit(recipe, amount)
-    	
+
+func on_ingredients_updated()  -> void: 
+	ingredients_updated.emit()
+	
 func on_deliver_attempt(order)  -> void: 
 	self.log.log_info("PLayer trying to offer " + order.dish, log.LogType.LOG_SIGNAL)
 	emit_signal("delivery_attempt", order)
@@ -47,6 +65,14 @@ func on_pauze(state: bool)  -> void:
 	self.log.log_info("Pauze " + ("True" if state else "False"), log.LogType.LOG_SIGNAL)
 	emit_signal("pauze", state)
 
+func on_in_menu(state: bool)  -> void: 
+	self.log.log_info("in Menu " + ("True" if state else "False"), log.LogType.LOG_SIGNAL)
+	emit_signal("in_menu", state)
+
+func on_diner_opened(open: bool)  -> void: 
+	self.log.log_info("Diner opened " + ("True" if open else "False"), log.LogType.LOG_SIGNAL)
+	emit_signal("diner_opened", open)
+	
 func on_config_loaded()  -> void: 
 	self.log.log_info("Config loaded", log.LogType.LOG_SIGNAL)
 	emit_signal("config_loaded")
@@ -55,11 +81,9 @@ func on_fps_displayed(state: bool)  -> void:
 	self.log.log_info("Showfps " + ("True" if state else "False"), log.LogType.LOG_SIGNAL)
 	emit_signal("fps_displayed", state)
 
-
 func on_play_music(name: String) -> void: 
 	self.log.log_info("play_music: " + name, log.LogType.LOG_SIGNAL)
 	emit_signal("play_music", name)
-
 
 func on_scene_done(scene: int) -> void: 
 	self.log.log_info("Scene done: " + str(scene), log.LogType.LOG_SIGNAL)

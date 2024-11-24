@@ -4,40 +4,29 @@ extends Node
 
 var enable_process = false
 
+var rng: RandomNumberGenerator
 func _ready() -> void:
+		
+		
+	rng = RandomNumberGenerator.new()
+	rng.randomize()
 	pass
 
 func getRandomWant() -> String:
-	var rng = RandomNumberGenerator.new()
-	var choice = rng.randi_range(0, 2)
+	var global: GlobalState = get_node("/root/Global")
+	var chosenDishes = global.chosen_dishes
 	
-	if choice == 0:
-		return "burger"
-	elif choice == 1:
-		return "steak"
-	else:
-		return "nuggets"
+	if chosenDishes.size() == 0:
+		return ""
+
+	rng.randomize()
+	
+	var choice = rng.randi_range(0, chosenDishes.size() - 1)
+	
+	return chosenDishes[choice]["dish"]
 		
-		
-func getWantData(want: String) -> Dictionary:
-	if want == "burger":
-		return {
-			"want": "burger",
-			"cookingTime": 3,
-			"eatingTime": 3,
-			"color": Color(1, 0.5, 0.5)
-		}
-	elif want == "steak":
-		return {
-			"want": "steak",
-			"cookingTime": 5,
-			"eatingTime": 5,
-			"color": Color(0.5, 1, 0.5)
-		}
-	else:
-		return {
-			"want": "nuggets",
-			"cookingTime": 2,
-			"eatingTime": 2,
-			"color": Color(0.5, 0.5, 1)
-		}
+func getWantData(want: String) -> Recipe:
+	var global: GlobalState = get_node("/root/Global")
+	var availableRecipies = global.availableRecipies
+	
+	return availableRecipies[want]

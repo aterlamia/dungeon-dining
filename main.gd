@@ -2,7 +2,7 @@ extends Node2D
 
 var Logger := load("res://src/managers/log.gd")
 @export_flags("LOG_ERROR","LOG_WARN", "LOG_INFO", "LOG_DEBUG") var log_level: int = Logger.LogSeverity.LOG_NONE
-@export_flags("LOG_GENERAL","LOG_UI", "LOG_ENEMY", "LOG_PLAYER", "LOG_SIGNAL", "LOG_PATHFINDING", "LOG_INIT", "LOG_EXIT", "LOG_SCENE", "LOG_SOUND") var log_type: int = Logger.LogType.LOG_GENERAL
+@export_flags("LOG_GENERAL","LOG_UI", "LOG_ENEMY", "LOG_PLAYER", "LOG_SIGNAL", "LOG_PATHFINDING", "LOG_INIT", "LOG_EXIT", "LOG_SCENE", "LOG_SOUND", "LOG_STATE") var log_type: int = Logger.LogType.LOG_GENERAL
 
 var log
 var globals: Global = null

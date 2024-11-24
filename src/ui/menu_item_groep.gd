@@ -15,5 +15,5 @@ func _ready() -> void:
 		
 func setTitle() -> void:
 	var title_label = get_node("MarginContainer/VBoxContainer/Title")
-	title_label.text = "[b]" + group_name + "[/b]"
+	title_label.text = "[center][b]" + group_name + "[/b][/center]"
 	pass

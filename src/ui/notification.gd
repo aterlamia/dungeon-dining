@@ -20,8 +20,10 @@ func setWant(want: String) -> void:
 	var man: WantsManager = get_node("/root/Wants")
 	var data = man.getWantData(want)
 	
-	var holder: Polygon2D = get_node("Sprite2D/placeholder")
-	holder.color = data.color
+	var holder: Sprite2D = get_node("Sprite2D/fooditem")
+	# set the texture of the sprite based on the filename (a png) in the data["image"]
+	var texture = load(data["image"])
+	holder.texture = texture
 	pass
 	
 func startTimer() -> void:

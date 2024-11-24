@@ -3,11 +3,42 @@ extends Node
 
 var pauzed: bool = false
 var availableRecipies: Dictionary
+
+func _ready() -> void:
+	init_recipes()
+	get_node("/root/Events").in_menu.connect(_on_pauze)
+	pass
+	
+func addChosenDish(dish: String, count: int) -> void:
+	chosen_dishes.append({"dish":dish, "count":count})
+	pass
+func _on_pauze(pauzed: bool) -> void:
+	self.pauzed = pauzed
+	pass
+	
 var in_game: bool = false:
 	get:
 		return in_game
 	set(value):
 		in_game = value
+		
+var restaurant_level: int = 0:
+	get:
+		return game_state["restaurant_level"]
+	set(value):
+		game_state["restaurant_level"] = value
+
+var chosen_dishes: Array = []:
+	get:
+		return game_state["chosenRecipies"]
+	set(value):
+		game_state["chosenRecipies"] = value
+				
+var part_state: String = 'prepare':
+	get:
+		return game_state["partState"]
+	set(value):
+		game_state["partState"] = value
 
 var config_data: Dictionary = {
 	"fullscreen": false,
@@ -24,6 +55,13 @@ var config_data: Dictionary = {
 var game_state: Dictionary = {
 	"clicks": 0,
 	"slotsAvailable": 5,
+	"dayPartsAvailable": 1,
+	"currentDayPart": 0,
+	"partState": "prepare", # prepare, start
+	"restaurant_level": 0, # 0 is the tutorial level
+	"filledSlots": {
+		
+	},
 	"ingredientsHold": {
 		"tomato": 7,
 		"lettuce": 7,
@@ -40,10 +78,6 @@ var game_state: Dictionary = {
 	"level": 0,
 }
 
-func _ready() -> void:
-	init_recipes()
-	pass
-	
 func set_game_data(data, key: String) -> void:
 	if game_state.has(key):
 		game_state[key] = data
@@ -74,71 +108,98 @@ func apply_config(data: Dictionary):
 
 
 func init_recipes() -> void:
-	var recipes = {}
 	var recipe_data = [
-                        {
-                          "name": "Delicious Burger",
-                          "subtitle": "Traditional beef patty with lettuce and tomato",
-                          "level": 1,
-                          "model": "res://models/burger.mesh",
-                          "quality_multiplier": 1,
-                          "cost": 5.99,
-                          "type": "burger",
-                          "makes": 1,
-                          "group": "main",
-                          "ingredients": {"tomato": 1, "lettuce": 1, "beef":1}
-                        },
-                        {
-                          "name": "Hotdog",
-                          "subtitle": "Classic hot dog with your choice of toppings",
-                          "level": 1,
-                          "model": "res://models/hotdog.mesh",
-                          "quality_multiplier": 1,
-                          "cost": 3.99,
-                          "type": "hotdog",
-                          "makes": 2,
-                          "group": "main",
-                          "ingredients": {"pork": 1, "bread": 1}
-                        },
-                        {
-                          "name": "Milkshake",
-                          "subtitle": "Vanilla, chocolate, or strawberry",
-                          "level": 1,
-                          "model": "res://models/milkshake.mesh",
-                          "quality_multiplier": 1,
-                          "cost": 4.99,
-                          "type": "milkshake",
-                          "makes": 1,
-                          "group": "main",
-                          "ingredients": {"milk": 1}
-                        },
-                        {
-                          "name": "Garden Salad",
-                          "subtitle": "Fresh mixed greens",
-                          "level": 1,
-                          "model": "res://models/gardensalad.mesh",
-                          "quality_multiplier": 1,
-                          "cost": 6.99,
-                          "type": "gardensalad",
-                          "makes": 1,
-                          "group": "side",
-                          "ingredients": {"tomato": 2, "lettuce": 2}
-                        },
-                        {
-                          "name": "Soup",
-                          "subtitle": "Warm and comforting",
-                          "level": 1,
-                          "model": "res://models/soup.mesh",
-                          "quality_multiplier": 1,
-                          "cost": 4.49,
-                          "type": "soup",
-                          "makes": 4,
-                          "group": "stew",
-                          "ingredients": {"potato": 1, "carrot": 1, "onion":1, "beef":1}
-                        }
-                      ]
+						{
+						  "name": "Delicious Burger",
+						  "subtitle": "Traditional beef patty with lettuce and tomato",
+						  "level": 1,
+						  "model": "res://resources/scenes/food/burger.tscn",
+						  "image": "res://assets/images/food/burger.png",
+						  "quality_multiplier": 1,
+						  "cost": 5.99,
+						  "type": "burger",
+						  "makes": 1,
+						  "group": "main",
+						  "ingredients": {"tomato": 1, "lettuce": 1, "beef":1}
+						},
+						{
+						  "name": "Hotdog",
+						  "subtitle": "Classic hot dog with your choice of toppings",
+						  "level": 1,
+						  "model": "res://resources/scenes/food/hotdog.tscn",
+						  "image": "res://assets/images/food/hotdog.png",
+						  "quality_multiplier": 1,
+						  "cost": 3.99,
+						  "type": "hotdog",
+						  "makes": 2,
+						  "group": "main",
+						  "ingredients": {"pork": 1, "bread": 1}
+						},
+						{
+						  "name": "Milkshake",
+						  "subtitle": "Vanilla, chocolate, or strawberry",
+						  "level": 1,
+						  "model": "res://resources/scenes/food/milkshake.tscn",
+						  "image": "res://assets/images/food/shake.png",
+						  "quality_multiplier": 1,
+						  "cost": 4.99,
+						  "type": "milkshake",
+						  "makes": 1,
+						  "group": "desert",
+						  "ingredients": {"milk": 1}
+						},
+						{
+						  "name": "Garden Salad",
+						  "subtitle": "Fresh mixed greens",
+						  "level": 1,
+						  "model": "res://resources/scenes/food/salad.tscn",
+						  "image": "res://assets/images/food/salad.png",
+						  "quality_multiplier": 1,
+						  "cost": 6.99,
+						  "type": "gardensalad",
+						  "makes": 1,
+						  "group": "side",
+						  "ingredients": {"tomato": 2, "lettuce": 2}
+						},
+						{
+						  "name": "Soup",
+						  "subtitle": "Warm and comforting",
+						  "level": 1,
+						  "model": "res://resources/scenes/food/soup.tscn",
+						  "image": "res://assets/images/food/soup.png",
+						  "quality_multiplier": 1,
+						  "cost": 4.49,
+						  "type": "soup",
+						  "makes": 4,
+						  "group": "stew",
+						  "ingredients": {"potato": 1, "carrot": 1, "onion":1, "beef":1}
+						}
+					  ]
 
 	for data in recipe_data:
-		var recipe = Recipe.create_recipe(data["name"], data["subtitle"], data["level"], data["model"], data["quality_multiplier"], data["cost"], data["type"], data["makes"], data["group"], data["ingredients"])
+		var recipe = Recipe.create_recipe(data["name"], data["subtitle"], data["level"], data["model"],data["image"], data["quality_multiplier"], data["cost"], data["type"], data["makes"], data["group"], data["ingredients"])
 		availableRecipies[data["type"]] = recipe
+	pass
+	
+func getFilledSlot(type: String) -> int:
+	return game_state.filledSlots[type]
+	
+func hasFilledSlot(type: String) -> bool:
+	return game_state.filledSlots.has(type)
+	
+func setFilledSlot(type: String, amount: int) -> void:
+	if game_state.filledSlots.has(type):
+		game_state.filledSlots[type] += amount
+	else:
+		if game_state.slotsAvailable < game_state.filledSlots.size():
+			print("No slots available")
+			return
+		game_state.filledSlots[type] = amount
+	pass
+
+func deleteFilledSlot(type: String) -> void:
+	if game_state.filledSlots.has(type):
+		game_state.filledSlots.erase(type)
+	else:
+		print("Slot not found")
 	pass

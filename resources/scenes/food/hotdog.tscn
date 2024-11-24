@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d13kihe774ge"]
+
+[ext_resource type="PackedScene" uid="uid://d2jenb1w4li36" path="res://assets/models/food/hotdog.glb" id="1_wj5t1"]
+
+[node name="Hotdog" type="Node3D"]
+
+[node name="hotdog" parent="." instance=ExtResource("1_wj5t1")]
+transform = Transform3D(0.241, 0, 0, 0, 0.241, 0, 0, 0, 0.241, 0, 0, 0)
