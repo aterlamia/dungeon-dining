@@ -21,6 +21,8 @@ signal recipe_selected
 signal ingredients_updated
 signal recipe_added(recipe:String, amount:int)
 signal diner_opened
+signal gold_changed
+signal availability_updated
 var log
 
 func _ready() -> void: 
@@ -31,6 +33,9 @@ func on_customer_seated(customer: Npc)  -> void:
 	self.log.log_info("Customer seated" + customer.customerName, log.LogType.LOG_SIGNAL)
 	emit_signal("customer_seated", customer)
 
+func on_money_changed(amount: float)  -> void: 
+	self.log.log_info("MOney changed" + str(amount), log.LogType.LOG_SIGNAL)
+	emit_signal("gold_changed", amount)
 
 func on_delivery_pickup(dish: String)  -> void: 
 	self.log.log_info("delivery_pickup " + dish, log.LogType.LOG_SIGNAL)
@@ -50,6 +55,10 @@ func on_recipe_added(recipe: String, amount:int)  -> void:
 	self.log.log_info("Recipe added" + recipe + "(" + str(amount) + ")", log.LogType.LOG_SIGNAL)
 	recipe_added.emit(recipe, amount)
 
+func on_availability_updated()  -> void: 
+	self.log.log_info("Availability of dishes was updated", log.LogType.LOG_SIGNAL)
+	availability_updated.emit()
+	
 func on_ingredients_updated()  -> void: 
 	ingredients_updated.emit()
 	

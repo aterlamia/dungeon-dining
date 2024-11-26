@@ -12,7 +12,6 @@ func _ready() -> void:
 	global = get_node("/root/Global")
 	logger = get_node("/root/Log")
 	for state_node: NpcState in find_children("*", "NpcState"):
-		print(state_node)
 		state_node.finished.connect(_transition_to_next_state)
 
 	await owner.ready

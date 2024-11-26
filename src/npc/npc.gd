@@ -27,11 +27,19 @@ func _ready() -> void:
 	get_node("/root/Events").delivery_attempt.connect(_on_attempt)
 	global = get_node("/root/Global")
 	notifications = get_node("SubViewport/Notifications")
+	notifications.wait_expired.connect(_onNotificationExpired)
 	_skin = get_node("Npc/Mesh")
 	animation_player = _skin.get_node("AnimationPlayer")
 	pass
 
 
+func _onNotificationExpired() -> void:
+	if !finished:
+		finished = true
+		agent.set_target_position(returnPosition)
+		stateChange.emit("Walking")
+	pass
+	
 func setReturnPosition(position: Vector3) -> void:
 	returnPosition = position
 	pass

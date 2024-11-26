@@ -1,180 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://baxealuxwjcbs"]
+[gd_scene load_steps=4 format=3 uid="uid://baxealuxwjcbs"]
 
 [ext_resource type="Texture2D" uid="uid://bkguietllhmgc" path="res://assets/images/menu/board.png" id="1_4nkpg"]
 [ext_resource type="Script" uid="uid://b82mseso2i2y0" path="res://src/menu_board.gd" id="1_b4nm8"]
-[ext_resource type="Texture2D" uid="uid://htkuslfavguc" path="res://assets/images/food/shake.png" id="2_1jxyf"]
-[ext_resource type="FontFile" uid="uid://crtm2djetblhu" path="res://assets/fonts/Chalk Board.ttf" id="2_b4nm8"]
+[ext_resource type="PackedScene" uid="uid://dgdiipcvykcwf" path="res://menu_item.tscn" id="2_1jxyf"]
 
 [node name="MenuBoard" type="Node3D"]
 script = ExtResource("1_b4nm8")
 
-[node name="Menu1" type="Sprite3D" parent="."]
+[node name="Menu1" parent="." instance=ExtResource("2_1jxyf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, 0.656565, -1.5446)
-sorting_offset = 0.72
-pixel_size = 0.005
-render_priority = 127
-texture = ExtResource("2_1jxyf")
 
-[node name="Label3D" type="Label3D" parent="Menu1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294951, -0.0862756, -1.30385e-08)
-sorting_offset = 100.0
-text = "1/1"
-font = ExtResource("2_b4nm8")
-font_size = 40
+[node name="Menu2" parent="." instance=ExtResource("2_1jxyf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.0700418, -1.5446)
 
-[node name="Menu2" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.0743688, -1.5446)
-sorting_offset = 0.72
-pixel_size = 0.005
-render_priority = 127
-texture = ExtResource("2_1jxyf")
+[node name="Menu3" parent="." instance=ExtResource("2_1jxyf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.829509, -1.5446)
 
-[node name="Label3D" type="Label3D" parent="Menu2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294951, -0.0862756, -1.30385e-08)
-sorting_offset = 100.0
-text = "1/1"
-font = ExtResource("2_b4nm8")
-font_size = 40
+[node name="Menu4" parent="." instance=ExtResource("2_1jxyf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, 0.656565, -0.522884)
 
-[node name="Menu3" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.846856, -1.5446)
-sorting_offset = 0.72
-pixel_size = 0.005
-render_priority = 127
-texture = ExtResource("2_1jxyf")
+[node name="Menu5" parent="." instance=ExtResource("2_1jxyf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.0700418, -0.522884)
 
-[node name="Label3D" type="Label3D" parent="Menu3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294951, -0.0862756, -1.30385e-08)
-sorting_offset = 100.0
-text = "1/1"
-font = ExtResource("2_b4nm8")
-font_size = 40
+[node name="Menu6" parent="." instance=ExtResource("2_1jxyf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.829509, -0.522884)
 
-[node name="Menu4" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, 0.656565, -0.558291)
-sorting_offset = 0.72
-pixel_size = 0.005
-render_priority = 127
-texture = ExtResource("2_1jxyf")
+[node name="Menu7" parent="." instance=ExtResource("2_1jxyf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, 0.656565, 0.551984)
 
-[node name="Label3D" type="Label3D" parent="Menu4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294951, -0.0862756, -1.30385e-08)
-sorting_offset = 100.0
-text = "1/1"
-font = ExtResource("2_b4nm8")
-font_size = 40
+[node name="Menu8" parent="." instance=ExtResource("2_1jxyf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.0700418, 0.551984)
 
-[node name="Menu5" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.0743688, -0.558291)
-sorting_offset = 0.72
-pixel_size = 0.005
-render_priority = 127
-texture = ExtResource("2_1jxyf")
+[node name="Menu9" parent="." instance=ExtResource("2_1jxyf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.829509, 0.551984)
 
-[node name="Label3D" type="Label3D" parent="Menu5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294951, -0.0862756, -1.30385e-08)
-sorting_offset = 100.0
-text = "1/1"
-font = ExtResource("2_b4nm8")
-font_size = 40
+[node name="Menu10" parent="." instance=ExtResource("2_1jxyf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, 0.656565, 1.40412)
 
-[node name="Menu6" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.846856, -0.558291)
-sorting_offset = 0.72
-pixel_size = 0.005
-render_priority = 127
-texture = ExtResource("2_1jxyf")
+[node name="Menu11" parent="." instance=ExtResource("2_1jxyf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.0700418, 1.40412)
 
-[node name="Label3D" type="Label3D" parent="Menu6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294951, -0.0862756, -1.30385e-08)
-sorting_offset = 100.0
-text = "1/1"
-font = ExtResource("2_b4nm8")
-font_size = 40
-
-[node name="Menu7" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, 0.656565, 0.430713)
-sorting_offset = 0.72
-pixel_size = 0.005
-render_priority = 127
-texture = ExtResource("2_1jxyf")
-
-[node name="Label3D" type="Label3D" parent="Menu7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294951, -0.0862756, -1.30385e-08)
-sorting_offset = 100.0
-text = "1/1"
-font = ExtResource("2_b4nm8")
-font_size = 40
-
-[node name="Menu8" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.0743688, 0.430713)
-sorting_offset = 0.72
-pixel_size = 0.005
-render_priority = 127
-texture = ExtResource("2_1jxyf")
-
-[node name="Label3D" type="Label3D" parent="Menu8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294951, -0.0862756, -1.30385e-08)
-sorting_offset = 100.0
-text = "1/1"
-font = ExtResource("2_b4nm8")
-font_size = 40
-
-[node name="Menu9" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.846856, 0.430713)
-sorting_offset = 0.72
-pixel_size = 0.005
-render_priority = 127
-texture = ExtResource("2_1jxyf")
-
-[node name="Label3D" type="Label3D" parent="Menu9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294951, -0.0862756, -1.30385e-08)
-sorting_offset = 100.0
-text = "1/1"
-font = ExtResource("2_b4nm8")
-font_size = 40
-
-[node name="Menu10" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, 0.656565, 1.41702)
-sorting_offset = 0.72
-pixel_size = 0.005
-render_priority = 127
-texture = ExtResource("2_1jxyf")
-
-[node name="Label3D" type="Label3D" parent="Menu10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294951, -0.0862756, -1.30385e-08)
-sorting_offset = 100.0
-text = "1/1"
-font = ExtResource("2_b4nm8")
-font_size = 40
-
-[node name="Menu11" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.0743688, 1.41702)
-sorting_offset = 0.72
-pixel_size = 0.005
-render_priority = 127
-texture = ExtResource("2_1jxyf")
-
-[node name="Label3D" type="Label3D" parent="Menu11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294951, -0.0862756, -1.30385e-08)
-sorting_offset = 100.0
-text = "1/1"
-font = ExtResource("2_b4nm8")
-font_size = 40
-
-[node name="Menu12" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.846856, 1.41702)
-sorting_offset = 0.72
-pixel_size = 0.005
-render_priority = 127
-texture = ExtResource("2_1jxyf")
-
-[node name="Label3D" type="Label3D" parent="Menu12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294951, -0.0862756, -1.30385e-08)
-sorting_offset = 100.0
-text = "1/1"
-font = ExtResource("2_b4nm8")
-font_size = 40
+[node name="Menu12" parent="." instance=ExtResource("2_1jxyf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.022966, -0.829509, 1.40412)
 
 [node name="Board" type="Sprite3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)

@@ -4,6 +4,7 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	get_node("/root/Events").on_camera_switch("restaurant")
+	get_node("/root/Events").on_money_changed(get_node("/root/Global").money)
 	pass # Replace with function body.
 
 

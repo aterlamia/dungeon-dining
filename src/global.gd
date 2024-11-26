@@ -10,8 +10,14 @@ func _ready() -> void:
 	pass
 	
 func addChosenDish(dish: String, count: int) -> void:
+	#if dish already in chosen_dishes, update count
+	for i in range(chosen_dishes.size()):
+		if chosen_dishes[i]["dish"] == dish:
+			chosen_dishes[i]["count"] += count
+			return
 	chosen_dishes.append({"dish":dish, "count":count})
 	pass
+	
 func _on_pauze(pauzed: bool) -> void:
 	self.pauzed = pauzed
 	pass
@@ -28,6 +34,12 @@ var restaurant_level: int = 0:
 	set(value):
 		game_state["restaurant_level"] = value
 
+var money: float = 0:
+	get:
+		return game_state["gold"]
+	set(value):
+		game_state["gold"] = value
+		
 var chosen_dishes: Array = []:
 	get:
 		return game_state["chosenRecipies"]
@@ -53,7 +65,7 @@ var config_data: Dictionary = {
 }
 
 var game_state: Dictionary = {
-	"clicks": 0,
+	"gold": 0.0,
 	"slotsAvailable": 5,
 	"dayPartsAvailable": 1,
 	"currentDayPart": 0,

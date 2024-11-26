@@ -19,6 +19,9 @@ func _on_eatTimer_timeout() -> void:
 	npc.finished = true
 	npc.agent.set_target_position(npc.returnPosition)
 	finished.emit(WALKING)
+	
+	global.money = global.money + npc.wantsManager.getWantData(npc.want).cost
+	get_node("/root/Events").on_money_changed(global.money)
 	pass
 
 

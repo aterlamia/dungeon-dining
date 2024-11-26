@@ -63,7 +63,6 @@ func _process_next_order() -> void:
 			chef["current_order"] = order_queue.pop_front()
 			chef["start_time"] = Time.get_ticks_msec() / 1000.0
 			chef["cooking_time"] = chef["current_order"].cooking_time
-			print("Started cooking: %s for %s" % [chef["current_order"].dish, chef["current_order"].customer.name])
 
 func pickup():
 	if done_order_queue.size() > 0:
@@ -82,7 +81,6 @@ func _process(_delta: float) -> void:
 			var progress = elapsed_time / chef["cooking_time"]
 			if elapsed_time >= chef["cooking_time"]:
 				get_node("/root/Events").on_cooking_done(chef["current_order"])
-				print("Finished cooking: %s for %s" % [chef["current_order"].dish, chef["current_order"].customer.name])
 				chef["current_order"] = null
 				_process_next_order()
 				

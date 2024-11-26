@@ -5,6 +5,7 @@ var progressBar: TextureProgressBar
 
 var spawnTimer: Timer
 var logger
+signal wait_expired
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	progressBar = get_node("HungerTimerProgress")
@@ -17,10 +18,16 @@ func _ready() -> void:
 	pass
 
 func setWant(want: String) -> void:
+	var holder: Sprite2D = get_node("Sprite2D/fooditem")
+	
+	if want == "":
+		set_customer_angry()
+		return
+		
 	var man: WantsManager = get_node("/root/Wants")
 	var data = man.getWantData(want)
 	
-	var holder: Sprite2D = get_node("Sprite2D/fooditem")
+	
 	# set the texture of the sprite based on the filename (a png) in the data["image"]
 	var texture = load(data["image"])
 	holder.texture = texture
@@ -34,12 +41,21 @@ func stopTimer() -> void:
 	spawnTimer.stop()
 	pass
 	
+	
+func set_customer_angry() -> void:
+	var holder: Sprite2D = get_node("Sprite2D/fooditem")
+	var texture = load("res://assets/ui/angry.png")
+	holder.texture = texture
+	pass
+
 func _on_spawnTimer_timeout() -> void:
 	if progressBar.value < 100:
 		progressBar.value += 0.3
 		var progress_ratio = (progressBar.value - 50) / 50.0 if progressBar.value >= 50 else 0
 		progressBar.tint_progress = Color(1 * progress_ratio, 1 * (1 - progress_ratio), 0)
 	else:
+		set_customer_angry()
+		wait_expired.emit()
 		spawnTimer.stop()
 		
 	pass

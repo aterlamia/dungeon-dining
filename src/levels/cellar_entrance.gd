@@ -16,7 +16,6 @@ func _on_attempt() -> void:
 		
 	for body in overlapping_bodies:
 		if body.name == "Player":
-			print("Player entered")
 			get_node("/root/Events").on_scene_restarted(2)
 			break
 	pass

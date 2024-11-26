@@ -40,21 +40,17 @@ func _ready() -> void:
 	_skin.get_node("Armature/Skeleton3D/ServePlate").visible = false
 	
 func _on_col_detector_body_entered(body: Node3D) -> void:
-	print(body.name + "in")
 	if body.name == "DispencerAura":
 		gettingFood = true
 		
 func _on_col_detector_body_exited(body: Node3D) -> void:
-	print(body.name + "out")
 	if body.name == "DispencerAura":
 		gettingFood = false	
 func _on_col_detector_area_entered(body: Area3D) -> void:
-	print(body.name + "in")
 	if body.name == "DispencerAura":
 		gettingFood = true
 		
 func _on_col_detector_area_exited(body: Area3D) -> void:
-	print(body.name + "out")
 	if body.name == "DispencerAura":
 		gettingFood = false
 			

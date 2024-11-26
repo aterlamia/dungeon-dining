@@ -8,23 +8,27 @@ func _ready() -> void:
 			menu_items.append(child)
 			child.visible = false
 	get_node("/root/Events").recipe_added.connect(_on_recipe_added)
+	get_node("/root/Events").availability_updated.connect(_on_availability_updated)
 	pass
 
-
-func _on_recipe_added(recipe: String, amount:int) -> void:
-	print('added' + str(global.chosen_dishes))
-	#hide all menu_items
+func _on_availability_updated() -> void:
+	print("availability updated")
 	for item in menu_items:
 		item.visible = false
+	pass
 		
-	#loop ovcer global.save_state.chosenRecipies and update the sprite3d with the texture from the recipe
 	for i in range(global.chosen_dishes.size()):
-		var recipe2 = global.availableRecipies[global.chosen_dishes[i]["dish"]]
-		menu_items[i].visible = true
-		var texture = load(recipe2["image"])
-		menu_items[i].texture = texture
-		menu_items[i].get_node("Label3D").text = str(global.chosen_dishes[i]["count"])
-	
+			print(global.chosen_dishes[i]["count"])
+			var recipe2 = global.availableRecipies[global.chosen_dishes[i]["dish"]]
+			menu_items[i].visible = true
+			var texture = load(recipe2["image"])
+			menu_items[i].texture = texture
+			menu_items[i].get_node("Label3D").text = str(global.chosen_dishes[i]["count"])
+	pass
+
+func _on_recipe_added(recipe: String, amount:int) -> void:
+	print("recipe added")
+	_on_availability_updated()
 	pass
 	
 	

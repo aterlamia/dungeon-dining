@@ -9,7 +9,7 @@
 [ext_resource type="StyleBox" uid="uid://c3bhetx1gl4iu" path="res://resources/theme/LetterAMber.tres" id="6_moknx"]
 [ext_resource type="Script" path="res://src/ui/recepies.gd" id="7_dmlva"]
 [ext_resource type="PackedScene" uid="uid://dsd27kpf3r8qq" path="res://resources/scenes/ui/recipe_button.tscn" id="8_ui8kx"]
-[ext_resource type="Script" path="res://src/ui/info.gd" id="9_n800v"]
+[ext_resource type="Script" uid="uid://bji5yu2s1nuwk" path="res://src/ui/info.gd" id="9_n800v"]
 [ext_resource type="PackedScene" uid="uid://bio6b6ctbygk3" path="res://resources/scenes/ingredient.tscn" id="10_qgosu"]
 [ext_resource type="Texture2D" uid="uid://dpnxh80u2hqot" path="res://assets/ui/GUI_1.1/White/x2/DropdownList_icon.png" id="11_ilfus"]
 [ext_resource type="Texture2D" uid="uid://b2euxa1l67isi" path="res://assets/ui/GUI_1.1/Icons/x4/Icon_plus.png" id="12_5bw3x"]
@@ -388,12 +388,13 @@ custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
 columns = 5
 
-[node name="Info" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer"]
+[node name="Info" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer" node_paths=PackedStringArray("addButton")]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("9_n800v")
 baseIngredient = ExtResource("10_qgosu")
+addButton = NodePath("Container/AddButton")
 
 [node name="CloseButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info"]
 z_index = 88
@@ -522,14 +523,6 @@ offset_bottom = 210.0
 texture_normal = ExtResource("12_5bw3x")
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info/Container/Add"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = -1.0
-offset_right = 100.0
-offset_bottom = 33.0
-text = "Add"
-
 [node name="Remove" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info/Container"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 0
@@ -539,6 +532,14 @@ offset_right = 88.0
 offset_bottom = 209.0
 texture_normal = ExtResource("13_terk4")
 stretch_mode = 4
+
+[node name="AddButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info/Container"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 174.0
+offset_right = 257.0
+offset_bottom = 208.0
+text = "Add"
 
 [node name="chosen" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info"]
 layout_mode = 0
@@ -561,5 +562,5 @@ text = "meals:"
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="text_changed" from="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info/Container/TextEdit" to="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info" method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info/Container/Add" to="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info" method="_on_add_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info/Container/Add/Button" to="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info" method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info/Container/Remove" to="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info" method="_on_remove_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info/Container/AddButton" to="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info" method="_on_button_pressed"]

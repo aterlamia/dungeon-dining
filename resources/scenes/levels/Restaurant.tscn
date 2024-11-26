@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c8lyl5x75huf"]
+[gd_scene load_steps=33 format=3 uid="uid://c8lyl5x75huf"]
 
 [ext_resource type="Script" path="res://src/levels/restaurant.gd" id="1_e5gyl"]
 [ext_resource type="PackedScene" uid="uid://baxealuxwjcbs" path="res://resources/menu_board.tscn" id="2_rol6b"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b5rbmockjrlb6" path="res://assets/ui/GUI_1.1/Dark/x2/Button_pressed.png" id="15_rol6b"]
 [ext_resource type="Texture2D" uid="uid://ds8nqy3hde31t" path="res://assets/ui/GUI_1.1/Dark/x2/Button_hover.png" id="16_o3f17"]
 [ext_resource type="Texture2D" uid="uid://d2wtxtstb88mj" path="res://assets/ui/GUI_1.1/Dark/x2/Button_disabled.png" id="18_o3f17"]
+[ext_resource type="Texture2D" uid="uid://bxb7swsyvhmyu" path="res://assets/ui/COIN.png" id="19_aev77"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_03c1g"]
 
@@ -49,6 +50,17 @@ size = Vector3(2, 0.2, 4)
 size = Vector3(11, 0.2, 6)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g0gry"]
+
+[sub_resource type="Gradient" id="Gradient_8djd6"]
+colors = PackedColorArray(0, 0, 0, 1, 0.0296447, 0.0520307, 0.163131, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l360b"]
+gradient = SubResource("Gradient_8djd6")
+fill_from = Vector2(0.51567, 0)
+fill_to = Vector2(0.584046, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qfumn"]
+texture = SubResource("GradientTexture2D_l360b")
 
 [node name="Restaurant" type="Node3D"]
 script = ExtResource("1_e5gyl")
@@ -209,9 +221,10 @@ shadow_blur = 3.067
 transform = Transform3D(-0.226596, -0.468537, 0.85389, -0.0410374, 0.880508, 0.472252, -0.973124, 0.071969, -0.218747, 7.07287, 6.67309, -10.3831)
 environment = ExtResource("7_epkef")
 
-[node name="ActionMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("menu")]
+[node name="ActionMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("menu", "moneyLabel")]
 script = ExtResource("11_pw6y6")
 menu = NodePath("../MenuScreen")
+moneyLabel = NodePath("Money/Label")
 
 [node name="MenuButton" type="TextureButton" parent="ActionMenu"]
 offset_left = 324.0
@@ -251,6 +264,30 @@ offset_right = 57.0
 offset_bottom = 22.0
 text = "Open"
 uppercase = true
+
+[node name="Money" type="Panel" parent="ActionMenu"]
+offset_left = 12.0
+offset_top = 8.0
+offset_right = 97.0
+offset_bottom = 26.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_qfumn")
+
+[node name="TextureRect" type="TextureRect" parent="ActionMenu/Money"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 14.0
+offset_bottom = 15.0
+texture = ExtResource("19_aev77")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="ActionMenu/Money"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -3.0
+offset_right = 80.0
+offset_bottom = 20.0
+text = "	1000000"
 
 [node name="MenuScreen" parent="." instance=ExtResource("13_c5uk0")]
 visible = false

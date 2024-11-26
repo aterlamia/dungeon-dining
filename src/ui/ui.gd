@@ -174,7 +174,6 @@ func _on_continue_pressed():
 	for i in range(1, 5):
 		var save_data = save.loadSave(i)
 		if save_data != null:
-			print("Save data found:" + save_data['date'])
 			var date_time = Time.get_unix_time_from_datetime_string(save_data['date'])
 			if(date_time > saveTime):
 				saveTime = date_time
@@ -190,7 +189,7 @@ func setSaveData(slot: int, save_data) -> void:
 	panel.get_node("NoSave").visible = false
 	panel.get_node("Save").visible = true
 	panel.get_node("Save/LvlVal").text = str(save_data['level'])
-	panel.get_node("Save/clickVal").text = str(save_data['clicks'])
+	panel.get_node("Save/clickVal").text = str(save_data['gold'] if save_data.has('gold') else 0)
 	panel.get_node("Save/playtimeVal").text = save_data['date']
 	panel.get_node("Save/dateSavedVal").text = save_data['created']
 	
@@ -201,7 +200,7 @@ func setNewData(slot: int, save_data) -> void:
 	panel.get_node("NoSave").visible = false
 	panel.get_node("Save").visible = true
 	panel.get_node("Save/LvlVal").text = str(save_data['level'])
-	panel.get_node("Save/clickVal").text = str(save_data['clicks'])
+	panel.get_node("Save/clickVal").text = str(save_data['gold'] if save_data.has('gold') else 0)
 	panel.get_node("Save/playtimeVal").text = save_data['date']
 	panel.get_node("Save/dateSavedVal").text = save_data['created']
 	
@@ -211,7 +210,8 @@ func _on_load_save_pressed(extra_arg_0):
 	var save_data = save.loadSave(extra_arg_0)
 	if save_data != null:
 		global.set_game_data(save_data['level'], "level")
-		global.set_game_data(save_data['clicks'], "clicks")
+		var gold = save_data['gold'] if save_data.has('gold') else 0.0
+		global.set_game_data(gold, "gold")
 		get_node("/root/Events").on_scene_restarted(save_data['level'])
 		get_node("/root/Events").on_game_started(true)
 		save.activeSlot = extra_arg_0
@@ -228,7 +228,7 @@ func _on_new_save_pressed(extra_arg_0):
 		return
 		
 	global.set_game_data(1, "level")
-	global.set_game_data(0, "clicks")
+	global.set_game_data(0, "gold")
 	get_node("/root/Events").on_scene_restarted(1)
 	get_node("/root/Events").on_game_started(true)
 	save.activeSlot = extra_arg_0
@@ -242,7 +242,7 @@ func _on_ok_pressed():
 	var save_data = save.loadSave(new_game_slot)
 	if save_data != null:
 		global.set_game_data(1, "level")
-		global.set_game_data(0, "clicks")
+		global.set_game_data(0, "gold")
 		get_node("/root/Events").on_scene_restarted(1)
 		get_node("/root/Events").on_game_started(true)
 		save.activeSlot = new_game_slot

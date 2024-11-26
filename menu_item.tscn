@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgdiipcvykcwf"]
+
+[ext_resource type="Texture2D" uid="uid://htkuslfavguc" path="res://assets/images/food/shake.png" id="1_7i8jb"]
+[ext_resource type="FontFile" uid="uid://crtm2djetblhu" path="res://assets/fonts/Chalk Board.ttf" id="2_1khwl"]
+
+[node name="Menu1" type="Sprite3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+sorting_offset = 0.72
+pixel_size = 0.005
+render_priority = 127
+texture = ExtResource("1_7i8jb")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.491185, -0.0862756, -2.16161e-08)
+sorting_offset = 100.0
+pixel_size = 0.008
+text = "1/1"
+font = ExtResource("2_1khwl")
+font_size = 40

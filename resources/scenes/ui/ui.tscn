@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bvno61benbd2u"]
 
-[ext_resource type="Script" path="res://src/ui/ui.gd" id="1_oeybr"]
+[ext_resource type="Script" uid="uid://k4u4btenrmu6" path="res://src/ui/ui.gd" id="1_oeybr"]
 [ext_resource type="Texture2D" uid="uid://badrvk5us8ycx" path="res://assets/images/menu/background.png" id="1_v1vsa"]
 [ext_resource type="Theme" uid="uid://buf372q2bwhew" path="res://resources/theme/base_theme.tres" id="2_71ie5"]
 [ext_resource type="Texture2D" uid="uid://dvxhdyk5cpkru" path="res://assets/ui/GUI_1.1/Dark/x4/Panel_bg2.png" id="3_kpuoh"]
@@ -382,7 +382,7 @@ offset_left = 48.0
 offset_top = 72.0
 offset_right = 111.0
 offset_bottom = 98.0
-text = "Clicks:  "
+text = "Gold:  "
 
 [node name="clickVal" type="Label" parent="Load/NinePatchRect/Save1/SavePanel/Save"]
 layout_mode = 0
@@ -470,7 +470,7 @@ offset_left = 48.0
 offset_top = 72.0
 offset_right = 111.0
 offset_bottom = 98.0
-text = "Clicks:  "
+text = "Gold:  "
 
 [node name="clickVal" type="Label" parent="Load/NinePatchRect/Save2/SavePanel/Save"]
 layout_mode = 0
@@ -558,7 +558,7 @@ offset_left = 48.0
 offset_top = 72.0
 offset_right = 111.0
 offset_bottom = 98.0
-text = "Clicks:  "
+text = "Gold:  "
 
 [node name="clickVal" type="Label" parent="Load/NinePatchRect/Save3/SavePanel/Save"]
 layout_mode = 0
@@ -646,7 +646,7 @@ offset_left = 48.0
 offset_top = 72.0
 offset_right = 111.0
 offset_bottom = 98.0
-text = "Clicks:  "
+text = "Gold:  "
 
 [node name="clickVal" type="Label" parent="Load/NinePatchRect/Save4/SavePanel/Save"]
 layout_mode = 0

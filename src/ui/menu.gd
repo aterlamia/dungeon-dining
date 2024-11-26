@@ -15,13 +15,13 @@ func _ready() -> void:
 	self.log = get_node("/root/Log")
 	recipeDict = {}
 	events = get_node("/root/Events")
-	events.recipe_added.connect(_on_selected)
+	events.recipe_added.connect(_on_recipe_added)
 	global = get_node("/root/Global")
 	for slot in menuSlots.values():
 		slot.visible = false
 	pass # Replace with function body.
 
-func _on_selected(recipe: String, amount: int) -> void:
+func _on_recipe_added(recipe: String, amount: int) -> void:
 	var group: MenuItemGroup = null 
 	var rec: Recipe = global.availableRecipies[recipe]
 	
@@ -72,5 +72,5 @@ func remove_ingredients(recipe_ingredients: Dictionary, amount: int) -> void:
 				global.game_state["ingredientsHold"][ingredient] = 0
 				
 		else:
-			print("Ingredient not found: " + ingredient)
+			log.log_error("Ingredient not found: " + ingredient, log.LogType.LOG_GENERAL)
 	events.on_ingredients_updated()

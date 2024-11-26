@@ -29,7 +29,6 @@ func _on_started(open:bool) -> void:
 	pass
 	
 func _on_spawnTimer_timeout() -> void:
-	print("Spawning user")
 	spawnUser()
 	pass
 
@@ -56,7 +55,6 @@ func spawnUser() -> void:
 	spawnTimer.start()
 	
 	if (global.pauzed || global.game_state.partState == "prepare"):
-		print ("Pauzed or preparing")
 		return
 		
 	var freeTable = tableManager.getRandomFreeTable()
