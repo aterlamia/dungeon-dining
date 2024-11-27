@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c3ry73ak32in4"
-valid=false
+uid="uid://d1glomqpk0sxc"
+path="res://.godot/imported/plate.blend-775e1b1912196957e99ae453bcd5f478.scn"
 
 [deps]
 
-source_file="res://assets/models/table.blend"
+source_file="res://assets/models/New Folder/plate.blend"
+dest_files=["res://.godot/imported/plate.blend-775e1b1912196957e99ae453bcd5f478.scn"]
 
 [params]
 

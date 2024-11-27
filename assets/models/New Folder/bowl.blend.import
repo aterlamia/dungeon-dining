@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cm6kxo60c5jxc"
-path="res://.godot/imported/chair.blend-5a6d47198997194fb5d1f100ba501ffd.scn"
+uid="uid://dbmqbah4rby2q"
+path="res://.godot/imported/bowl.blend-850ff188d0779f747dd6fa8d6e1a23f2.scn"
 
 [deps]
 
-source_file="res://assets/models/chair.blend"
-dest_files=["res://.godot/imported/chair.blend-5a6d47198997194fb5d1f100ba501ffd.scn"]
+source_file="res://assets/models/New Folder/bowl.blend"
+dest_files=["res://.godot/imported/bowl.blend-850ff188d0779f747dd6fa8d6e1a23f2.scn"]
 
 [params]
 

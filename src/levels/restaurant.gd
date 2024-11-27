@@ -5,6 +5,7 @@ extends Node3D
 func _ready() -> void:
 	get_node("/root/Events").on_camera_switch("restaurant")
 	get_node("/root/Events").on_money_changed(get_node("/root/Global").money)
+	get_node("/root/Events").on_play_music("Restaurant")
 	pass # Replace with function body.
 
 
@@ -15,5 +16,3 @@ func _process(delta: float) -> void:
 
 func load() -> void:
 	pass
-
-

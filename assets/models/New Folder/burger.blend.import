@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c3ry73ak32in4"
-valid=false
+uid="uid://gyb5hwt667oo"
+path="res://.godot/imported/burger.blend-c2fee4a0ac45b9a93bdd3efab7cd19c6.scn"
 
 [deps]
 
-source_file="res://assets/models/table.blend"
+source_file="res://assets/models/New Folder/burger.blend"
+dest_files=["res://.godot/imported/burger.blend-c2fee4a0ac45b9a93bdd3efab7cd19c6.scn"]
 
 [params]
 

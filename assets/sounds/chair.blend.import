@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c3ry73ak32in4"
-valid=false
+uid="uid://cm6kxo60c5jxc"
+path="res://.godot/imported/chair.blend-32a1f33fce1f6a45e5796d47e340cffc.scn"
 
 [deps]
 
-source_file="res://assets/models/table.blend"
+source_file="res://assets/sounds/chair.blend"
+dest_files=["res://.godot/imported/chair.blend-32a1f33fce1f6a45e5796d47e340cffc.scn"]
 
 [params]
 

@@ -50,6 +50,7 @@ func _on_config_loaded() -> void:
 func _on_pauze(state: bool) -> void:
 	self.set_visible(state)
 	if state == false:
+		get_node("/root/Events").on_play_music("Restaurant")
 		save._save_settings()
 	else:
 		get_node("/root/Events").on_play_music("MenuMusic")
