@@ -1,0 +1,369 @@
+[gd_scene load_steps=13 format=3 uid="uid://6gcrgfscpnuv"]
+
+[ext_resource type="Script" uid="uid://ciphk4pbbtd7f" path="res://src/ui/ingredient_menu.gd" id="1_n7quf"]
+[ext_resource type="PackedScene" uid="uid://bj8cryfrtm410" path="res://ingredient_button.tscn" id="2_bdo5k"]
+[ext_resource type="Script" uid="uid://c854ad2sscygo" path="res://src/ui/detail.gd" id="5_27nc4"]
+[ext_resource type="StyleBox" uid="uid://ct0u5h7r7p8pk" path="res://resources/theme/LetterTeal.tres" id="5_w2jxq"]
+[ext_resource type="FontFile" uid="uid://dhnbw5oo8o7x1" path="res://assets/fonts/PeaberryBase.ttf" id="6_ip3rq"]
+[ext_resource type="Texture2D" uid="uid://b2euxa1l67isi" path="res://assets/ui/GUI_1.1/Icons/x4/Icon_plus.png" id="13_vcihl"]
+[ext_resource type="Texture2D" uid="uid://bfqn5sxga2ig7" path="res://assets/ui/GUI_1.1/Icons/x4/Icon_minus.png" id="14_igwhf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvejy"]
+bg_color = Color(0.6, 0.6, 0.6, 0.32549)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxkbr"]
+bg_color = Color(0.831761, 0.831761, 0.831761, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.510601, 0.510601, 0.510601, 1)
+border_blend = true
+corner_detail = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dh6n2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y53mw"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqjrp"]
+bg_color = Color(1, 1, 1, 0.223529)
+
+[node name="IngredientMenuScreen" type="CanvasLayer"]
+script = ExtResource("1_n7quf")
+baseButton = ExtResource("2_bdo5k")
+metadata/_edit_vertical_guides_ = [1111.0, 598.0]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jvejy")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Items" type="Panel" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_mxkbr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TileLetterContainer" type="Panel" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dh6n2")
+
+[node name="TileLetterContainer" type="Panel" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 259.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.141372
+theme_override_styles/panel = ExtResource("5_w2jxq")
+
+[node name="Letter" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/TileLetterContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_ip3rq")
+theme_override_font_sizes/font_size = 40
+text = "Ingredients"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer2"]
+layout_mode = 2
+theme_override_constants/margin_top = -45
+
+[node name="VBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer2/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_y53mw")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer2/MarginContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.144
+anchor_top = 0.094
+anchor_right = 0.963
+anchor_bottom = 1.0
+offset_left = -57.6
+offset_top = -47.0
+offset_right = 14.8
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 15
+
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer2/MarginContainer/VBoxContainer/Panel/MarginContainer"]
+custom_minimum_size = Vector2(0, 310)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nqjrp")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer2/MarginContainer/VBoxContainer/Panel/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.134
+anchor_top = 0.292
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -68.876
+offset_top = -90.52
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer2/MarginContainer/VBoxContainer/Panel/MarginContainer/Panel/MarginContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Ingredients" type="GridContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Items/VBoxContainer/CenterContainer2/MarginContainer/VBoxContainer/Panel/MarginContainer/Panel/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+columns = 5
+
+[node name="Ingredient" type="Panel" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_mxkbr")
+script = ExtResource("5_27nc4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TileLetterContainer" type="Panel" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dh6n2")
+
+[node name="NameContainer" type="Panel" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = -16.0
+offset_right = 143.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_w2jxq")
+
+[node name="name" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -181.0
+offset_top = -68.0
+offset_right = 185.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_ip3rq")
+theme_override_font_sizes/font_size = 40
+text = "Ingredients"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="desc" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer"]
+layout_mode = 0
+offset_top = 66.0
+offset_right = 284.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="buy" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer"]
+layout_mode = 0
+offset_top = 132.0
+offset_right = 284.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sell" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer"]
+layout_mode = 0
+offset_top = 159.0
+offset_right = 284.0
+offset_bottom = 182.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buy" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer"]
+anchors_preset = 0
+offset_left = -11.0
+offset_top = 246.0
+offset_right = 56.0
+offset_bottom = 328.0
+
+[node name="BuyTextEdit" type="TextEdit" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Buy"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 174.0
+offset_right = 157.0
+offset_bottom = 210.0
+text = "1"
+
+[node name="AddBuy" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Buy"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 158.0
+offset_top = 175.0
+offset_right = 190.0
+offset_bottom = 210.0
+texture_normal = ExtResource("13_vcihl")
+stretch_mode = 4
+
+[node name="RemoveBuy" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Buy"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 56.0
+offset_top = 174.0
+offset_right = 88.0
+offset_bottom = 209.0
+texture_normal = ExtResource("14_igwhf")
+stretch_mode = 4
+
+[node name="BuyButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Buy"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 174.0
+offset_right = 257.0
+offset_bottom = 208.0
+text = "Buy
+"
+
+[node name="Sell" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer"]
+anchors_preset = 0
+offset_left = -10.0
+offset_top = 290.0
+offset_right = 57.0
+offset_bottom = 372.0
+
+[node name="SellTextEdit" type="TextEdit" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Sell"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 174.0
+offset_right = 157.0
+offset_bottom = 210.0
+text = "1"
+
+[node name="AddSell" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Sell"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 157.0
+offset_top = 175.0
+offset_right = 189.0
+offset_bottom = 210.0
+texture_normal = ExtResource("13_vcihl")
+stretch_mode = 4
+
+[node name="RemoveSell" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Sell"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 56.0
+offset_top = 174.0
+offset_right = 88.0
+offset_bottom = 209.0
+texture_normal = ExtResource("14_igwhf")
+stretch_mode = 4
+
+[node name="SelButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Sell"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 174.0
+offset_right = 257.0
+offset_bottom = 208.0
+text = "Sell
+"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Buy/AddBuy" to="PanelContainer/MarginContainer/HBoxContainer/Ingredient" method="_on_add_buy_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Buy/RemoveBuy" to="PanelContainer/MarginContainer/HBoxContainer/Ingredient" method="_on_remove_buy_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Buy/BuyButton" to="PanelContainer/MarginContainer/HBoxContainer/Ingredient" method="_on_buy_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Sell/AddSell" to="PanelContainer/MarginContainer/HBoxContainer/Ingredient" method="_on_add_sell_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Sell/RemoveSell" to="PanelContainer/MarginContainer/HBoxContainer/Ingredient" method="_on_remove_sell_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Sell/SelButton" to="PanelContainer/MarginContainer/HBoxContainer/Ingredient" method="_on_sel_button_pressed"]

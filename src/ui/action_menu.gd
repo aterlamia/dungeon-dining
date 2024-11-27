@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @export var menu: CanvasLayer = null
+@export var ingredients: CanvasLayer = null
 @export var moneyLabel: Label = null
 var but: TextureButton
 func _ready() -> void:
@@ -27,4 +28,9 @@ func _on_open_diner_pressed() -> void:
 	but.disabled = true
 	get_node("/root/Global").part_state = "started"
 	get_node("/root/Events").on_diner_opened(true)
+	pass
+
+func _on_ingredient_button_pressed() -> void:
+	ingredients.visible = true
+	get_node("/root/Events").on_in_menu(true)
 	pass

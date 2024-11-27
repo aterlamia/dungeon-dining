@@ -9,7 +9,7 @@ anchors_preset = 0
 tooltip_text = "hoi
 "
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="IngredientPic" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 23.0
 offset_bottom = 20.0

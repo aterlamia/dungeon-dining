@@ -4,11 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://xb804oexvfo1"
-valid=false
+path="res://.godot/imported/cellar.blend-8776a35e31d03533fb4c1a5a2cecb172.scn"
 
 [deps]
 
 source_file="res://assets/models/cellar.blend"
+dest_files=["res://.godot/imported/cellar.blend-8776a35e31d03533fb4c1a5a2cecb172.scn"]
 
 [params]
 

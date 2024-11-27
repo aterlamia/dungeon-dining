@@ -490,11 +490,11 @@ offset_right = 64.0
 offset_bottom = 164.0
 text = "Makes"
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info/Container"]
+[node name="FoodPic" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/Recepies/MarginContainer/VBoxContainer/Info/Container"]
 layout_mode = 0
-offset_left = -253.0
+offset_left = -277.0
 offset_top = 60.0
-offset_right = -157.0
+offset_right = -181.0
 offset_bottom = 157.0
 texture = ExtResource("11_ilfus")
 

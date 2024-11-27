@@ -73,7 +73,7 @@ var game_state: Dictionary = {
 	"restaurant_level": 0, # 0 is the tutorial level
 	"filledSlots": {
 		
-	},
+	},	
 	"ingredientsHold": {
 		"tomato": 7,
 		"lettuce": 7,
@@ -118,6 +118,64 @@ func apply_config(data: Dictionary):
 	
 	config_data = data
 
+func getIngredient(name: String):
+	var ingredients = {
+		"tomato": {
+			"title": "Tomato",
+			"image": "res://assets/images/ingredients/tomato.png",
+			"price": 1.0,
+			"description": "Fresh and juicy tomato"
+		},
+		"lettuce": {
+			"title": "Lettuce",
+			"image": "res://assets/images/ingredients/lettuce.png",
+			"price": 0.5,
+			"description": "Crisp and green lettuce"
+		},
+		"beef": {
+			"title": "Beef",
+			"image": "res://assets/images/ingredients/beef.png",
+			"price": 5.0,
+			"description": "High-quality beef"
+		},
+		"pork": {
+			"title": "Pork",
+			"image": "res://assets/images/ingredients/pork.png",
+			"price": 4.0,
+			"description": "Tender pork"
+		},
+		"bread": {
+			"title": "Bread",
+			"image": "res://assets/images/ingredients/bread.png",
+			"price": 1.5,
+			"description": "Freshly baked bread"
+		},
+		"milk": {
+			"title": "Milk",
+			"image": "res://assets/images/ingredients/milk.png",
+			"price": 1.2,
+			"description": "Rich and creamy milk"
+		},
+		"potato": {
+			"title": "Potato",
+			"image": "res://assets/images/ingredients/potato.png",
+			"price": 0.8,
+			"description": "Starchy potato"
+		},
+		"carrot": {
+			"title": "Carrot",
+			"image": "res://assets/images/ingredients/carrot.png",
+			"price": 0.6,
+			"description": "Crunchy carrot"
+		},
+		"onion": {
+			"title": "Onion",
+			"image": "res://assets/images/ingredients/onion.png",
+			"price": 0.7,
+			"description": "Flavorful onion"
+		}
+	}
+	return ingredients[name]
 
 func init_recipes() -> void:
 	var recipe_data = [

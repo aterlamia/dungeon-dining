@@ -45,10 +45,14 @@ func _on_switch(recipe: String) -> void:
 	container.get_node("levelVal").text = str(chosen.level)
 	container.get_node("makesVal").text = str(chosen.makes)
 	container.get_node("masteryVal").text = str(chosen.quality_multiplier)
+	var texture = load(chosen.image)
+	container.get_node("FoodPic").texture = texture
 	updateIngredients()
 	$Container.visible = true
 	
 func updateIngredients() -> void:
+	if current == null:
+		return
 	for child in container.get_node("Ingredients").get_children():
 		child.queue_free()
 		pass
@@ -56,6 +60,11 @@ func updateIngredients() -> void:
 		var ingredient_instance = baseIngredient.instantiate()
 		var available_amount = global.game_state["ingredientsHold"].get(ingredient_name, 0)
 		ingredient_instance.get_node("IngredientAmount").text = str(current.ingredients[ingredient_name] * amount) + " / " + str(available_amount)
+		
+		var texture = load("res://assets/ui/" + ingredient_name + ".png")
+				
+		ingredient_instance.get_node("IngredientPic").texture = texture
+		
 		container.get_node("Ingredients").add_child(ingredient_instance)
 		pass
 
@@ -65,7 +74,7 @@ func getMinimum(ing) -> int:
 		var required_amount = current.ingredients[ingredient_name]
 		var available_amount = global.game_state["ingredientsHold"].get(ingredient_name, 0)
 		var possible_amount = floor(available_amount / required_amount)
-	
+		
 		if min_amount == null or possible_amount < min_amount:
 			min_amount = possible_amount
 	return min_amount		
@@ -111,6 +120,8 @@ func _on_button_pressed() -> void:
 	pass
 
 func hasEnoughIngredientsForRecipe(chosen: Recipe):
+	if chosen == null:
+		return
 	for ingredient in chosen.ingredients.keys():
 		if global.game_state["ingredientsHold"].has(ingredient):
 			if global.game_state["ingredientsHold"][ingredient] < chosen.ingredients[ingredient]:

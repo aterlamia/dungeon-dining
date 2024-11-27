@@ -23,6 +23,7 @@ signal recipe_added(recipe:String, amount:int)
 signal diner_opened
 signal gold_changed
 signal availability_updated
+signal ingredient_selected
 var log
 
 func _ready() -> void: 
@@ -61,6 +62,10 @@ func on_availability_updated()  -> void:
 	
 func on_ingredients_updated()  -> void: 
 	ingredients_updated.emit()
+	
+func on_ingredient_selected(ingredient: String)  -> void: 
+	self.log.log_info("Ingredient selected" + ingredient, log.LogType.LOG_SIGNAL)
+	emit_signal("ingredient_selected", ingredient)
 	
 func on_deliver_attempt(order)  -> void: 
 	self.log.log_info("PLayer trying to offer " + order.dish, log.LogType.LOG_SIGNAL)
