@@ -59,6 +59,9 @@ func spawnUser() -> void:
 		
 	var freeTable = tableManager.getRandomFreeTable()
 	
+	if(global.inTutorial):
+		freeTable = tableManager.getTable(0)
+		
 	if(freeTable == null):
 		return
 		

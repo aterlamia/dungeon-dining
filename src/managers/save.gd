@@ -4,8 +4,8 @@ var _key = 'random key'
 
 
 const _userfolder: String = "user://"
-const _datafolder: String = "dd/savedata"
-const _settingsFolder: String = "dd/settings"
+const _datafolder: String = "d-d/savedata"
+const _settingsFolder: String = "d-d/settings"
 const _saveFile: String = ".save.save"
 const _settingsfile: String = _settingsFolder + "/settings.save"
 

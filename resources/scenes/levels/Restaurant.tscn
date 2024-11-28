@@ -1,26 +1,32 @@
-[gd_scene load_steps=34 format=3 uid="uid://c8lyl5x75huf"]
+[gd_scene load_steps=41 format=3 uid="uid://c8lyl5x75huf"]
 
-[ext_resource type="Script" uid="uid://cpp2cmr3m30af" path="res://src/levels/restaurant.gd" id="1_e5gyl"]
+[ext_resource type="Script" path="res://src/levels/restaurant.gd" id="1_e5gyl"]
 [ext_resource type="PackedScene" uid="uid://baxealuxwjcbs" path="res://resources/menu_board.tscn" id="2_rol6b"]
-[ext_resource type="Script" uid="uid://erhen7flvtc8" path="res://src/managers/dispencer.gd" id="2_u64rt"]
+[ext_resource type="Script" uid="uid://cnl0a10s1hq5s" path="res://src/managers/dispencer.gd" id="2_u64rt"]
 [ext_resource type="PackedScene" uid="uid://bhi38b2hyppae" path="res://assets/models/Places/Restairant/restaurant.glb" id="3_geplg"]
-[ext_resource type="Script" uid="uid://b44stj342kxql" path="res://src/managers/table_manager.gd" id="3_xpgpf"]
-[ext_resource type="Script" uid="uid://cedbi0tsky0u6" path="res://src/camera_switcher.gd" id="4_4dsf8"]
+[ext_resource type="Script" path="res://src/managers/table_manager.gd" id="3_xpgpf"]
+[ext_resource type="Script" path="res://src/camera_switcher.gd" id="4_4dsf8"]
 [ext_resource type="PackedScene" uid="uid://tfo0klgn4pd5" path="res://resources/scenes/objects/table.tscn" id="4_imob6"]
 [ext_resource type="Environment" uid="uid://1jq8e0qxe4xh" path="res://resources/new_environment.tres" id="7_epkef"]
-[ext_resource type="Script" uid="uid://bsrwbpuuom2ac" path="res://resources/scenes/levels/spawner.gd" id="10_54lq6"]
+[ext_resource type="Script" uid="uid://bij8mx7vdv3xb" path="res://resources/scenes/levels/spawner.gd" id="10_54lq6"]
 [ext_resource type="Texture2D" uid="uid://bs0hvhro427pc" path="res://assets/ui/MenuIcon.png" id="11_2xvcx"]
 [ext_resource type="Script" uid="uid://cdwlwqdkwvwyf" path="res://src/ui/action_menu.gd" id="11_pw6y6"]
 [ext_resource type="Texture2D" uid="uid://caaff7o5fi6pe" path="res://assets/ui/pantry.png" id="12_c5uk0"]
-[ext_resource type="Script" uid="uid://cixlooq7sit0t" path="res://src/levels/cellar_entrance.gd" id="12_daxh7"]
+[ext_resource type="Script" path="res://src/levels/cellar_entrance.gd" id="12_daxh7"]
 [ext_resource type="PackedScene" uid="uid://cfr4u784045c3" path="res://resources/scenes/player/Player.tscn" id="12_ip4nm"]
 [ext_resource type="PackedScene" uid="uid://bu3l4glfq6o7q" path="res://resources/scenes/ui/CreateMenu.tscn" id="13_c5uk0"]
-[ext_resource type="Texture2D" uid="uid://cc2biyaenm7vd" path="res://assets/ui/GUI_1.1/Dark/x2/Button_normal.png" id="14_geplg"]
-[ext_resource type="Texture2D" uid="uid://c3tynu65kcte1" path="res://assets/ui/GUI_1.1/Dark/x2/Button_pressed.png" id="15_rol6b"]
-[ext_resource type="Texture2D" uid="uid://dd712e4jnqjso" path="res://assets/ui/GUI_1.1/Dark/x2/Button_hover.png" id="16_o3f17"]
-[ext_resource type="Texture2D" uid="uid://dopr8pesr5vwh" path="res://assets/ui/GUI_1.1/Dark/x2/Button_disabled.png" id="18_o3f17"]
+[ext_resource type="Texture2D" uid="uid://x5krb783duh5" path="res://assets/ui/GUI_1.1/Dark/x2/Button_normal.png" id="14_geplg"]
+[ext_resource type="Texture2D" uid="uid://b5rbmockjrlb6" path="res://assets/ui/GUI_1.1/Dark/x2/Button_pressed.png" id="15_rol6b"]
+[ext_resource type="Texture2D" uid="uid://ds8nqy3hde31t" path="res://assets/ui/GUI_1.1/Dark/x2/Button_hover.png" id="16_o3f17"]
+[ext_resource type="Texture2D" uid="uid://d2wtxtstb88mj" path="res://assets/ui/GUI_1.1/Dark/x2/Button_disabled.png" id="18_o3f17"]
 [ext_resource type="Texture2D" uid="uid://bxb7swsyvhmyu" path="res://assets/ui/COIN.png" id="19_aev77"]
 [ext_resource type="PackedScene" uid="uid://6gcrgfscpnuv" path="res://resources/scenes/ui/IngredientMenu.tscn" id="21_8djd6"]
+[ext_resource type="Script" uid="uid://ipnwjdlk68di" path="res://src/levels/tutorial.gd" id="22_gh47o"]
+[ext_resource type="Texture2D" uid="uid://d1wvwul7xu2by" path="res://assets/ui/GUI_1.1/White/Button_normal.png" id="23_e61kf"]
+[ext_resource type="Texture2D" uid="uid://rrqjmwb5137u" path="res://assets/ui/GUI_1.1/White/Button_pressed.png" id="24_ucf2t"]
+[ext_resource type="Texture2D" uid="uid://bu41rjwkrd4rq" path="res://assets/ui/GUI_1.1/White/Button_hover.png" id="25_kt1pt"]
+[ext_resource type="Texture2D" uid="uid://b8oej375kkm2i" path="res://assets/ui/indicator.png" id="26_e61kf"]
+[ext_resource type="Script" uid="uid://c47fojqqpl03m" path="res://src/ui/indicator.gd" id="27_ucf2t"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_03c1g"]
 
@@ -62,6 +68,8 @@ fill_to = Vector2(0.584046, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qfumn"]
 texture = SubResource("GradientTexture2D_l360b")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucf2t"]
 
 [node name="Restaurant" type="Node3D"]
 script = ExtResource("1_e5gyl")
@@ -312,6 +320,518 @@ visible = false
 
 [node name="IngredientMenuScreen" parent="." instance=ExtResource("21_8djd6")]
 visible = false
+
+[node name="Tutorial" type="CanvasLayer" parent="."]
+script = ExtResource("22_gh47o")
+
+[node name="Intro" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 319.0
+offset_top = 149.0
+offset_right = 838.0
+offset_bottom = 587.0
+
+[node name="Label" type="Label" parent="Tutorial/Intro"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 4.0
+offset_right = 488.0
+offset_bottom = 365.0
+text = "GRAND OPENING: 
+
+Your lifelong dream has been to create the world's finest diner. 
+Finally after years of planning, you've acquired a quirky local landmark -
+ a once-beloved but long-abandoned diner at the heart of town.
+Though the vintage checkerboard tiles need polishing and the neon sign 
+flickers unpredictably, today marks your grand opening. 
+The coffee is brewing, the griddle is hot,
+ and your first customers are about to discover what passion tastes like."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="Tutorial/Intro"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 386.0
+offset_right = 337.0
+offset_bottom = 421.0
+texture_normal = ExtResource("23_e61kf")
+texture_pressed = ExtResource("24_ucf2t")
+texture_hover = ExtResource("25_kt1pt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Tutorial/Intro/TextureButton"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 4.0
+offset_right = 115.0
+offset_bottom = 27.0
+text = "Continue
+"
+
+[node name="Menu" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 319.0
+offset_top = 149.0
+offset_right = 838.0
+offset_bottom = 587.0
+
+[node name="Label" type="Label" parent="Tutorial/Menu"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 14.0
+offset_right = 498.0
+offset_bottom = 375.0
+text = "Creating a menu
+
+Here you can create your own menu. 
+Creating a menu means you start preparing your ingredients to make a freash meal for your customers
+
+After the day is done those ingredients will expire. You 
+dont want sick customers right?
+
+While it is up to you keep in mind that customers have their
+own favorite so its best to serve a wide varity
+
+But lets start by adding a burger"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="Tutorial/Menu"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 386.0
+offset_right = 337.0
+offset_bottom = 421.0
+texture_normal = ExtResource("23_e61kf")
+texture_pressed = ExtResource("24_ucf2t")
+texture_hover = ExtResource("25_kt1pt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Tutorial/Menu/TextureButton"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 4.0
+offset_right = 115.0
+offset_bottom = 27.0
+text = "Continue
+"
+
+[node name="Recipies" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 377.0
+offset_top = 553.0
+offset_right = 566.0
+offset_bottom = 652.0
+
+[node name="Label" type="Label" parent="Tutorial/Recipies"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 12.0
+offset_right = 183.0
+offset_bottom = 119.0
+text = "Before you can open your restaurant you need to create a menu"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/Recipies"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = 17.0
+offset_right = -1.0
+offset_bottom = 57.0
+scale = Vector2(0.67474, 0.697581)
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+script = ExtResource("27_ucf2t")
+
+[node name="Ingredients" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 901.0
+offset_top = 292.0
+offset_right = 1144.0
+offset_bottom = 515.0
+
+[node name="Label" type="Label" parent="Tutorial/Ingredients"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 231.0
+offset_bottom = 263.0
+text = "These are the ingredients you need for your burger.
+As you can see you need beef,tomato and lettuce. You only have enough for 1 Burger for now. 
+Click \"add\" to add a burger to your menu"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Tutorial/Ingredients"]
+layout_mode = 0
+offset_left = -29.0
+offset_top = 178.0
+offset_right = 11.0
+offset_bottom = 218.0
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/Ingredients/BoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("27_ucf2t")
+
+[node name="Added" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 200.0
+offset_top = 176.0
+offset_right = 443.0
+offset_bottom = 553.0
+
+[node name="Label" type="Label" parent="Tutorial/Added"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 231.0
+offset_bottom = 263.0
+text = "Menu items can have different categories.
+
+As you can see a burger is a Main Course
+Unfortunately you have no more ingredients to add new items. Since you have some starter capital lets buy some ingredients.
+
+Maybe add some desert, lets check what we need for a milkshake"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Tutorial/Added"]
+layout_mode = 0
+offset_left = -29.0
+offset_top = 178.0
+offset_right = 11.0
+offset_bottom = 218.0
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/Added/BoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("27_ucf2t")
+
+[node name="MilkshakeOpen" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 424.0
+offset_top = 124.0
+offset_right = 667.0
+offset_bottom = 501.0
+
+[node name="Label" type="Label" parent="Tutorial/MilkshakeOpen"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 231.0
+offset_bottom = 263.0
+text = "Great we just need some milk to make a milkshake.
+
+Lets close our menu creation screen by clicking close"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Tutorial/MilkshakeOpen"]
+layout_mode = 0
+offset_left = 671.0
+offset_top = -102.0
+offset_right = 711.0
+offset_bottom = -62.0
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/MilkshakeOpen/BoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("27_ucf2t")
+
+[node name="MilkshakeIng" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 452.0
+offset_top = 203.0
+offset_right = 685.0
+offset_bottom = 349.0
+
+[node name="Label" type="Label" parent="Tutorial/MilkshakeIng"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 231.0
+offset_bottom = 263.0
+text = "Here we see the ingredients we have access to
+
+Click the milk bottle"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Tutorial/MilkshakeIng"]
+layout_mode = 0
+offset_left = -332.0
+offset_top = 1.0
+offset_right = -292.0
+offset_bottom = 41.0
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/MilkshakeIng/BoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("27_ucf2t")
+
+[node name="MilkshakeIngOpen" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 452.0
+offset_top = 203.0
+offset_right = 685.0
+offset_bottom = 443.0
+
+[node name="Label" type="Label" parent="Tutorial/MilkshakeIngOpen"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 6.0
+offset_right = 231.0
+offset_bottom = 263.0
+text = "You can see several things here. Most imortant is how much you have. How much it cost to buy them.
+You can also sell them but always for less than the puchache price
+
+Buy 3 bottles of milk"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Tutorial/MilkshakeIngOpen"]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 237.0
+offset_right = 446.0
+offset_bottom = 277.0
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/MilkshakeIngOpen/BoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("27_ucf2t")
+
+[node name="MilkshakeBought" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 452.0
+offset_top = 203.0
+offset_right = 685.0
+offset_bottom = 443.0
+
+[node name="Label" type="Label" parent="Tutorial/MilkshakeBought"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 7.0
+offset_right = 233.0
+offset_bottom = 264.0
+text = "Great. now you can add 3 milkshakes to your menu.
+
+CLick around in the ingredients if you want. For now you cant buy or sell more
+When you are done, close the ingredients screen"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Tutorial/MilkshakeBought"]
+layout_mode = 0
+offset_left = 646.0
+offset_top = -178.0
+offset_right = 686.0
+offset_bottom = -138.0
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/MilkshakeBought/BoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("27_ucf2t")
+
+[node name="Finish" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 452.0
+offset_top = 203.0
+offset_right = 685.0
+offset_bottom = 443.0
+
+[node name="Label" type="Label" parent="Tutorial/Finish"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 40.0
+offset_right = 226.0
+offset_bottom = 297.0
+text = "You are all set
+Might not be the most diverse menu. But enough to start your first day
+
+Click open to open up your diner"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Tutorial/Finish"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = -203.0
+offset_right = 115.0
+offset_bottom = -163.0
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/Finish/BoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("27_ucf2t")
+
+[node name="AddMore" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 452.0
+offset_top = 203.0
+offset_right = 685.0
+offset_bottom = 443.0
+
+[node name="Label" type="Label" parent="Tutorial/AddMore"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 18.0
+offset_right = 225.0
+offset_bottom = 275.0
+text = "You know the drill, head to the menu and add 3 milkshakes
+Keep an eye on your blackboard, it tells customers what you serve and how much is left
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Tutorial/AddMore"]
+layout_mode = 0
+offset_left = 532.0
+offset_top = -132.0
+offset_right = 572.0
+offset_bottom = -92.0
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/AddMore/BoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("27_ucf2t")
+
+[node name="Customer" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 452.0
+offset_top = 203.0
+offset_right = 685.0
+offset_bottom = 443.0
+
+[node name="Label" type="Label" parent="Tutorial/Customer"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 18.0
+offset_right = 225.0
+offset_bottom = 275.0
+text = "Your first customer just walked in.
+
+They will think a bit and order shortly"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Tutorial/Customer"]
+layout_mode = 0
+offset_left = -300.0
+offset_top = 114.0
+offset_right = -260.0
+offset_bottom = 154.0
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/Customer/BoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("27_ucf2t")
+
+[node name="Customer2" type="Panel" parent="Tutorial"]
+offset_left = 452.0
+offset_top = 203.0
+offset_right = 683.0
+offset_bottom = 540.0
+
+[node name="Label" type="Label" parent="Tutorial/Customer2"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 18.0
+offset_right = 225.0
+offset_bottom = 275.0
+text = "Your kitchen just finished creating the meal for yrou customer.
+
+Pick up the meal with your action key [E] and bring it to the customer. Press action key again to serve.
+
+Dont wait to long, once the bubble get fully red they will leave angrily"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Tutorial/Customer2"]
+layout_mode = 0
+offset_left = -74.0
+offset_top = -177.0
+offset_right = -34.0
+offset_bottom = -137.0
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/Customer2/BoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("27_ucf2t")
+
+[node name="Burger" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 596.0
+offset_top = 59.0
+offset_right = 785.0
+offset_bottom = 102.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ucf2t")
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/Burger"]
+visible = false
+layout_mode = 0
+offset_left = 45.0
+offset_top = -7.0
+offset_right = 119.0
+offset_bottom = 68.0
+scale = Vector2(0.67474, 0.697581)
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("27_ucf2t")
+
+[node name="Milkshake" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 596.0
+offset_top = 59.0
+offset_right = 785.0
+offset_bottom = 102.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ucf2t")
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/Milkshake"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = -9.0
+offset_right = 302.0
+offset_bottom = 66.0
+scale = Vector2(0.67474, 0.697581)
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("27_ucf2t")
 
 [connection signal="body_entered" from="FLoorPlan/restaurant/CameraSwitcher/KItchen" to="FLoorPlan/restaurant/CameraSwitcher" method="_on_k_itchen_body_entered"]
 [connection signal="body_entered" from="FLoorPlan/restaurant/CameraSwitcher/Restaurant" to="FLoorPlan/restaurant/CameraSwitcher" method="_on_restaurant_body_entered"]

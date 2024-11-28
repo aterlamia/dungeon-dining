@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvno61benbd2u"]
+[gd_scene load_steps=17 format=3 uid="uid://bvno61benbd2u"]
 
 [ext_resource type="Script" uid="uid://k4u4btenrmu6" path="res://src/ui/ui.gd" id="1_oeybr"]
 [ext_resource type="Texture2D" uid="uid://badrvk5us8ycx" path="res://assets/images/menu/background.png" id="1_v1vsa"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://danag68c0oepm" path="res://resources/scenes/ui/menu_button.tscn" id="4_blpqc"]
 [ext_resource type="Texture2D" uid="uid://drwjwxxuybaop" path="res://assets/ui/GUI_1.1/Dark/x4/Panel_bg3.png" id="6_8g03r"]
 [ext_resource type="Script" path="res://src/ui/back_button.gd" id="6_oy6me"]
+[ext_resource type="FontFile" uid="uid://dhnbw5oo8o7x1" path="res://assets/fonts/PeaberryBase.ttf" id="8_ey27b"]
 [ext_resource type="Texture2D" uid="uid://blue3f78hxtyg" path="res://assets/ui/GUI_1.1/White/x4/Panel_small_frame.png" id="8_soanr"]
+[ext_resource type="Script" uid="uid://btrcxvfjt802p" path="res://src/ui/keys.gd" id="8_wl8cs"]
 [ext_resource type="Texture2D" uid="uid://deeisxhpjaihu" path="res://assets/images/ui/button2.png" id="8_yyk3j"]
 [ext_resource type="Texture2D" uid="uid://bcmy65amm2ukh" path="res://assets/images/ui/button2-press.png" id="9_lnos0"]
 [ext_resource type="Texture2D" uid="uid://4bhtj171gloi" path="res://assets/ui/GUI_1.1/White/x2/Panel_small_frame.png" id="9_rxbyh"]
@@ -148,9 +150,10 @@ theme_override_constants/margin_bottom = 30
 
 [node name="Settings" type="TabContainer" parent="Settings/Panel/Config"]
 layout_mode = 2
-current_tab = 0
+current_tab = 2
 
 [node name="Sound" type="MarginContainer" parent="Settings/Panel/Config/Settings"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -249,6 +252,98 @@ text = "Vsync"
 layout_mode = 2
 text = "ShowFps
 "
+
+[node name="Keys" type="MarginContainer" parent="Settings/Panel/Config/Settings"]
+layout_mode = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("8_wl8cs")
+metadata/_tab_index = 2
+
+[node name="Screen" type="VFlowContainer" parent="Settings/Panel/Config/Settings/Keys"]
+layout_mode = 2
+
+[node name="Forward" type="HBoxContainer" parent="Settings/Panel/Config/Settings/Keys/Screen"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Panel/Config/Settings/Keys/Screen/Forward"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_ey27b")
+text = "Forward                           "
+
+[node name="TextEdit" type="TextEdit" parent="Settings/Panel/Config/Settings/Keys/Screen/Forward"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "W"
+empty_selection_clipboard_enabled = false
+
+[node name="Backward" type="HBoxContainer" parent="Settings/Panel/Config/Settings/Keys/Screen"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Panel/Config/Settings/Keys/Screen/Backward"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_ey27b")
+text = "Backward                         "
+
+[node name="TextEdit" type="TextEdit" parent="Settings/Panel/Config/Settings/Keys/Screen/Backward"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "W"
+empty_selection_clipboard_enabled = false
+
+[node name="Left" type="HBoxContainer" parent="Settings/Panel/Config/Settings/Keys/Screen"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Panel/Config/Settings/Keys/Screen/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_ey27b")
+text = "Left                                 "
+
+[node name="TextEdit" type="TextEdit" parent="Settings/Panel/Config/Settings/Keys/Screen/Left"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "W"
+empty_selection_clipboard_enabled = false
+
+[node name="Right" type="HBoxContainer" parent="Settings/Panel/Config/Settings/Keys/Screen"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Panel/Config/Settings/Keys/Screen/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_ey27b")
+text = "Right                               "
+
+[node name="TextEdit" type="TextEdit" parent="Settings/Panel/Config/Settings/Keys/Screen/Right"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "W"
+empty_selection_clipboard_enabled = false
+
+[node name="Action" type="HBoxContainer" parent="Settings/Panel/Config/Settings/Keys/Screen"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Settings/Panel/Config/Settings/Keys/Screen/Action"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("8_ey27b")
+text = "Action                             "
+
+[node name="TextEdit" type="TextEdit" parent="Settings/Panel/Config/Settings/Keys/Screen/Action"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "W"
+empty_selection_clipboard_enabled = false
 
 [node name="HowToPlay" type="AspectRatioContainer" parent="."]
 visible = false
@@ -1138,6 +1233,11 @@ size_flags_vertical = 4
 [connection signal="toggled" from="Settings/Panel/Config/Settings/Display/Screen/FullScreen" to="." method="_on_full_screen_toggled"]
 [connection signal="toggled" from="Settings/Panel/Config/Settings/Display/Screen/Vsync" to="." method="_on_vsync_toggled"]
 [connection signal="toggled" from="Settings/Panel/Config/Settings/Display/Screen/Fps" to="." method="_on_fps_toggled"]
+[connection signal="gui_input" from="Settings/Panel/Config/Settings/Keys/Screen/Forward/TextEdit" to="Settings/Panel/Config/Settings/Keys" method="_on_text_edit_gui_input" binds= ["move_forward"]]
+[connection signal="gui_input" from="Settings/Panel/Config/Settings/Keys/Screen/Backward/TextEdit" to="Settings/Panel/Config/Settings/Keys" method="_on_text_edit_gui_input" binds= ["move_backward"]]
+[connection signal="gui_input" from="Settings/Panel/Config/Settings/Keys/Screen/Left/TextEdit" to="Settings/Panel/Config/Settings/Keys" method="_on_text_edit_gui_input" binds= ["move_left"]]
+[connection signal="gui_input" from="Settings/Panel/Config/Settings/Keys/Screen/Right/TextEdit" to="Settings/Panel/Config/Settings/Keys" method="_on_text_edit_gui_input" binds= ["move_right"]]
+[connection signal="gui_input" from="Settings/Panel/Config/Settings/Keys/Screen/Action/TextEdit" to="Settings/Panel/Config/Settings/Keys" method="_on_text_edit_gui_input" binds= ["action"]]
 [connection signal="pressed" from="HowToPlay/Panel/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Load/NinePatchRect/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Load/NinePatchRect/Save1" to="." method="_on_load_save_pressed" binds= [1]]

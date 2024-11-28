@@ -31,3 +31,7 @@ func loadRecipies() -> void:
 		parent_node.add_child(button_instance)
 	pass
 	
+func _on_close_button_pressed():
+	visible = false
+	get_node("/root/Events").on_in_menu(false)
+	pass

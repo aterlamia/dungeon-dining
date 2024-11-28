@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://c854ad2sscygo" path="res://src/ui/detail.gd" id="5_27nc4"]
 [ext_resource type="StyleBox" uid="uid://ct0u5h7r7p8pk" path="res://resources/theme/LetterTeal.tres" id="5_w2jxq"]
 [ext_resource type="FontFile" uid="uid://dhnbw5oo8o7x1" path="res://assets/fonts/PeaberryBase.ttf" id="6_ip3rq"]
-[ext_resource type="Texture2D" uid="uid://bpkjvkxbysp8n" path="res://assets/ui/GUI_1.1/Icons/x4/Icon_plus.png" id="13_vcihl"]
-[ext_resource type="Texture2D" uid="uid://cbrccvbrgomu4" path="res://assets/ui/GUI_1.1/Icons/x4/Icon_minus.png" id="14_igwhf"]
+[ext_resource type="Texture2D" uid="uid://b2euxa1l67isi" path="res://assets/ui/GUI_1.1/Icons/x4/Icon_plus.png" id="13_vcihl"]
+[ext_resource type="Texture2D" uid="uid://bfqn5sxga2ig7" path="res://assets/ui/GUI_1.1/Icons/x4/Icon_minus.png" id="14_igwhf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvejy"]
 bg_color = Color(0.6, 0.6, 0.6, 0.32549)
@@ -371,9 +371,19 @@ offset_bottom = 208.0
 text = "Sell
 "
 
+[node name="CloseButton" type="Button" parent="."]
+z_index = 88
+offset_left = 1042.0
+offset_top = 31.0
+offset_right = 1102.0
+offset_bottom = 65.0
+text = "Close
+"
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Buy/AddBuy" to="PanelContainer/MarginContainer/HBoxContainer/Ingredient" method="_on_add_buy_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Buy/RemoveBuy" to="PanelContainer/MarginContainer/HBoxContainer/Ingredient" method="_on_remove_buy_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Buy/BuyButton" to="PanelContainer/MarginContainer/HBoxContainer/Ingredient" method="_on_buy_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Sell/AddSell" to="PanelContainer/MarginContainer/HBoxContainer/Ingredient" method="_on_add_sell_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Sell/RemoveSell" to="PanelContainer/MarginContainer/HBoxContainer/Ingredient" method="_on_remove_sell_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Sell/SelButton" to="PanelContainer/MarginContainer/HBoxContainer/Ingredient" method="_on_sel_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

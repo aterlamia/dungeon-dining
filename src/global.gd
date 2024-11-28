@@ -3,7 +3,7 @@ extends Node
 
 var pauzed: bool = false
 var availableRecipies: Dictionary
-
+var inTutorial = true
 func _ready() -> void:
 	init_recipes()
 	get_node("/root/Events").in_menu.connect(_on_pauze)
@@ -34,7 +34,7 @@ var restaurant_level: int = 0:
 	set(value):
 		game_state["restaurant_level"] = value
 
-var money: float = 0:
+var money: float = 3.6:
 	get:
 		return game_state["gold"]
 	set(value):
@@ -62,10 +62,17 @@ var config_data: Dictionary = {
 	"volume_music": 0,
 	"volume_ui": 0,
 	"volume_fx": 0,
+	"key_map": {
+		'move_forward': KEY_W,
+		'move_backwards':KEY_S,
+		'move_left': KEY_A,
+		'move_right':KEY_D,
+		'action': KEY_E,
+	}
 }
 
 var game_state: Dictionary = {
-	"gold": 0.0,
+	"gold": 3.6,
 	"slotsAvailable": 5,
 	"dayPartsAvailable": 1,
 	"currentDayPart": 0,
@@ -75,15 +82,15 @@ var game_state: Dictionary = {
 		
 	},	
 	"ingredientsHold": {
-		"tomato": 7,
-		"lettuce": 7,
-		"beef": 6,
-		"pork": 2,
-		"bread": 2,
-		"milk": 2,
-		"potato": 1,
-		"carrot": 1,
-		"onion": 1
+		"tomato": 2,
+		"lettuce": 1,
+		"beef": 2,
+		"pork": 0,
+		"bread": 0,
+		"milk": 0,
+		"potato": 0,
+		"carrot": 0,
+		"onion": 0
 	},
 	"chosenRecipies": [],
 	"recipesAvailable": ['burger', 'hotdog', 'milkshake', 'gardensalad','soup'],
@@ -191,6 +198,19 @@ func init_recipes() -> void:
 						  "makes": 1,
 						  "group": "main",
 						  "ingredients": {"tomato": 1, "lettuce": 1, "beef":1}
+						},
+						{
+						  "name": "Monsterous Burger",
+						  "subtitle": "Amazing beef patty with \"lettuce\" and tomato",
+						  "level": 1,
+						  "model": "res://resources/scenes/food/burger.tscn",
+						  "image": "res://assets/images/food/burger.png",
+						  "quality_multiplier": 1.1,
+						  "cost": 6.49,
+						  "type": "carn_burger",
+						  "makes": 1,
+						  "group": "main",
+						  "ingredients": {"tomato": 1, "carn_vines": 1, "beef":1}
 						},
 						{
 						  "name": "Hotdog",

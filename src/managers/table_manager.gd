@@ -18,3 +18,6 @@ func getRandomFreeTable() -> Table:
 	if freeTables.size() > 0:
 		return freeTables[rng.randi() % freeTables.size()]
 	return null
+
+func getTable(nr: int) -> Table:
+	return templates[nr]
