@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://c854ad2sscygo" path="res://src/ui/detail.gd" id="5_27nc4"]
 [ext_resource type="StyleBox" uid="uid://ct0u5h7r7p8pk" path="res://resources/theme/LetterTeal.tres" id="5_w2jxq"]
 [ext_resource type="FontFile" uid="uid://dhnbw5oo8o7x1" path="res://assets/fonts/PeaberryBase.ttf" id="6_ip3rq"]
-[ext_resource type="Texture2D" uid="uid://b2euxa1l67isi" path="res://assets/ui/GUI_1.1/Icons/x4/Icon_plus.png" id="13_vcihl"]
-[ext_resource type="Texture2D" uid="uid://bfqn5sxga2ig7" path="res://assets/ui/GUI_1.1/Icons/x4/Icon_minus.png" id="14_igwhf"]
+[ext_resource type="Texture2D" uid="uid://bpkjvkxbysp8n" path="res://assets/ui/GUI_1.1/Icons/x4/Icon_plus.png" id="13_vcihl"]
+[ext_resource type="Texture2D" uid="uid://cbrccvbrgomu4" path="res://assets/ui/GUI_1.1/Icons/x4/Icon_minus.png" id="14_igwhf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvejy"]
 bg_color = Color(0.6, 0.6, 0.6, 0.32549)
@@ -252,6 +252,7 @@ offset_top = 66.0
 offset_right = 284.0
 offset_bottom = 89.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -261,7 +262,7 @@ offset_top = 132.0
 offset_right = 284.0
 offset_bottom = 155.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-horizontal_alignment = 1
+text = "0"
 vertical_alignment = 1
 
 [node name="sell" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer"]
@@ -270,7 +271,16 @@ offset_top = 159.0
 offset_right = 284.0
 offset_bottom = 182.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-horizontal_alignment = 1
+text = "0"
+vertical_alignment = 1
+
+[node name="amount" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer"]
+layout_mode = 0
+offset_top = 188.0
+offset_right = 284.0
+offset_bottom = 211.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0"
 vertical_alignment = 1
 
 [node name="Buy" type="Control" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer"]
@@ -286,7 +296,7 @@ offset_left = 100.0
 offset_top = 174.0
 offset_right = 157.0
 offset_bottom = 210.0
-text = "1"
+placeholder_text = "0"
 
 [node name="AddBuy" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Buy"]
 custom_minimum_size = Vector2(20, 20)
@@ -330,7 +340,7 @@ offset_left = 100.0
 offset_top = 174.0
 offset_right = 157.0
 offset_bottom = 210.0
-text = "1"
+placeholder_text = "0"
 
 [node name="AddSell" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer/Ingredient/VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer/Sell"]
 custom_minimum_size = Vector2(20, 20)

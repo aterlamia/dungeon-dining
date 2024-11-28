@@ -6,25 +6,49 @@ var sellAmount = 0
 var baseNode = null
 var current: String = ""
 var events: EventManager = null
+
+var ingredientLabel :Label
+var descLabel: Label
+var buyLabel : Label
+var sellLabel : Label
+var amountLabel : Label
+
 func _ready():
 	events = get_node("/root/Events")
 	events.ingredient_selected.connect(_on_ingredient_selected)
 	global = get_node("/root/Global")
-	pass
 	
-func _on_ingredient_selected(ingredient: String) -> void:
 	baseNode =  get_node("VBoxContainer/CenterContainer/MarginContainer/HBoxContainer/TileLetterContainer/NameContainer")
-	var ingredientLabel = baseNode.get_node("name")
-	var descLabel = baseNode.get_node("desc")
-	var buyLabel = baseNode.get_node("buy")
-	var sellLabel = baseNode.get_node("sell")
+	ingredientLabel = baseNode.get_node("name")
+	descLabel = baseNode.get_node("desc")
+	buyLabel = baseNode.get_node("buy")
+	sellLabel = baseNode.get_node("sell")
+	amountLabel = baseNode.get_node("amount")
+	
+	baseNode.visible = false
+	get_node("/root/Events").ingredients_updated.connect(_on_ingredients_updated)
+	pass # Replace with function body.
+
+
+func _on_ingredients_updated():
+	if(current == ""):
+		return
+	var available_amount = global.game_state["ingredientsHold"].get(current, 0)
+	amountLabel.text = "Current stock:  " + str(available_amount)
+
+
+func _on_ingredient_selected(ingredient: String) -> void:
+	
+	var available_amount = global.game_state["ingredientsHold"].get(ingredient, 0)
 	ingredientLabel.text = ingredient
 	current = ingredient
 	
 	var ingredientObject = global.getIngredient(ingredient)
 	descLabel.text = ingredientObject.description
-	buyLabel.text = "Buy: $" + str(ingredientObject.price)
-	sellLabel.text = "Sell: $" + str(ingredientObject.price * 0.8)
+	buyLabel.text =    "Buy:           $" + str(ingredientObject.price)
+	sellLabel.text =   "Sell:          $" + str(ingredientObject.price * 0.8)
+	amountLabel.text = "Current stock:  " + str(available_amount)
+	baseNode.visible = true
 	pass
 
 
@@ -101,7 +125,7 @@ func sell_ingredients(ingredient: String, amount: int) -> void:
 	if global.game_state["ingredientsHold"].get(ingredient, 0) < amount:
 		return
 		
-	global.money = global.money + amount * global.getIngredient(ingredient).price
+	global.money = global.money + amount * global.getIngredient(ingredient).price * 0.8
 	events.on_money_changed(global.money)
 	global.game_state["ingredientsHold"][ingredient] -= amount
 	events.on_ingredients_updated()

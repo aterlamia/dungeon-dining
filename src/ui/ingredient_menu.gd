@@ -6,18 +6,27 @@ var global: GlobalState = null
 func _ready() -> void:
 	global = get_node("/root/Global")
 	loadRecipies()
+	get_node("/root/Events").ingredients_updated.connect(_on_ingredients_updated)
 	pass # Replace with function body.
 
 
+func _on_ingredients_updated():
+	var parent_node = %Ingredients
+	for child in parent_node.get_children():
+		var available_amount = global.game_state["ingredientsHold"].get(child.ingredientName, 0)
+		child.get_node("Label").text = str(available_amount)
+	
 	
 func loadRecipies() -> void:
 	var activeIngredients = global.game_state['ingredientsHold']
 	var parent_node = %Ingredients
 	for ingredient in activeIngredients:
+		var available_amount = global.game_state["ingredientsHold"].get(ingredient, 0)
 		var button_instance = baseButton.instantiate()
 		var texture = load("res://assets/ui/" + ingredient + ".png")
 		button_instance.get_node("TextureButton").texture_normal = texture
 		button_instance.ingredientName = ingredient
+		button_instance.get_node("Label").text = str(available_amount)
 
 		parent_node.add_child(button_instance)
 	pass
