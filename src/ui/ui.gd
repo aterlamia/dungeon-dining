@@ -209,6 +209,7 @@ func setNewData(slot: int, save_data) -> void:
 	
 func _on_load_save_pressed(extra_arg_0):
 	var save_data = save.loadSave(extra_arg_0)
+	print(save_data)
 	if save_data != null:
 		global.set_game_data(save_data['level'], "level")
 		var gold = save_data['gold'] if save_data.has('gold') else 3.6

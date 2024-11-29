@@ -26,6 +26,8 @@ func _ready() -> void:
 
 func _on_cooking_done(order) -> void:	
 	done_order_queue.append(order)
+	if get_node("/root/Global").inTutorial:
+		get_node("/root/Events").on_tutorial_switch(16)
 	_updateQueue()
 	pass
 

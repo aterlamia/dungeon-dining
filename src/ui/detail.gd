@@ -53,15 +53,27 @@ func _on_ingredient_selected(ingredient: String) -> void:
 
 
 func _on_buy_button_pressed() -> void:
-	buy_ingredients(current, buyAmount)
-	buyAmount = 0
 	
+	if get_node("/root/Global").inTutorial and current != "milk":
+		return
+	buy_ingredients(current, buyAmount)
+	
+	var available_amount = global.game_state["ingredientsHold"].get(current, 0)
+	if get_node("/root/Global").inTutorial and current == "milk" and available_amount == 3:
+		get_node("/root/Events").on_tutorial_switch(11)
+        		
+        		
+	buyAmount = 0
+	baseNode.get_node("Buy/BuyTextEdit").text = str(buyAmount)
 	pass # Replace with function body.
 
 
 func _on_sel_button_pressed() -> void:
+	if get_node("/root/Global").inTutorial:
+		return
 	sell_ingredients(current, sellAmount)
 	sellAmount = 0
+	baseNode.get_node("Sell/SellTextEdit").text = str(buyAmount)
 	pass # Replace with function body.
 
 

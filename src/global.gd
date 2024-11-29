@@ -3,10 +3,20 @@ extends Node
 
 var pauzed: bool = false
 var availableRecipies: Dictionary
-var inTutorial = true
+var inTutorial: bool = false:
+	get:
+		return game_state["tutorialStep"] > -1 and game_state["tutorialStep"]  < 18
+
 func _ready() -> void:
 	init_recipes()
 	get_node("/root/Events").in_menu.connect(_on_pauze)
+	get_node("/root/Events").tutorial_switch.connect(_on_tut_switch)
+	pass
+	
+	
+func _on_tut_switch(nr: int) -> void:
+	inTutorial = true
+	game_state["tutorialStep"] = nr
 	pass
 	
 func addChosenDish(dish: String, count: int) -> void:
@@ -73,6 +83,7 @@ var config_data: Dictionary = {
 
 var game_state: Dictionary = {
 	"gold": 3.6,
+	"tutorialStep": -1,
 	"slotsAvailable": 5,
 	"dayPartsAvailable": 1,
 	"currentDayPart": 0,

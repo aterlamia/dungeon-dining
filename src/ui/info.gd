@@ -89,6 +89,8 @@ func _on_add_pressed() -> void:
 	pass
 
 func _on_remove_pressed() -> void:
+	if global.inTutorial:
+		return
 	amount -= 1
 	if amount < 1:
 		amount = 1
@@ -111,6 +113,16 @@ func _on_text_edit_text_changed() -> void:
 
 # adds the chosen dish to the global state if enough ingredients are available
 func _on_button_pressed() -> void:
+	if global.inTutorial:
+		if current.type == "burger" and global.game_state["tutorialStep"] == 5:
+			events.on_tutorial_switch(6)
+		elif current.type == "milkshake" and global.game_state["tutorialStep"] == 12:
+			pass
+		else:
+			return
+		pass
+	pass
+			
 	if(!hasEnoughIngredientsForRecipe(current)):
 		addButton.disabled = true
 		return

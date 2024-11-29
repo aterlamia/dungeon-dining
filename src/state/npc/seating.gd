@@ -17,6 +17,9 @@ func enter(previous_state_path: String, data := {}) -> void:
 	npc.animation_player.play("Sit")
 	await npc.animation_player.animation_finished
 	finished.emit(IDLE)
+	if get_node("/root/Global").inTutorial:
+		get_node("/root/Events").on_tutorial_switch(15)
+    		
 	pass
 
 	

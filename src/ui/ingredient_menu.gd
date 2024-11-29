@@ -32,6 +32,8 @@ func loadRecipies() -> void:
 	pass
 	
 func _on_close_button_pressed():
+	if get_node("/root/Global").inTutorial and get_node("/root/Global").game_state["tutorialStep"] < 12:
+		get_node("/root/Events").on_tutorial_switch(12)
 	visible = false
 	get_node("/root/Events").on_in_menu(false)
 	pass

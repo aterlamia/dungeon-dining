@@ -24,12 +24,17 @@ signal diner_opened
 signal gold_changed
 signal availability_updated
 signal ingredient_selected
+signal tutorial_switch
 var log
 
 func _ready() -> void: 
 	self.log = get_node("/root/Log")
 	pass
 
+func on_tutorial_switch(nr: int)  -> void: 
+	self.log.log_info("Switched to tutorial step" + str(nr), log.LogType.LOG_SIGNAL)
+	emit_signal("tutorial_switch", nr)
+	
 func on_customer_seated(customer: Npc)  -> void: 
 	self.log.log_info("Customer seated" + customer.customerName, log.LogType.LOG_SIGNAL)
 	emit_signal("customer_seated", customer)

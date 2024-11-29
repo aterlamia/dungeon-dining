@@ -47,6 +47,9 @@ func getRandomName() -> String:
 	return full_name
 	
 func spawnUser() -> void:
+	if(global.inTutorial and global.game_state["tutorialStep"] > 14):
+		return
+		
 	var level_data = getLevelData()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()

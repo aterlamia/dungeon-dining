@@ -15,6 +15,9 @@ func enter(previous_state_path: String, data := {}) -> void:
 	add_child(eatTimer)
 	eatTimer.start()
 	
+	if get_node("/root/Global").inTutorial:
+		get_node("/root/Events").on_tutorial_switch(17)
+	
 func _on_eatTimer_timeout() -> void:
 	npc.finished = true
 	npc.agent.set_target_position(npc.returnPosition)

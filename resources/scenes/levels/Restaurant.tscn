@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://baxealuxwjcbs" path="res://resources/menu_board.tscn" id="2_rol6b"]
 [ext_resource type="Script" uid="uid://cnl0a10s1hq5s" path="res://src/managers/dispencer.gd" id="2_u64rt"]
 [ext_resource type="PackedScene" uid="uid://bhi38b2hyppae" path="res://assets/models/Places/Restairant/restaurant.glb" id="3_geplg"]
-[ext_resource type="Script" path="res://src/managers/table_manager.gd" id="3_xpgpf"]
+[ext_resource type="Script" uid="uid://drb3yvcwx4b23" path="res://src/managers/table_manager.gd" id="3_xpgpf"]
 [ext_resource type="Script" path="res://src/camera_switcher.gd" id="4_4dsf8"]
 [ext_resource type="PackedScene" uid="uid://tfo0klgn4pd5" path="res://resources/scenes/objects/table.tscn" id="4_imob6"]
 [ext_resource type="Environment" uid="uid://1jq8e0qxe4xh" path="res://resources/new_environment.tres" id="7_epkef"]
@@ -325,18 +325,17 @@ visible = false
 script = ExtResource("22_gh47o")
 
 [node name="Intro" type="Panel" parent="Tutorial"]
-visible = false
-offset_left = 319.0
+offset_left = 291.0
 offset_top = 149.0
-offset_right = 838.0
+offset_right = 862.0
 offset_bottom = 587.0
 
 [node name="Label" type="Label" parent="Tutorial/Intro"]
 layout_mode = 0
-offset_left = -1.0
-offset_top = 4.0
-offset_right = 488.0
-offset_bottom = 365.0
+offset_left = 5.0
+offset_top = 18.0
+offset_right = 540.0
+offset_bottom = 379.0
 text = "GRAND OPENING: 
 
 Your lifelong dream has been to create the world's finest diner. 
@@ -351,9 +350,9 @@ autowrap_mode = 2
 
 [node name="TextureButton" type="TextureButton" parent="Tutorial/Intro"]
 layout_mode = 0
-offset_left = 175.0
+offset_left = 101.0
 offset_top = 386.0
-offset_right = 337.0
+offset_right = 263.0
 offset_bottom = 421.0
 texture_normal = ExtResource("23_e61kf")
 texture_pressed = ExtResource("24_ucf2t")
@@ -368,6 +367,25 @@ offset_right = 115.0
 offset_bottom = 27.0
 text = "Continue
 "
+
+[node name="Skip" type="TextureButton" parent="Tutorial/Intro"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 385.0
+offset_right = 440.0
+offset_bottom = 420.0
+texture_normal = ExtResource("23_e61kf")
+texture_pressed = ExtResource("24_ucf2t")
+texture_hover = ExtResource("25_kt1pt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Tutorial/Intro/Skip"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 4.0
+offset_right = 128.0
+offset_bottom = 27.0
+text = "Skip tutorial"
 
 [node name="Menu" type="Panel" parent="Tutorial"]
 visible = false
@@ -397,7 +415,7 @@ But lets start by adding a burger"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="Tutorial/Menu"]
+[node name="MenuButton" type="TextureButton" parent="Tutorial/Menu"]
 layout_mode = 0
 offset_left = 175.0
 offset_top = 386.0
@@ -408,7 +426,7 @@ texture_pressed = ExtResource("24_ucf2t")
 texture_hover = ExtResource("25_kt1pt")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Tutorial/Menu/TextureButton"]
+[node name="Label" type="Label" parent="Tutorial/Menu/MenuButton"]
 layout_mode = 0
 offset_left = 44.0
 offset_top = 4.0
@@ -435,6 +453,34 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Indicator" type="TextureRect" parent="Tutorial/Recipies"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = 17.0
+offset_right = -1.0
+offset_bottom = 57.0
+scale = Vector2(0.67474, 0.697581)
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+script = ExtResource("27_ucf2t")
+
+[node name="Ingre" type="Panel" parent="Tutorial"]
+visible = false
+offset_left = 448.0
+offset_top = 554.0
+offset_right = 637.0
+offset_bottom = 653.0
+
+[node name="Label" type="Label" parent="Tutorial/Ingre"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 12.0
+offset_right = 184.0
+offset_bottom = 119.0
+text = "Here we can buy ingredients. Click the button"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/Ingre"]
 layout_mode = 0
 offset_left = -41.0
 offset_top = 17.0
@@ -481,10 +527,10 @@ script = ExtResource("27_ucf2t")
 
 [node name="Added" type="Panel" parent="Tutorial"]
 visible = false
-offset_left = 200.0
-offset_top = 176.0
-offset_right = 443.0
-offset_bottom = 553.0
+offset_left = 301.0
+offset_top = 197.0
+offset_right = 544.0
+offset_bottom = 574.0
 
 [node name="Label" type="Label" parent="Tutorial/Added"]
 layout_mode = 0
@@ -500,13 +546,14 @@ Unfortunately you have no more ingredients to add new items. Since you have some
 Maybe add some desert, lets check what we need for a milkshake"
 horizontal_alignment = 1
 autowrap_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="BoxContainer" type="BoxContainer" parent="Tutorial/Added"]
 layout_mode = 0
-offset_left = -29.0
-offset_top = 178.0
-offset_right = 11.0
-offset_bottom = 218.0
+offset_left = 528.0
+offset_top = -144.0
+offset_right = 575.0
+offset_bottom = -99.0
 
 [node name="Indicator" type="TextureRect" parent="Tutorial/Added/BoxContainer"]
 custom_minimum_size = Vector2(40, 40)
@@ -521,7 +568,7 @@ visible = false
 offset_left = 424.0
 offset_top = 124.0
 offset_right = 667.0
-offset_bottom = 501.0
+offset_bottom = 313.0
 
 [node name="Label" type="Label" parent="Tutorial/MilkshakeOpen"]
 layout_mode = 0
@@ -758,6 +805,7 @@ stretch_mode = 5
 script = ExtResource("27_ucf2t")
 
 [node name="Customer2" type="Panel" parent="Tutorial"]
+visible = false
 offset_left = 452.0
 offset_top = 203.0
 offset_right = 683.0
@@ -792,6 +840,58 @@ expand_mode = 1
 stretch_mode = 5
 script = ExtResource("27_ucf2t")
 
+[node name="Customer3" type="Panel" parent="Tutorial"]
+offset_left = 452.0
+offset_top = 203.0
+offset_right = 683.0
+offset_bottom = 404.0
+
+[node name="Label" type="Label" parent="Tutorial/Customer3"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 18.0
+offset_right = 225.0
+offset_bottom = 181.0
+text = "This finished the tutorial
+for the restaurant
+
+Finish serving the rest of your customers"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="Tutorial/Customer3"]
+layout_mode = 0
+offset_left = -74.0
+offset_top = -177.0
+offset_right = -34.0
+offset_bottom = -137.0
+
+[node name="Indicator" type="TextureRect" parent="Tutorial/Customer3/BoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("26_e61kf")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("27_ucf2t")
+
+[node name="FinishButton" type="TextureButton" parent="Tutorial/Customer3"]
+offset_left = 36.0
+offset_top = 156.0
+offset_right = 198.0
+offset_bottom = 191.0
+texture_normal = ExtResource("23_e61kf")
+texture_pressed = ExtResource("24_ucf2t")
+texture_hover = ExtResource("25_kt1pt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Tutorial/Customer3/FinishButton"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 4.0
+offset_right = 115.0
+offset_bottom = 27.0
+text = "Finish"
+
 [node name="Burger" type="Panel" parent="Tutorial"]
 visible = false
 offset_left = 596.0
@@ -801,7 +901,6 @@ offset_bottom = 102.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ucf2t")
 
 [node name="Indicator" type="TextureRect" parent="Tutorial/Burger"]
-visible = false
 layout_mode = 0
 offset_left = 45.0
 offset_top = -7.0
@@ -838,3 +937,7 @@ script = ExtResource("27_ucf2t")
 [connection signal="pressed" from="ActionMenu/MenuButton" to="ActionMenu" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="ActionMenu/IngredientButton" to="ActionMenu" method="_on_ingredient_button_pressed"]
 [connection signal="pressed" from="ActionMenu/OpenDiner" to="ActionMenu" method="_on_open_diner_pressed"]
+[connection signal="pressed" from="Tutorial/Intro/TextureButton" to="Tutorial" method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Tutorial/Intro/Skip" to="Tutorial" method="_on_skip_pressed"]
+[connection signal="pressed" from="Tutorial/Menu/MenuButton" to="Tutorial" method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Tutorial/Customer3/FinishButton" to="Tutorial" method="_on_finish_button_pressed"]
