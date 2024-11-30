@@ -17,6 +17,24 @@ func _ready() -> void:
 	logger = get_node("/root/Log")
 	pass
 
+func setAction(action: String) -> void:
+	var holder: Sprite2D = get_node("Sprite2D/fooditem")
+	
+	if(action == "pickup"):
+		var texture = load("res://assets/images/food/pickuplate.png")
+		holder.texture = texture
+	if(action == "deliver"):
+		var texture = load("res://assets/images/food/deliverplate.png")
+		holder.texture = texture
+	if(action == "down"):
+		var texture = load("res://assets/images/food/downstairs.png")
+		holder.texture = texture
+	if(action == "search"):
+		var texture = load("res://assets/images/food/search.png")
+		holder.texture = texture
+	pass
+	
+	
 func setWant(want: String) -> void:
 	var holder: Sprite2D = get_node("Sprite2D/fooditem")
 	

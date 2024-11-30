@@ -18,7 +18,7 @@ func getRandomWant() -> String:
 	
 	if chosenDishes.size() == 0:
 		print("getRandomWant return ?")
-		return ""
+		return "coffee"
 
 	rng.randomize()
 	

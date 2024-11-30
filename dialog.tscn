@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm5abgg4w1x7n"]
+
+[ext_resource type="Script" uid="uid://6tp33f6bxu8l" path="res://src/dialog.gd" id="1_37fld"]
+[ext_resource type="Theme" uid="uid://vkamlf2auxyr" path="res://resources/theme/dialog.tres" id="2_3kgf7"]
+[ext_resource type="Texture2D" uid="uid://cuocmtvi5v11g" path="res://assets/story/dialog.png" id="3_utfmx"]
+[ext_resource type="Theme" uid="uid://dgw6rmwx6uf82" path="res://resources/theme/buttontexttheme.tres" id="4_hyg80"]
+[ext_resource type="Texture2D" uid="uid://bjv5t7emknwgu" path="res://assets/story/you.png" id="5_j3pup"]
+[ext_resource type="Texture2D" uid="uid://bju58hgxii1n1" path="res://assets/story/rec.png" id="6_ju0je"]
+
+[node name="Dialog" type="CanvasLayer"]
+script = ExtResource("1_37fld")
+what_dialog = "StoryCeller"
+
+[node name="DialogPanel" type="NinePatchRect" parent="."]
+modulate = Color(1, 1, 1, 0.929412)
+offset_left = 309.0
+offset_top = 493.0
+offset_right = 869.0
+offset_bottom = 655.0
+theme = ExtResource("2_3kgf7")
+texture = ExtResource("3_utfmx")
+region_rect = Rect2(-7.84985, 2.75212, 1027.06, 1013.33)
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
+
+[node name="DialogText" type="Label" parent="DialogPanel"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 35.0
+offset_right = 466.0
+offset_bottom = 128.0
+theme = ExtResource("4_hyg80")
+theme_override_font_sizes/font_size = 14
+text = "dsssssssssssssssss"
+autowrap_mode = 3
+
+[node name="You" type="TextureRect" parent="DialogPanel"]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -26.0
+offset_right = 82.0
+offset_bottom = 69.0
+texture = ExtResource("5_j3pup")
+expand_mode = 1
+
+[node name="NotYou" type="TextureRect" parent="DialogPanel"]
+layout_mode = 0
+offset_left = 478.0
+offset_top = -24.0
+offset_right = 574.0
+offset_bottom = 71.0
+texture = ExtResource("6_ju0je")
+expand_mode = 1
+
+[node name="NameYou" type="Label" parent="DialogPanel"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = -8.0
+offset_right = 275.0
+offset_bottom = 15.0
+text = "You
+"
+
+[node name="NameNotYou" type="Label" parent="DialogPanel"]
+layout_mode = 0
+offset_left = 292.0
+offset_top = -6.0
+offset_right = 472.0
+offset_bottom = 17.0
+text = "Not You"
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="DialogPanel"]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 99.0
+offset_right = 525.0
+offset_bottom = 130.0
+text = "X"
+
+[connection signal="pressed" from="DialogPanel/Button" to="." method="_on_button_pressed"]

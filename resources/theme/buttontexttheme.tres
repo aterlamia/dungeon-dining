@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dgw6rmwx6uf82"]
+
+[ext_resource type="FontFile" uid="uid://c7r8fpl2cl0po" path="res://assets/fonts/Supply Center.ttf" id="1_1u3p0"]
+
+[resource]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 1
+Label/fonts/font = ExtResource("1_1u3p0")

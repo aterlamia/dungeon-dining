@@ -104,7 +104,7 @@ var game_state: Dictionary = {
 		"onion": 0
 	},
 	"chosenRecipies": [],
-	"recipesAvailable": ['burger', 'hotdog', 'milkshake', 'gardensalad','soup'],
+	"recipesAvailable": ['burger', 'hotdog', 'milkshake', 'gardensalad', 'soup'],
 	"level": 0,
 }
 
@@ -197,6 +197,19 @@ func getIngredient(name: String):
 
 func init_recipes() -> void:
 	var recipe_data = [
+						{
+						  "name": "Coffee",
+						  "subtitle": "Plain old cup of joe",
+						  "level": 0,
+						  "model": "res://resources/scenes/food/coffee.tscn",
+						  "image": "res://assets/images/food/coffee.png",
+						  "quality_multiplier": 1,
+						  "cost": 1.99,
+						  "type": "coffee",
+						  "makes": 999999999,
+						  "group": "drinks",
+						  "ingredients": {}
+						},
 						{
 						  "name": "Delicious Burger",
 						  "subtitle": "Traditional beef patty with lettuce and tomato",

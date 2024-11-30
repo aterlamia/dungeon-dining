@@ -7,6 +7,7 @@ var logger
 var global: GlobalState
 var wantsManager: WantsManager
 var tableManager: TableManager
+var tutorialGuests: int = 0
 @export var npcContainer: Node3D
 func _ready() -> void:
 	tableManager = get_node("%TableManager")
@@ -14,7 +15,7 @@ func _ready() -> void:
 	global = get_node("/root/Global")
 	get_node("/root/Events").diner_opened.connect( Callable(self, "_on_started"))
 	spawnTimer = Timer.new()
-	spawnTimer.set_wait_time(2)
+	spawnTimer.set_wait_time(0.2)
 	spawnTimer.set_one_shot(true)
 	spawnTimer.connect("timeout", Callable(self, "_on_spawnTimer_timeout"))
 	add_child(spawnTimer)
@@ -55,6 +56,7 @@ func spawnUser() -> void:
 	rng.randomize()
 	var wait_time = rng.randi_range(level_data["spawnRateMin"], level_data["spawnRateMax"])
 	spawnTimer.set_wait_time(wait_time)
+	spawnTimer.set_wait_time(2)
 	spawnTimer.start()
 	
 	if (global.pauzed || global.game_state.partState == "prepare"):
@@ -70,6 +72,12 @@ func spawnUser() -> void:
 		
 	freeTable.setOccupied(true)
 	
+	if(global.game_state["tutorialStep"] == 18):
+		tutorialGuests += 1
+		print("Tutorial guests: " + str(tutorialGuests))
+		if(tutorialGuests == 5):
+			get_node("/root/Events").on_tutorial_switch(19)
+			
 	var npc_resource = load("res://resources/scenes/npc/Npc.tscn")
 	var npc: Npc = npc_resource.instantiate()
 

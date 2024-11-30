@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhah2aip88np3"]
+[gd_scene load_steps=3 format=3 uid="uid://divecmkxuaoon"]
 
 [ext_resource type="PackedScene" uid="uid://bekn3bnufs55g" path="res://assets/models/food/burger.glb" id="1_5nc68"]
 [ext_resource type="PackedScene" uid="uid://dxk7mwtkx4mc3" path="res://assets/models/utensils/plate.glb" id="2_4nun4"]

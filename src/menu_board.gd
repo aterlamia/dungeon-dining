@@ -9,25 +9,31 @@ func _ready() -> void:
 			child.visible = false
 	get_node("/root/Events").recipe_added.connect(_on_recipe_added)
 	get_node("/root/Events").availability_updated.connect(_on_availability_updated)
+	add_recipe_to_board("coffee", 9999999999999, 0)
 	pass
 
 func _on_availability_updated() -> void:
-	print("availability updated")
 	for item in menu_items:
 		item.visible = false
 	pass
 		
+	add_recipe_to_board("coffee", 9999999999999, 0)
 	for i in range(global.chosen_dishes.size()):
-			print(global.chosen_dishes[i]["count"])
-			var recipe2 = global.availableRecipies[global.chosen_dishes[i]["dish"]]
-			menu_items[i].visible = true
-			var texture = load(recipe2["image"])
-			menu_items[i].texture = texture
-			menu_items[i].get_node("Label3D").text = str(global.chosen_dishes[i]["count"])
+			add_recipe_to_board(global.chosen_dishes[i]["dish"], global.chosen_dishes[i]["count"], i+1)
 	pass
 
+func add_recipe_to_board(recipe: String, amount:int, index: int) -> void:
+	var recipe2 = global.availableRecipies[recipe]
+	menu_items[index].visible = true
+	var texture = load(recipe2["image"])
+	menu_items[index].texture = texture
+	if(amount == 9999999999999):
+		menu_items[index].get_node("Label3D").text = "∞"
+	else:
+		menu_items[index].get_node("Label3D").text = str(amount)
+	pass
+	
 func _on_recipe_added(recipe: String, amount:int) -> void:
-	print("recipe added")
 	_on_availability_updated()
 	pass
 	

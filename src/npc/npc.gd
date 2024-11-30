@@ -44,10 +44,14 @@ func setReturnPosition(position: Vector3) -> void:
 	returnPosition = position
 	pass
 
-func _on_npc_aura_body_entered(body: Node3D) -> void:
-	if body.name == "Player":
-		updateTarget(body)
+func _on_npc_aura_area_entered(body: Area3D) -> void:
+	if body.name == "ColDetectorPlayer":
+		body.get_parent().innpcAura(true)
 	pass
+	
+func _on_npc_aura_area_exited(body: Area3D) -> void:
+	if body.name == "ColDetectorPlayer":
+		body.get_parent().innpcAura(false)
 	
 func setWantsManager(manager: WantsManager) -> void:
 	wantsManager = manager

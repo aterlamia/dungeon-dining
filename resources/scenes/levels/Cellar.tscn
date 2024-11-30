@@ -1,9 +1,36 @@
-[gd_scene load_steps=5 format=3 uid="uid://bo7otv7k2dif3"]
+[gd_scene load_steps=23 format=3 uid="uid://bo7otv7k2dif3"]
 
-[ext_resource type="Script" path="res://src/levels/cellar.gd" id="1_evapf"]
+[ext_resource type="Script" uid="uid://blw4y8qdhv2is" path="res://src/levels/cellar.gd" id="1_evapf"]
 [ext_resource type="PackedScene" uid="uid://d16864y138ibj" path="res://assets/models/cellar.glb" id="4_x4feg"]
+[ext_resource type="PackedScene" uid="uid://bg4fkriuamnme" path="res://assets/models/simplebarrel.glb" id="5_acn4y"]
+[ext_resource type="PackedScene" uid="uid://dnhrxpejwnoqe" path="res://assets/models/simplebox.glb" id="5_havdt"]
+[ext_resource type="PackedScene" uid="uid://bm5abgg4w1x7n" path="res://dialog.tscn" id="7_r0ols"]
+[ext_resource type="Script" uid="uid://do60ln1kq82d1" path="res://src/searchPlace.gd" id="8_yvtl1"]
+[ext_resource type="Script" uid="uid://cwsxfwgvhkhlg" path="res://resources/scenes/levels/story.gd" id="9_i1l8x"]
+[ext_resource type="Theme" uid="uid://cqydt8lfb5sa6" path="res://resources/theme/paneltheme.tres" id="9_uaulb"]
+[ext_resource type="Texture2D" uid="uid://car8xmiv6wh1s" path="res://assets/story/story2.png" id="10_i1l8x"]
+[ext_resource type="Texture2D" uid="uid://clvhwagbguxt7" path="res://assets/ui/button_normal.png" id="11_ki0nk"]
+[ext_resource type="Texture2D" uid="uid://boeypf5viofkf" path="res://assets/ui/button_click.png" id="12_7phll"]
 [ext_resource type="Environment" uid="uid://1jq8e0qxe4xh" path="res://resources/new_environment.tres" id="12_ker2c"]
+[ext_resource type="Texture2D" uid="uid://b8e5cy0lq3qqd" path="res://assets/ui/button_overr.png" id="13_hv12c"]
 [ext_resource type="PackedScene" uid="uid://cfr4u784045c3" path="res://resources/scenes/player/Player.tscn" id="13_lnjth"]
+[ext_resource type="Texture2D" uid="uid://cteivmbe87pur" path="res://assets/ui/button_disabled.png" id="14_u3uke"]
+[ext_resource type="Theme" uid="uid://dgw6rmwx6uf82" path="res://resources/theme/buttontexttheme.tres" id="15_0fplg"]
+[ext_resource type="Texture2D" uid="uid://bfafb2kgykoqk" path="res://assets/story/story3.png" id="16_4qjso"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r0ols"]
+size = Vector3(1.77246, 2.00726, 2.28125)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yvtl1"]
+radius = 0.932617
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4cvb"]
+size = Vector3(1, 4.97046, 5.56873)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d7wdg"]
+radius = 1.18066
+
+[sub_resource type="BoxMesh" id="BoxMesh_i1l8x"]
 
 [node name="Cellar" type="Node3D"]
 script = ExtResource("1_evapf")
@@ -12,7 +39,7 @@ script = ExtResource("1_evapf")
 environment = ExtResource("12_ker2c")
 
 [node name="Player" parent="." instance=ExtResource("13_lnjth")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.50876, -0.842494, 1.45285)
+transform = Transform3D(-0.0092676, 0, -0.999957, 0, 1, 0, 0.999957, 0, -0.0092676, 2.82541, -1.36406, -5.76857)
 move_speed = 7.0
 acceleration = 200.0
 tilt_lower_limit = -1.493
@@ -36,3 +63,456 @@ light_energy = 16.0
 light_indirect_energy = 13.539
 light_volumetric_fog_energy = 12.585
 light_size = 4.945
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="simplebarrel" parent="Objects" instance=ExtResource("5_acn4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92247, -0.928885, 0)
+
+[node name="simplebarrel2" parent="Objects" instance=ExtResource("5_acn4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92247, -0.928885, -1.09048)
+
+[node name="simplebarrel3" parent="Objects" instance=ExtResource("5_acn4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79538, -0.928885, -0.723794)
+
+[node name="simplebarrel4" parent="Objects" instance=ExtResource("5_acn4y")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.87708, -0.928885, -0.723794)
+
+[node name="simplebarrel5" parent="Objects" instance=ExtResource("5_acn4y")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.87708, -0.928885, 0.338741)
+
+[node name="simplebarrel6" parent="Objects" instance=ExtResource("5_acn4y")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.87708, -0.928885, 1.38804)
+
+[node name="simplebarrel7" parent="Objects" instance=ExtResource("5_acn4y")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.87708, -0.928885, 2.40979)
+
+[node name="simplebarrel8" parent="Objects" instance=ExtResource("5_acn4y")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.87708, -0.106161, -0.156445)
+
+[node name="simplebarrel9" parent="Objects" instance=ExtResource("5_acn4y")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.87708, -0.106161, 0.892852)
+
+[node name="simplebarrel10" parent="Objects" instance=ExtResource("5_acn4y")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.87708, -0.106161, 1.9146)
+
+[node name="simplebarrel11" parent="Objects" instance=ExtResource("5_acn4y")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.87708, 0.784576, 0.374063)
+
+[node name="simplebarrel12" parent="Objects" instance=ExtResource("5_acn4y")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.87708, 0.784576, 1.39581)
+
+[node name="WallBoxes" type="Node3D" parent="Objects"]
+
+[node name="simplebox" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31769, -0.859849, 7.89427)
+
+[node name="simplebox2" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35806, -0.859849, 7.89427)
+
+[node name="simplebox3" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.366086, -0.859849, 7.89427)
+
+[node name="simplebox8" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.854839, 0, 0.518893, 0, 1, 0, -0.518893, 0, 0.854839, 1.21789, -0.859849, 6.68126)
+
+[node name="simplebox38" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.854839, 0, 0.518893, 0, 1, 0, -0.518893, 0, 0.854839, 3.55764, -0.859849, 6.68126)
+
+[node name="simplebox9" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.933774, 0, -0.357863, 0, 1, 0, 0.357863, 0, 0.933774, 2.3716, -0.859849, 6.68126)
+
+[node name="simplebox4" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.593541, -0.859849, 7.89427)
+
+[node name="simplebox5" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11648, -0.859849, 6.89151)
+
+[node name="simplebox7" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.751627, 0, -0.659275, 0, 0.999793, 0, 0.659275, 0, 0.751627, 0.00487804, -0.859849, 6.66509)
+
+[node name="simplebox34" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.999972, 0, 0.00752223, 0, 1, 0, -0.00752223, 0, 0.999972, 1.21789, -0.859849, 5.48621)
+
+[node name="simplebox35" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.933774, 0, -0.357863, 0, 1, 0, 0.357863, 0, 0.933774, 2.3716, -0.859849, 5.48621)
+
+[node name="simplebox39" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.947746, 0, 0.319025, 0, 1, 0, -0.319025, 0, 0.947746, 2.27937, -0.859849, -1.92895)
+
+[node name="simplebox40" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.882143, 0, 0.470981, 0, 1, 0, -0.470981, 0, 0.882143, 0.982343, -0.859849, -1.48358)
+
+[node name="simplebox41" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.882143, 0, 0.470981, 0, 1, 0, -0.470981, 0, 0.882143, 0.840422, -0.859849, -2.69359)
+
+[node name="simplebox42" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.882143, 0, 0.470981, 0, 1, 0, -0.470981, 0, 0.882143, 1.1927, 0.0771539, -2.05884)
+
+[node name="simplebox36" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.751627, 0, -0.659275, 0, 0.999793, 0, 0.659275, 0, 0.751627, 0.00487804, -0.859849, 5.47004)
+
+[node name="simplebox37" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.751627, 0, -0.659275, 0, 0.999793, 0, 0.659275, 0, 0.751627, -2.3377, -0.859849, 6.85363)
+
+[node name="simplebox6" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.88203, -0.859849, 7.86732)
+
+[node name="simplebox10" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.844496, 0, 0.535562, 0, 1, 0, -0.535562, 0, 0.844496, 2.31769, 0.0323771, 7.89427)
+
+[node name="simplebox11" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.950342, 0, -0.311207, 0, 1, 0, 0.311207, 0, 0.950342, 1.35806, 0.0323771, 7.89427)
+
+[node name="simplebox15" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.950342, 0, -0.311207, 0, 1, 0, 0.311207, 0, 0.950342, 1.83228, 0.0323771, 6.79668)
+
+[node name="simplebox16" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.96942, 0, 0.245409, 0, 1, 0, -0.245409, 0, 0.96942, 0.527313, 0.0323771, 6.79668)
+
+[node name="simplebox12" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.998629, -0.00310307, 0.0522613, 0, 0.998242, 0.0592715, -0.0523534, -0.0591902, 0.996873, 0.366086, 0.0323771, 7.89427)
+
+[node name="simplebox13" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.942163, 0, -0.335156, 0, 1, 0, 0.335156, 0, 0.942163, -0.593541, 0.0323771, 7.89427)
+
+[node name="simplebox17" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.942163, 0, -0.335156, 0, 1, 0, 0.335156, 0, 0.942163, -0.880718, 0.0323771, 7.09737)
+
+[node name="simplebox14" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.940727, 0, -0.339165, 0, 1, 0, 0.339165, 0, 0.940727, -1.84814, 0.0323771, 7.86732)
+
+[node name="simplebox18" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.844496, 0, 0.535562, 0, 1, 0, -0.535562, 0, 0.844496, 2.31769, 0.918965, 7.89427)
+
+[node name="simplebox19" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.950342, 0, -0.311207, 0, 1, 0, 0.311207, 0, 0.950342, 1.35806, 0.918965, 7.89427)
+
+[node name="simplebox20" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.996477, 0, 0.0838691, 0, 1, 0, -0.0838691, 0, 0.996477, 1.83228, 0.918965, 6.79668)
+
+[node name="simplebox21" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.99995, 0, -0.00996572, 0, 1, 0, 0.00996572, 0, 0.99995, 0.527313, 0.918965, 6.79668)
+
+[node name="simplebox22" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.998629, -0.00310307, 0.0522613, 0, 0.998242, 0.0592715, -0.0523534, -0.0591902, 0.996873, 0.366086, 0.918965, 7.89427)
+
+[node name="simplebox23" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.942163, 0, -0.335156, 0, 1, 0, 0.335156, 0, 0.942163, -0.593541, 0.918965, 7.89427)
+
+[node name="simplebox24" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.999289, 0, 0.0376902, 0, 1, 0, -0.0376902, 0, 0.999289, -1.05528, 0.918965, 6.91537)
+
+[node name="simplebox25" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.940727, 0, -0.339165, 0, 1, 0, 0.339165, 0, 0.940727, -1.82661, 0.918965, 7.86732)
+
+[node name="simplebox26" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.844496, 0, 0.535562, 0, 1, 0, -0.535562, 0, 0.844496, 2.31769, 1.83158, 7.89427)
+
+[node name="simplebox27" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.950342, 0, -0.311207, 0, 1, 0, 0.311207, 0, 0.950342, 1.35806, 1.83158, 7.89427)
+
+[node name="simplebox28" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.999887, 0, -0.0150442, 0, 1, 0, 0.0150442, 0, 0.999887, 1.83228, 1.83158, 6.79668)
+
+[node name="simplebox30" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.998629, -0.00310307, 0.0522613, 0, 0.998242, 0.0592715, -0.0523534, -0.0591902, 0.996873, 0.366086, 1.83158, 7.89427)
+
+[node name="simplebox31" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.942163, 0, -0.335156, 0, 1, 0, 0.335156, 0, 0.942163, -0.593541, 1.83158, 7.89427)
+
+[node name="simplebox32" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.560322, 0, 0.250949, 0, 0.613951, 0, -0.250949, 0, 0.560322, -0.593541, 1.67259, 6.91537)
+
+[node name="simplebox33" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.940727, 0, -0.339165, 0, 1, 0, 0.339165, 0, 0.940727, -1.58145, 1.83158, 7.86732)
+
+[node name="Dialog" parent="." instance=ExtResource("7_r0ols")]
+visible = false
+
+[node name="Boxes1Area" type="Area3D" parent="." node_paths=PackedStringArray("dialog")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28577, -0.819187, -2.63257)
+script = ExtResource("8_yvtl1")
+dialog = NodePath("../Dialog")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boxes1Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.162598, 0.296051, 0.640625)
+shape = SubResource("BoxShape3D_r0ols")
+
+[node name="Barrels1Area" type="Area3D" parent="." node_paths=PackedStringArray("dialog")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.47255, 0, -0.782379)
+script = ExtResource("8_yvtl1")
+dialog = NodePath("../Dialog")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barrels1Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.217403, -0.892255, 0.239305)
+shape = SubResource("CylinderShape3D_yvtl1")
+
+[node name="Barrels2Area" type="Area3D" parent="." node_paths=PackedStringArray("dialog")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7825, 0, 1.58625)
+script = ExtResource("8_yvtl1")
+dialog = NodePath("../Dialog")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Barrels2Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23229, -0.756277, 0.0162964)
+shape = SubResource("BoxShape3D_s4cvb")
+
+[node name="BoxesWall" type="Area3D" parent="." node_paths=PackedStringArray("dialog")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.50735)
+script = ExtResource("8_yvtl1")
+dialog = NodePath("../Dialog")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxesWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08538, 0, 0.677158)
+shape = SubResource("CylinderShape3D_d7wdg")
+
+[node name="Story" type="CanvasLayer" parent="."]
+visible = false
+script = ExtResource("9_i1l8x")
+
+[node name="Story1" type="Panel" parent="Story"]
+offset_left = 347.0
+offset_top = 38.0
+offset_right = 805.0
+offset_bottom = 525.0
+theme = ExtResource("9_uaulb")
+
+[node name="Label" type="Label" parent="Story/Story1"]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 17.0
+offset_right = 219.0
+offset_bottom = 33.0
+text = "Oh no"
+
+[node name="Label2" type="Label" parent="Story/Story1"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 360.0
+offset_right = 437.0
+offset_bottom = 395.0
+text = "Oh no as you search the huge pile of unstable boxes they fall down"
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Story/Story1"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 37.0
+offset_right = 363.0
+offset_bottom = 511.0
+texture = ExtResource("10_i1l8x")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Btn1" type="TextureButton" parent="Story/Story1"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 413.0
+offset_right = 298.0
+offset_bottom = 458.0
+texture_normal = ExtResource("11_ki0nk")
+texture_pressed = ExtResource("12_7phll")
+texture_hover = ExtResource("13_hv12c")
+texture_disabled = ExtResource("14_u3uke")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Story/Story1/Btn1"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 11.0
+offset_right = 98.0
+offset_bottom = 32.0
+theme = ExtResource("15_0fplg")
+text = "Next"
+
+[node name="Story2" type="Panel" parent="Story"]
+visible = false
+offset_left = 347.0
+offset_top = 38.0
+offset_right = 805.0
+offset_bottom = 525.0
+theme = ExtResource("9_uaulb")
+
+[node name="Label" type="Label" parent="Story/Story2"]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 17.0
+offset_right = 219.0
+offset_bottom = 33.0
+text = "Auch!!!!"
+
+[node name="Label2" type="Label" parent="Story/Story2"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 338.0
+offset_right = 432.0
+offset_bottom = 411.0
+text = "Luckily you didnt got hurt, and since most of this stuff was here when you bought the place nothing important should have been damaged"
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Story/Story2"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 37.0
+offset_right = 363.0
+offset_bottom = 511.0
+texture = ExtResource("16_4qjso")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Btn2" type="TextureButton" parent="Story/Story2"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 413.0
+offset_right = 298.0
+offset_bottom = 458.0
+texture_normal = ExtResource("11_ki0nk")
+texture_pressed = ExtResource("12_7phll")
+texture_hover = ExtResource("13_hv12c")
+texture_disabled = ExtResource("14_u3uke")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Story/Story2/Btn2"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 11.0
+offset_right = 98.0
+offset_bottom = 32.0
+theme = ExtResource("15_0fplg")
+text = "Next"
+
+[node name="Story3" type="Panel" parent="Story"]
+visible = false
+offset_left = 347.0
+offset_top = 38.0
+offset_right = 805.0
+offset_bottom = 525.0
+theme = ExtResource("9_uaulb")
+
+[node name="Label" type="Label" parent="Story/Story3"]
+layout_mode = 0
+offset_left = 173.0
+offset_top = 17.0
+offset_right = 219.0
+offset_bottom = 33.0
+text = "Whats that"
+
+[node name="Label2" type="Label" parent="Story/Story3"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 338.0
+offset_right = 432.0
+offset_bottom = 411.0
+text = "The boxes where hiding a huge opening in the wall ..... did you see something move?"
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Story/Story3"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 37.0
+offset_right = 363.0
+offset_bottom = 511.0
+texture = ExtResource("16_4qjso")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Btn3" type="TextureButton" parent="Story/Story3"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 413.0
+offset_right = 298.0
+offset_bottom = 458.0
+texture_normal = ExtResource("11_ki0nk")
+texture_pressed = ExtResource("12_7phll")
+texture_hover = ExtResource("13_hv12c")
+texture_disabled = ExtResource("14_u3uke")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Story/Story3/Btn3"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 11.0
+offset_right = 98.0
+offset_bottom = 32.0
+theme = ExtResource("15_0fplg")
+text = "Next"
+
+[node name="Story4" type="Panel" parent="Story"]
+visible = false
+offset_left = 347.0
+offset_top = 38.0
+offset_right = 805.0
+offset_bottom = 525.0
+theme = ExtResource("9_uaulb")
+
+[node name="Label" type="Label" parent="Story/Story4"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 14.0
+offset_right = 278.0
+offset_bottom = 30.0
+text = "Defend yourself"
+
+[node name="Label2" type="Label" parent="Story/Story4"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 338.0
+offset_right = 432.0
+offset_bottom = 411.0
+text = "OUt of the hole green vinelike tentacles appear and start to attack you. WHats going on!!! beter defend yourself"
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Story/Story4"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 37.0
+offset_right = 363.0
+offset_bottom = 511.0
+texture = ExtResource("16_4qjso")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Btn4" type="TextureButton" parent="Story/Story4"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 413.0
+offset_right = 298.0
+offset_bottom = 458.0
+texture_normal = ExtResource("11_ki0nk")
+texture_pressed = ExtResource("12_7phll")
+texture_hover = ExtResource("13_hv12c")
+texture_disabled = ExtResource("14_u3uke")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Story/Story4/Btn4"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 11.0
+offset_right = 98.0
+offset_bottom = 32.0
+theme = ExtResource("15_0fplg")
+text = "Defend"
+
+[node name="Enemy" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.69461)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
+mesh = SubResource("BoxMesh_i1l8x")
+
+[connection signal="dialog_done" from="Dialog" to="Story" method="_on_dialog_dialog_done"]
+[connection signal="area_entered" from="Boxes1Area" to="Boxes1Area" method="_on_area_entered"]
+[connection signal="area_exited" from="Boxes1Area" to="Boxes1Area" method="_on_area_exited"]
+[connection signal="area_entered" from="Barrels1Area" to="Barrels1Area" method="_on_area_entered"]
+[connection signal="area_exited" from="Barrels1Area" to="Barrels1Area" method="_on_area_exited"]
+[connection signal="area_entered" from="Barrels2Area" to="Barrels2Area" method="_on_area_entered"]
+[connection signal="area_exited" from="Barrels2Area" to="Barrels2Area" method="_on_area_exited"]
+[connection signal="area_entered" from="BoxesWall" to="BoxesWall" method="_on_area_entered" flags=6]
+[connection signal="area_exited" from="BoxesWall" to="BoxesWall" method="_on_area_exited"]
+[connection signal="pressed" from="Story/Story1/Btn1" to="Story" method="_on_btn_1_pressed"]
+[connection signal="pressed" from="Story/Story2/Btn2" to="Story" method="_on_btn_2_pressed"]
+[connection signal="pressed" from="Story/Story3/Btn3" to="Story" method="_on_btn_3_pressed"]
+[connection signal="pressed" from="Story/Story4/Btn4" to="Story" method="_on_btn_4_pressed"]

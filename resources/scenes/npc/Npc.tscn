@@ -28,6 +28,7 @@ height = 0.5
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xopil"]
+radius = 0.528463
 
 [node name="Npc" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
@@ -103,3 +104,5 @@ script = ExtResource("10_hti0r")
 script = ExtResource("11_hti0r")
 
 [connection signal="stateChange" from="." to="StateMachine" method="_transition_to_next_state"]
+[connection signal="area_entered" from="NpcAura" to="." method="_on_npc_aura_area_entered"]
+[connection signal="area_exited" from="NpcAura" to="." method="_on_npc_aura_area_exited"]

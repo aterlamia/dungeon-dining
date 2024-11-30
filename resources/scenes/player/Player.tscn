@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfr4u784045c3"]
+[gd_scene load_steps=11 format=3 uid="uid://cfr4u784045c3"]
 
 [ext_resource type="Script" uid="uid://c65j5usrpu3xl" path="res://src/player/player.gd" id="1_gyjmf"]
 [ext_resource type="PackedScene" uid="uid://b6l4ba2mw5ptb" path="res://assets/models/people/player.glb" id="2_23cr1"]
 [ext_resource type="Environment" uid="uid://1jq8e0qxe4xh" path="res://resources/new_environment.tres" id="3_t7tmm"]
+[ext_resource type="PackedScene" uid="uid://1auo1mcsyxv6" path="res://resources/scenes/ui/notification.tscn" id="4_23cr1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b4hyn"]
 radius = 0.3
@@ -19,11 +20,14 @@ material = SubResource("StandardMaterial3D_fkwe3")
 radius = 0.05
 height = 0.3
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_kbc0o"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_6fyah"]
 
 [node name="Player" type="CharacterBody3D"]
-collision_layer = 135
-collision_mask = 15
+collision_layer = 391
+collision_mask = 271
 script = ExtResource("1_gyjmf")
 move_speed = 1.5
 acceleration = 1.0
@@ -33,9 +37,9 @@ rotation_speed = 50.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0188602, 0.6371, 0.000407938)
 shape = SubResource("CapsuleShape3D_b4hyn")
 
-[node name="ColDetector" type="Area3D" parent="."]
+[node name="ColDetectorPlayer" type="Area3D" parent="."]
 
-[node name="PLayerAura" type="CollisionShape3D" parent="ColDetector"]
+[node name="PLayerAura" type="CollisionShape3D" parent="ColDetectorPlayer"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21128e-05, 0.395634, 0.133863)
 shape = SubResource("CylinderShape3D_yw35r")
 
@@ -47,12 +51,17 @@ mesh = SubResource("CapsuleMesh_0mr17")
 [node name="player" parent="." instance=ExtResource("2_23cr1")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
+[node name="Bubble2" type="Sprite3D" parent="player"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0803723, 2.30068, -0.008)
+billboard = 1
+texture = SubResource("ViewportTexture_kbc0o")
+
 [node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.920827, 0)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraController"]
 shape = SubResource("SphereShape3D_6fyah")
-spring_length = 5.0
+spring_length = 3.0
 margin = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="CameraController/SpringArm3D"]
@@ -69,7 +78,14 @@ light_specular = 1.537
 distance_fade_begin = 2467.26
 distance_fade_length = 2513.11
 
-[connection signal="area_entered" from="ColDetector" to="." method="_on_col_detector_area_entered"]
-[connection signal="area_exited" from="ColDetector" to="." method="_on_col_detector_area_exited"]
-[connection signal="body_entered" from="ColDetector" to="." method="_on_col_detector_body_entered"]
-[connection signal="body_exited" from="ColDetector" to="." method="_on_col_detector_body_exited"]
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(259, 250)
+
+[node name="Notifications" parent="SubViewport" instance=ExtResource("4_23cr1")]
+
+[connection signal="area_entered" from="ColDetectorPlayer" to="." method="_on_col_detector_area_entered"]
+[connection signal="area_exited" from="ColDetectorPlayer" to="." method="_on_col_detector_area_exited"]
+[connection signal="body_entered" from="ColDetectorPlayer" to="." method="_on_col_detector_body_entered"]
+[connection signal="body_exited" from="ColDetectorPlayer" to="." method="_on_col_detector_body_exited"]

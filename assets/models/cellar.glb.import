@@ -106,16 +106,34 @@ _subresources={
 "PATH:Cube_023": {
 "generate/physics": true
 },
+"PATH:Cube_024": {
+"generate/physics": true
+},
+"PATH:Cube_025": {
+"generate/physics": true
+},
+"PATH:Cube_026": {
+"generate/physics": true
+},
+"PATH:Cube_027": {
+"generate/physics": true
+},
+"PATH:Cube_028": {
+"generate/physics": true
+},
+"PATH:Cube_029": {
+"generate/physics": true
+},
+"PATH:Cube_030": {
+"generate/physics": true
+},
+"PATH:Cube_031": {
+"generate/physics": true
+},
 "PATH:Floor": {
 "generate/physics": true
 },
-"PATH:Floor_001": {
-"generate/physics": true
-},
 "PATH:Stairs": {
-"generate/physics": true
-},
-"PATH:Tunnle": {
 "generate/physics": true
 },
 "PATH:Wall2": {

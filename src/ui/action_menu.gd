@@ -9,7 +9,6 @@ var global: GlobalState = null
 var events: EventManager = null
 func _ready() -> void:
 	but = get_node("OpenDiner")
-	but.disabled = true
 	events = get_node("/root/Events")
 	global = get_node("/root/Global")
 	events.recipe_added.connect(_on_recipe_added)

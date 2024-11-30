@@ -13,11 +13,13 @@ extends CharacterBody3D
 
 var _camera_input_direction := Vector2.ZERO
 var _last_movement_direction := Vector3.BACK
+@export var camRes: Camera3D = null
+@export var camKit: Camera3D = null
 
 @export_group("Gravity")
 @export var gravity := -30.0
 @export var jump_impulse := 12.0
-
+var nots: Notification = null
 
 # Create a BoneAttachment3D node
 var bone_attachment_dish
@@ -28,9 +30,15 @@ var _skin: Node3D = null
 var carringOrder = null
 var gettingFood = false
 var global: GlobalState = null
+var waitingForCamSwitch = false 
+var bubble: Sprite3D = null
+var inStairs = false
 
+func _on_switch(camera: String) -> void:
+	waitingForCamSwitch = true
+			
 func _ready() -> void:
-	
+	get_node("/root/Events").camera_switch.connect(_on_switch)
 	_skin = get_node("player")
 	skeleton = _skin.get_node("Armature/Skeleton3D")
 	_camera = get_node("CameraController/SpringArm3D/Camera3D")
@@ -38,23 +46,42 @@ func _ready() -> void:
 	global = get_node("/root/Global")
 	get_node("CameraController/SpringArm3D/Camera3D").make_current()
 	_skin.get_node("Armature/Skeleton3D/ServePlate").visible = false
+	nots = get_node("SubViewport/Notifications")
+	bubble = get_node("player/Bubble2")
+	bubble.visible = false
 	
 func _on_col_detector_body_entered(body: Node3D) -> void:
 	if body.name == "DispencerAura":
 		gettingFood = true
-		
+		bubble.visible = true
+		bubble.position = Vector3(-1, 1.5, 0)
 func _on_col_detector_body_exited(body: Node3D) -> void:
 	if body.name == "DispencerAura":
 		gettingFood = false	
+		bubble.visible = false
+		nots.setAction("pickup")
+		bubble.position = Vector3(-1, 1.5, 0)
+		
 func _on_col_detector_area_entered(body: Area3D) -> void:
-	if body.name == "DispencerAura":
+	if body.name == "Hatch":
+		bubble.visible = true
+		nots.setAction("down")
+		bubble.position = Vector3(0.1, 2.3, 0)
+		inStairs = true	
+	if body.name == "DispencerAura" and !gettingFood:
 		gettingFood = true
+		bubble.visible = true
+		nots.setAction("pickup")
+		bubble.position = Vector3(-1, 1.5, 0)
 		
 func _on_col_detector_area_exited(body: Area3D) -> void:
+	if body.name == "Hatch":
+		bubble.visible = false
+		inStairs = false
 	if body.name == "DispencerAura":
 		gettingFood = false
+		bubble.visible = false
 			
-		
 func delivered():
 	var returnOrder = carringOrder
 	carringOrder = null
@@ -72,6 +99,11 @@ func _input(event: InputEvent) -> void:
 		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		pass
 
+func innpcAura(isIn: bool):
+	bubble.position = Vector3(0.1, 2.3, 0)	
+	bubble.visible = isIn && carringOrder != null
+	nots.setAction("deliver")
+	pass
 
 func _unhandled_input(event: InputEvent) -> void:
 	if (global.pauzed):
@@ -107,9 +139,16 @@ func _physics_process(delta: float) -> void:
 	velocity.y = y_velocity + gravity * delta
 
 	var is_starting_jump := Input.is_action_just_pressed("jump") and is_on_floor()
+	
 	if is_starting_jump:
 		velocity.y += jump_impulse
-
+	
+	
+	var isAction := Input.is_action_just_pressed("action")
+	
+	if isAction and inStairs:
+		get_node("/root/Events").on_scene_restarted(2)
+		
 	move_and_slide()
 
 	if move_direction.length() > 0.05:
@@ -142,6 +181,10 @@ func _process(delta: float) -> void:
 	if (global.pauzed):
 		return
 		
+	if waitingForCamSwitch and velocity.length() == 0:
+		switchCurrentCamera3D()
+	
+	
 	if gettingFood && Input.is_action_just_pressed("action") && carringOrder == null: 
 		var boneName = "Bone.003"
 		var dispencer: Dispencer = get_node("%Dispencer")
@@ -156,7 +199,7 @@ func _process(delta: float) -> void:
 		# Add your scene as a child of the bone attachment
 		bone_attachment_dish.add_child(dish)
 		var rotation_offset := Vector3(-6, 97.3, -91)
-		var position_offset := Vector3(0, 0.15, 0)  # Adjus
+		var position_offset := Vector3(0, 0.15, 0)  # Adjus	
 		dish.rotation_degrees = rotation_offset
 		dish.position = position_offset  # This will move the dish relative to the bone
 			   
@@ -169,3 +212,13 @@ func _process(delta: float) -> void:
 	if carringOrder != null && Input.is_action_just_pressed("action"):
 		get_node("/root/Events").on_deliver_attempt(carringOrder)
 		return
+
+
+func switchCurrentCamera3D():
+	waitingForCamSwitch = false
+	if camRes != null && camRes.current:
+		_camera = camRes
+	elif camKit != null && camKit.current:
+		_camera = camKit
+	_camera.make_current()
+	

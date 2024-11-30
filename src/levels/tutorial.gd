@@ -3,7 +3,7 @@ extends CanvasLayer
 @export var createButton: TextureButton = null
 @export var buyIngredientsButton: TextureButton = null
 @export var openButton: TextureButton = null
-
+@export var dialog: CanvasLayer = null
 func _ready() -> void:
 	get_node("/root/Events").tutorial_switch.connect(_on_tutorial_switch)
 	
@@ -65,6 +65,14 @@ func _on_tutorial_switch(nr: int) -> void:
 			return
 		18:
 			return
+		19:
+			get_node("/root/Events").on_in_menu(true)
+			$Story1.visible = true
+			return
+		20:
+			dialog.visible = true
+			dialog.switch(1)
+			return
 	pass
 
 func _on_texture_button_pressed() -> void:
@@ -81,4 +89,8 @@ func _on_finish_button_pressed() -> void:
 
 func _on_skip_pressed() -> void:
 	get_node("/root/Events").on_tutorial_switch(18)
+	pass # Replace with function body.
+
+func _on_story_cont_pressed() -> void:
+	get_node("/root/Events").on_tutorial_switch(20)
 	pass # Replace with function body.

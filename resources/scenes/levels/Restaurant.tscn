@@ -1,6 +1,6 @@
-[gd_scene load_steps=41 format=3 uid="uid://c8lyl5x75huf"]
+[gd_scene load_steps=49 format=3 uid="uid://c8lyl5x75huf"]
 
-[ext_resource type="Script" path="res://src/levels/restaurant.gd" id="1_e5gyl"]
+[ext_resource type="Script" uid="uid://bw1dge5m482r3" path="res://src/levels/restaurant.gd" id="1_e5gyl"]
 [ext_resource type="PackedScene" uid="uid://baxealuxwjcbs" path="res://resources/menu_board.tscn" id="2_rol6b"]
 [ext_resource type="Script" uid="uid://cnl0a10s1hq5s" path="res://src/managers/dispencer.gd" id="2_u64rt"]
 [ext_resource type="PackedScene" uid="uid://bhi38b2hyppae" path="res://assets/models/Places/Restairant/restaurant.glb" id="3_geplg"]
@@ -15,18 +15,22 @@
 [ext_resource type="Script" path="res://src/levels/cellar_entrance.gd" id="12_daxh7"]
 [ext_resource type="PackedScene" uid="uid://cfr4u784045c3" path="res://resources/scenes/player/Player.tscn" id="12_ip4nm"]
 [ext_resource type="PackedScene" uid="uid://bu3l4glfq6o7q" path="res://resources/scenes/ui/CreateMenu.tscn" id="13_c5uk0"]
-[ext_resource type="Texture2D" uid="uid://x5krb783duh5" path="res://assets/ui/GUI_1.1/Dark/x2/Button_normal.png" id="14_geplg"]
-[ext_resource type="Texture2D" uid="uid://b5rbmockjrlb6" path="res://assets/ui/GUI_1.1/Dark/x2/Button_pressed.png" id="15_rol6b"]
-[ext_resource type="Texture2D" uid="uid://ds8nqy3hde31t" path="res://assets/ui/GUI_1.1/Dark/x2/Button_hover.png" id="16_o3f17"]
-[ext_resource type="Texture2D" uid="uid://d2wtxtstb88mj" path="res://assets/ui/GUI_1.1/Dark/x2/Button_disabled.png" id="18_o3f17"]
+[ext_resource type="Texture2D" uid="uid://clvhwagbguxt7" path="res://assets/ui/button_normal.png" id="15_qjxew"]
+[ext_resource type="Texture2D" uid="uid://boeypf5viofkf" path="res://assets/ui/button_click.png" id="16_ybkld"]
+[ext_resource type="Texture2D" uid="uid://b8e5cy0lq3qqd" path="res://assets/ui/button_overr.png" id="17_80p46"]
+[ext_resource type="Texture2D" uid="uid://cteivmbe87pur" path="res://assets/ui/button_disabled.png" id="18_pb8qg"]
 [ext_resource type="Texture2D" uid="uid://bxb7swsyvhmyu" path="res://assets/ui/COIN.png" id="19_aev77"]
+[ext_resource type="Theme" uid="uid://dgw6rmwx6uf82" path="res://resources/theme/buttontexttheme.tres" id="19_cfa43"]
 [ext_resource type="PackedScene" uid="uid://6gcrgfscpnuv" path="res://resources/scenes/ui/IngredientMenu.tscn" id="21_8djd6"]
 [ext_resource type="Script" uid="uid://ipnwjdlk68di" path="res://src/levels/tutorial.gd" id="22_gh47o"]
 [ext_resource type="Texture2D" uid="uid://d1wvwul7xu2by" path="res://assets/ui/GUI_1.1/White/Button_normal.png" id="23_e61kf"]
+[ext_resource type="Theme" uid="uid://cqydt8lfb5sa6" path="res://resources/theme/paneltheme.tres" id="24_3m2dl"]
 [ext_resource type="Texture2D" uid="uid://rrqjmwb5137u" path="res://assets/ui/GUI_1.1/White/Button_pressed.png" id="24_ucf2t"]
 [ext_resource type="Texture2D" uid="uid://bu41rjwkrd4rq" path="res://assets/ui/GUI_1.1/White/Button_hover.png" id="25_kt1pt"]
+[ext_resource type="Texture2D" uid="uid://wxeykb12s62u" path="res://assets/story/story1.png" id="25_ybkld"]
 [ext_resource type="Texture2D" uid="uid://b8oej375kkm2i" path="res://assets/ui/indicator.png" id="26_e61kf"]
 [ext_resource type="Script" uid="uid://c47fojqqpl03m" path="res://src/ui/indicator.gd" id="27_ucf2t"]
+[ext_resource type="PackedScene" uid="uid://bm5abgg4w1x7n" path="res://dialog.tscn" id="31_80p46"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_03c1g"]
 
@@ -56,7 +60,17 @@ size = Vector3(2, 0.2, 4)
 [sub_resource type="BoxMesh" id="BoxMesh_3i0bd"]
 size = Vector3(11, 0.2, 6)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_80p46"]
+size = Vector3(1, 7.2179, 14.2168)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_g0gry"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_80p46"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pb8qg"]
+albedo_color = Color(0.579188, 0.489767, 0.477069, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cfa43"]
 
 [sub_resource type="Gradient" id="Gradient_8djd6"]
 colors = PackedColorArray(0, 0, 0, 1, 0.0296447, 0.0520307, 0.163131, 1)
@@ -167,6 +181,18 @@ mesh = SubResource("BoxMesh_3i0bd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FLoorPlan/floor/Kitchen/StaticBody3D"]
 shape = SubResource("BoxShape3D_njbgh")
 
+[node name="Invisiwall" type="StaticBody3D" parent="FLoorPlan/floor"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FLoorPlan/floor/Invisiwall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.35685, 3.10895, -6.6084)
+shape = SubResource("BoxShape3D_80p46")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="FLoorPlan/floor/Invisiwall"]
+transform = Transform3D(-0.00628317, 0, -0.99998, 0, 1, 0, 0.99998, 0, -0.00628317, -0.304596, 3.10895, 5.7336)
+shape = SubResource("BoxShape3D_80p46")
+
 [node name="TableManager" type="Node" parent="FLoorPlan" node_paths=PackedStringArray("templates")]
 unique_name_in_owner = true
 script = ExtResource("3_xpgpf")
@@ -200,16 +226,31 @@ script = ExtResource("12_daxh7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FLoorPlan/CellarEntrance"]
 shape = SubResource("BoxShape3D_g0gry")
 
+[node name="Hatch" type="Area3D" parent="FLoorPlan"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.98991, -3.04731, -11.1091)
+
+[node name="Hatch" type="MeshInstance3D" parent="FLoorPlan/Hatch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.746361, 1.42089, 0.54475)
+mesh = SubResource("BoxMesh_80p46")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_pb8qg")
+
+[node name="HatchCol" type="CollisionShape3D" parent="FLoorPlan/Hatch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.783195, 1.55152, 0.558209)
+shape = SubResource("BoxShape3D_cfa43")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("7_epkef")
 
 [node name="Npcs" type="Node3D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("12_ip4nm")]
+[node name="Player" parent="." node_paths=PackedStringArray("camRes", "camKit") instance=ExtResource("12_ip4nm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15352, 0.00353631, 0)
 move_speed = 4.0
 acceleration = 200.0
 rotation_speed = 10.0
+camRes = NodePath("../CameraRestaurant")
+camKit = NodePath("../KitchenCam")
 
 [node name="CameraRestaurant" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.689645, 0.724148, 0, -0.724148, 0.689645, 0, 6.325, 6.924)
@@ -227,7 +268,7 @@ shadow_transmittance_bias = 0.126
 shadow_blur = 3.067
 
 [node name="KitchenCam" type="Camera3D" parent="."]
-transform = Transform3D(-0.226596, -0.468537, 0.85389, -0.0410374, 0.880508, 0.472252, -0.973124, 0.071969, -0.218747, 7.07287, 6.67309, -10.3831)
+transform = Transform3D(-0.0474536, -0.694281, 0.718138, -0.0559421, 0.719666, 0.692063, -0.997306, -0.00733327, -0.0729903, 5.44817, 6.67309, -10.3831)
 environment = ExtResource("7_epkef")
 
 [node name="ActionMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("menu", "ingredients", "moneyLabel")]
@@ -255,23 +296,24 @@ texture_normal = ExtResource("12_c5uk0")
 stretch_mode = 0
 
 [node name="OpenDiner" type="TextureButton" parent="ActionMenu"]
-offset_left = 570.0
-offset_top = 9.0
-offset_right = 646.0
-offset_bottom = 30.0
-texture_normal = ExtResource("14_geplg")
-texture_pressed = ExtResource("15_rol6b")
-texture_hover = ExtResource("16_o3f17")
-texture_disabled = ExtResource("18_o3f17")
+offset_left = 550.0
+offset_top = 7.0
+offset_right = 655.0
+offset_bottom = 42.0
+texture_normal = ExtResource("15_qjxew")
+texture_pressed = ExtResource("16_ybkld")
+texture_hover = ExtResource("17_80p46")
+texture_disabled = ExtResource("18_pb8qg")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="ActionMenu/OpenDiner"]
 layout_mode = 0
-offset_left = 13.0
-offset_top = -1.0
-offset_right = 57.0
-offset_bottom = 22.0
+offset_left = 21.0
+offset_top = 6.0
+offset_right = 80.0
+offset_bottom = 29.0
+theme = ExtResource("19_cfa43")
 text = "Open"
 uppercase = true
 
@@ -321,14 +363,20 @@ visible = false
 [node name="IngredientMenuScreen" parent="." instance=ExtResource("21_8djd6")]
 visible = false
 
-[node name="Tutorial" type="CanvasLayer" parent="."]
+[node name="Tutorial" type="CanvasLayer" parent="." node_paths=PackedStringArray("createButton", "buyIngredientsButton", "openButton", "dialog")]
 script = ExtResource("22_gh47o")
+createButton = NodePath("../ActionMenu/MenuButton")
+buyIngredientsButton = NodePath("../ActionMenu/IngredientButton")
+openButton = NodePath("../ActionMenu/OpenDiner")
+dialog = NodePath("../Dialog")
 
 [node name="Intro" type="Panel" parent="Tutorial"]
+visible = false
 offset_left = 291.0
 offset_top = 149.0
 offset_right = 862.0
 offset_bottom = 587.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/Intro"]
 layout_mode = 0
@@ -350,42 +398,98 @@ autowrap_mode = 2
 
 [node name="TextureButton" type="TextureButton" parent="Tutorial/Intro"]
 layout_mode = 0
-offset_left = 101.0
-offset_top = 386.0
-offset_right = 263.0
-offset_bottom = 421.0
-texture_normal = ExtResource("23_e61kf")
-texture_pressed = ExtResource("24_ucf2t")
-texture_hover = ExtResource("25_kt1pt")
+offset_left = 93.0
+offset_top = 382.0
+offset_right = 256.0
+offset_bottom = 422.0
+texture_normal = ExtResource("15_qjxew")
+texture_pressed = ExtResource("16_ybkld")
+texture_hover = ExtResource("17_80p46")
+texture_disabled = ExtResource("18_pb8qg")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Tutorial/Intro/TextureButton"]
 layout_mode = 0
-offset_left = 44.0
-offset_top = 4.0
-offset_right = 115.0
-offset_bottom = 27.0
+offset_left = 30.0
+offset_top = 11.0
+offset_right = 137.0
+offset_bottom = 34.0
+theme = ExtResource("19_cfa43")
 text = "Continue
 "
 
 [node name="Skip" type="TextureButton" parent="Tutorial/Intro"]
 layout_mode = 0
-offset_left = 278.0
-offset_top = 385.0
-offset_right = 440.0
-offset_bottom = 420.0
-texture_normal = ExtResource("23_e61kf")
-texture_pressed = ExtResource("24_ucf2t")
-texture_hover = ExtResource("25_kt1pt")
+offset_left = 282.0
+offset_top = 384.0
+offset_right = 468.0
+offset_bottom = 422.0
+texture_normal = ExtResource("15_qjxew")
+texture_pressed = ExtResource("16_ybkld")
+texture_hover = ExtResource("17_80p46")
+texture_disabled = ExtResource("18_pb8qg")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Tutorial/Intro/Skip"]
 layout_mode = 0
-offset_left = 33.0
-offset_top = 4.0
-offset_right = 128.0
-offset_bottom = 27.0
+offset_left = 16.0
+offset_top = 9.0
+offset_right = 175.0
+offset_bottom = 32.0
+theme = ExtResource("19_cfa43")
 text = "Skip tutorial"
+
+[node name="Story1" type="Panel" parent="Tutorial"]
+offset_left = 291.0
+offset_top = 149.0
+offset_right = 862.0
+offset_bottom = 587.0
+theme = ExtResource("24_3m2dl")
+
+[node name="Label" type="Label" parent="Tutorial/Story1"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 18.0
+offset_right = 540.0
+offset_bottom = 379.0
+text = "Suprise guest: "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial/Story1/Label"]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 43.0
+offset_right = 400.0
+offset_bottom = 452.0
+texture = ExtResource("25_ybkld")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="StoryCont" type="TextureButton" parent="Tutorial/Story1"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 372.0
+offset_right = 350.0
+offset_bottom = 412.0
+texture_normal = ExtResource("15_qjxew")
+texture_pressed = ExtResource("16_ybkld")
+texture_hover = ExtResource("17_80p46")
+texture_disabled = ExtResource("18_pb8qg")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Tutorial/Story1/StoryCont"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 11.0
+offset_right = 137.0
+offset_bottom = 34.0
+theme = ExtResource("19_cfa43")
+text = "Continue
+"
 
 [node name="Menu" type="Panel" parent="Tutorial"]
 visible = false
@@ -393,6 +497,7 @@ offset_left = 319.0
 offset_top = 149.0
 offset_right = 838.0
 offset_bottom = 587.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/Menu"]
 layout_mode = 0
@@ -421,6 +526,7 @@ offset_left = 175.0
 offset_top = 386.0
 offset_right = 337.0
 offset_bottom = 421.0
+theme = ExtResource("19_cfa43")
 texture_normal = ExtResource("23_e61kf")
 texture_pressed = ExtResource("24_ucf2t")
 texture_hover = ExtResource("25_kt1pt")
@@ -428,10 +534,10 @@ stretch_mode = 0
 
 [node name="Label" type="Label" parent="Tutorial/Menu/MenuButton"]
 layout_mode = 0
-offset_left = 44.0
-offset_top = 4.0
-offset_right = 115.0
-offset_bottom = 27.0
+offset_left = 29.0
+offset_top = 7.0
+offset_right = 136.0
+offset_bottom = 30.0
 text = "Continue
 "
 
@@ -441,6 +547,7 @@ offset_left = 377.0
 offset_top = 553.0
 offset_right = 566.0
 offset_bottom = 652.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/Recipies"]
 layout_mode = 0
@@ -469,6 +576,7 @@ offset_left = 448.0
 offset_top = 554.0
 offset_right = 637.0
 offset_bottom = 653.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/Ingre"]
 layout_mode = 0
@@ -497,6 +605,7 @@ offset_left = 901.0
 offset_top = 292.0
 offset_right = 1144.0
 offset_bottom = 515.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/Ingredients"]
 layout_mode = 0
@@ -527,17 +636,18 @@ script = ExtResource("27_ucf2t")
 
 [node name="Added" type="Panel" parent="Tutorial"]
 visible = false
-offset_left = 301.0
+offset_left = 284.0
 offset_top = 197.0
-offset_right = 544.0
-offset_bottom = 574.0
+offset_right = 560.0
+offset_bottom = 496.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/Added"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 231.0
-offset_bottom = 263.0
+offset_left = 11.0
+offset_top = 18.0
+offset_right = 266.0
+offset_bottom = 300.0
 text = "Menu items can have different categories.
 
 As you can see a burger is a Main Course
@@ -546,7 +656,6 @@ Unfortunately you have no more ingredients to add new items. Since you have some
 Maybe add some desert, lets check what we need for a milkshake"
 horizontal_alignment = 1
 autowrap_mode = 2
-metadata/_edit_lock_ = true
 
 [node name="BoxContainer" type="BoxContainer" parent="Tutorial/Added"]
 layout_mode = 0
@@ -568,14 +677,15 @@ visible = false
 offset_left = 424.0
 offset_top = 124.0
 offset_right = 667.0
-offset_bottom = 313.0
+offset_bottom = 272.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/MilkshakeOpen"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 231.0
-offset_bottom = 263.0
+offset_left = 7.0
+offset_top = 20.0
+offset_right = 230.0
+offset_bottom = 141.0
 text = "Great we just need some milk to make a milkshake.
 
 Lets close our menu creation screen by clicking close"
@@ -603,13 +713,14 @@ offset_left = 452.0
 offset_top = 203.0
 offset_right = 685.0
 offset_bottom = 349.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/MilkshakeIng"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 231.0
-offset_bottom = 263.0
+offset_left = -1.0
+offset_top = 21.0
+offset_right = 222.0
+offset_bottom = 134.0
 text = "Here we see the ingredients we have access to
 
 Click the milk bottle"
@@ -637,13 +748,14 @@ offset_left = 452.0
 offset_top = 203.0
 offset_right = 685.0
 offset_bottom = 443.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/MilkshakeIngOpen"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 6.0
-offset_right = 231.0
-offset_bottom = 263.0
+offset_left = 6.0
+offset_top = 26.0
+offset_right = 229.0
+offset_bottom = 283.0
 text = "You can see several things here. Most imortant is how much you have. How much it cost to buy them.
 You can also sell them but always for less than the puchache price
 
@@ -672,13 +784,14 @@ offset_left = 452.0
 offset_top = 203.0
 offset_right = 685.0
 offset_bottom = 443.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/MilkshakeBought"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 7.0
-offset_right = 233.0
-offset_bottom = 264.0
+offset_left = -1.0
+offset_top = 22.0
+offset_right = 222.0
+offset_bottom = 279.0
 text = "Great. now you can add 3 milkshakes to your menu.
 
 CLick around in the ingredients if you want. For now you cant buy or sell more
@@ -707,6 +820,7 @@ offset_left = 452.0
 offset_top = 203.0
 offset_right = 685.0
 offset_bottom = 443.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/Finish"]
 layout_mode = 0
@@ -741,7 +855,8 @@ visible = false
 offset_left = 452.0
 offset_top = 203.0
 offset_right = 685.0
-offset_bottom = 443.0
+offset_bottom = 384.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/AddMore"]
 layout_mode = 0
@@ -841,10 +956,12 @@ stretch_mode = 5
 script = ExtResource("27_ucf2t")
 
 [node name="Customer3" type="Panel" parent="Tutorial"]
+visible = false
 offset_left = 452.0
 offset_top = 203.0
 offset_right = 683.0
-offset_bottom = 404.0
+offset_bottom = 403.0
+theme = ExtResource("24_3m2dl")
 
 [node name="Label" type="Label" parent="Tutorial/Customer3"]
 layout_mode = 0
@@ -875,21 +992,25 @@ stretch_mode = 5
 script = ExtResource("27_ucf2t")
 
 [node name="FinishButton" type="TextureButton" parent="Tutorial/Customer3"]
+layout_mode = 0
 offset_left = 36.0
 offset_top = 156.0
 offset_right = 198.0
 offset_bottom = 191.0
-texture_normal = ExtResource("23_e61kf")
-texture_pressed = ExtResource("24_ucf2t")
-texture_hover = ExtResource("25_kt1pt")
+theme = ExtResource("19_cfa43")
+texture_normal = ExtResource("15_qjxew")
+texture_pressed = ExtResource("16_ybkld")
+texture_hover = ExtResource("17_80p46")
+texture_disabled = ExtResource("18_pb8qg")
+ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Tutorial/Customer3/FinishButton"]
 layout_mode = 0
-offset_left = 44.0
-offset_top = 4.0
-offset_right = 115.0
-offset_bottom = 27.0
+offset_left = 42.0
+offset_top = 6.0
+offset_right = 113.0
+offset_bottom = 29.0
 text = "Finish"
 
 [node name="Burger" type="Panel" parent="Tutorial"]
@@ -932,6 +1053,10 @@ expand_mode = 1
 stretch_mode = 4
 script = ExtResource("27_ucf2t")
 
+[node name="Dialog" parent="." instance=ExtResource("31_80p46")]
+visible = false
+what_dialog = "Tutorial"
+
 [connection signal="body_entered" from="FLoorPlan/restaurant/CameraSwitcher/KItchen" to="FLoorPlan/restaurant/CameraSwitcher" method="_on_k_itchen_body_entered"]
 [connection signal="body_entered" from="FLoorPlan/restaurant/CameraSwitcher/Restaurant" to="FLoorPlan/restaurant/CameraSwitcher" method="_on_restaurant_body_entered"]
 [connection signal="pressed" from="ActionMenu/MenuButton" to="ActionMenu" method="_on_menu_button_pressed"]
@@ -939,5 +1064,6 @@ script = ExtResource("27_ucf2t")
 [connection signal="pressed" from="ActionMenu/OpenDiner" to="ActionMenu" method="_on_open_diner_pressed"]
 [connection signal="pressed" from="Tutorial/Intro/TextureButton" to="Tutorial" method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Tutorial/Intro/Skip" to="Tutorial" method="_on_skip_pressed"]
+[connection signal="pressed" from="Tutorial/Story1/StoryCont" to="Tutorial" method="_on_story_cont_pressed"]
 [connection signal="pressed" from="Tutorial/Menu/MenuButton" to="Tutorial" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Tutorial/Customer3/FinishButton" to="Tutorial" method="_on_finish_button_pressed"]
