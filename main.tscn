@@ -11,7 +11,7 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_7fqsg")
 log_level = 15
-log_type = 80
+log_type = 1104
 metadata/_edit_horizontal_guides_ = [-152.0]
 
 [node name="UI" parent="." instance=ExtResource("2_agso3")]

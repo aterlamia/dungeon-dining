@@ -40,9 +40,11 @@ environment = ExtResource("12_ker2c")
 
 [node name="Player" parent="." instance=ExtResource("13_lnjth")]
 transform = Transform3D(-0.0092676, 0, -0.999957, 0, 1, 0, 0.999957, 0, -0.0092676, 2.82541, -1.36406, -5.76857)
+in3thPerson = true
 move_speed = 7.0
 acceleration = 200.0
-tilt_lower_limit = -1.493
+gravity = null
+jump_impulse = null
 
 [node name="cellar" parent="." instance=ExtResource("4_x4feg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333535, 0.0257308, 3.89572)

@@ -56,7 +56,6 @@ func spawnUser() -> void:
 	rng.randomize()
 	var wait_time = rng.randi_range(level_data["spawnRateMin"], level_data["spawnRateMax"])
 	spawnTimer.set_wait_time(wait_time)
-	spawnTimer.set_wait_time(2)
 	spawnTimer.start()
 	
 	if (global.pauzed || global.game_state.partState == "prepare"):
