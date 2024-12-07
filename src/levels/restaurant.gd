@@ -8,7 +8,7 @@ func _ready() -> void:
 	events.on_camera_switch("restaurant")
 	events.on_money_changed(get_node("/root/Global").money)
 	events.on_play_music("Restaurant")
-
+	get_node("KitchenCam").make_current()
 	pass # Replace with function body.
 
 

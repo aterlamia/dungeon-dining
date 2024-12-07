@@ -14,6 +14,9 @@ func enter(previous_state_path: String, data := {}) -> void:
 	
 ## Called by the state machine on the engine's main loop tick.
 func update(_delta: float) -> void:
+	if(player.inAttackForm):
+		finished.emit(FIGHTINGIDLE)
+		return
 	if(player.velocity.length() > 0.1):
 		if(player.in3thPerson):
 			print("Walking")
@@ -22,7 +25,10 @@ func update(_delta: float) -> void:
 			print("Walking2")
 			finished.emit(WALKING)
 		return
-	if(player.carringOrder):
+	if(player.in3thPerson):
+		print("Walking")
+		finished.emit(WALKING3TH)
+	elif(player.carringOrder):
 		print("Serving")
 		finished.emit(IDLEHOLD)
 		return

@@ -16,7 +16,6 @@ func update(_delta: float) -> void:
 		finished.emit(IDLEFOLLOW)
 	else:
 		if !player.in3thPerson:
-			print("Walking24")
 			finished.emit(WALKING)
 	pass
 

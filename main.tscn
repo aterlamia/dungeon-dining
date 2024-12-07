@@ -1,17 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://4j7623b5asok"]
+[gd_scene load_steps=10 format=3 uid="uid://4j7623b5asok"]
 
 [ext_resource type="Script" uid="uid://c0rq0moo55ve3" path="res://main.gd" id="1_7fqsg"]
 [ext_resource type="PackedScene" uid="uid://bvno61benbd2u" path="res://resources/scenes/ui/ui.tscn" id="2_agso3"]
-[ext_resource type="Script" path="res://src/managers/level.gd" id="2_dfx2f"]
+[ext_resource type="Script" uid="uid://cb0fet34tqa2y" path="res://src/managers/level.gd" id="2_dfx2f"]
 [ext_resource type="AudioStream" uid="uid://c770trt3m42iv" path="res://assets/sounds/music/menu/menu.wav" id="4_0sljb"]
 [ext_resource type="Script" path="res://src/managers/music_stream.gd" id="5_o73k1"]
 [ext_resource type="Script" path="res://src/ui/fps.gd" id="6_71ski"]
 [ext_resource type="AudioStream" uid="uid://bwhxyue21m8vx" path="res://assets/sounds/music/rest.ogg" id="6_272bh"]
+[ext_resource type="AudioStream" uid="uid://bncwc2g24fppj" path="res://assets/sounds/music/battle.mp3" id="7_efxa6"]
+[ext_resource type="PackedScene" uid="uid://bvstqevcfopmi" path="res://resources/scenes/battle_scene.tscn" id="9_kek77"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_7fqsg")
 log_level = 15
-log_type = 1104
+log_type = 2047
 metadata/_edit_horizontal_guides_ = [-152.0]
 
 [node name="UI" parent="." instance=ExtResource("2_agso3")]
@@ -27,6 +29,7 @@ stream = ExtResource("4_0sljb")
 bus = &"music"
 script = ExtResource("5_o73k1")
 items = {
+"Battle": ExtResource("7_efxa6"),
 "MenuMusic": ExtResource("4_0sljb"),
 "Restaurant": ExtResource("6_272bh")
 }
@@ -48,3 +51,7 @@ offset_bottom = 39.0
 grow_horizontal = 0
 text = "0"
 script = ExtResource("6_71ski")
+
+[node name="BattleScene" parent="." instance=ExtResource("9_kek77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.66142, 0)
+visible = false

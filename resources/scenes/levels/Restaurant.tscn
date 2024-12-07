@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cnl0a10s1hq5s" path="res://src/managers/dispencer.gd" id="2_u64rt"]
 [ext_resource type="PackedScene" uid="uid://bhi38b2hyppae" path="res://assets/models/Places/Restairant/restaurant.glb" id="3_geplg"]
 [ext_resource type="Script" uid="uid://drb3yvcwx4b23" path="res://src/managers/table_manager.gd" id="3_xpgpf"]
-[ext_resource type="Script" path="res://src/camera_switcher.gd" id="4_4dsf8"]
+[ext_resource type="Script" uid="uid://ckaqu0g6pocfm" path="res://src/camera_switcher.gd" id="4_4dsf8"]
 [ext_resource type="PackedScene" uid="uid://tfo0klgn4pd5" path="res://resources/scenes/objects/table.tscn" id="4_imob6"]
 [ext_resource type="Environment" uid="uid://1jq8e0qxe4xh" path="res://resources/new_environment.tres" id="7_epkef"]
 [ext_resource type="Script" uid="uid://bij8mx7vdv3xb" path="res://resources/scenes/levels/spawner.gd" id="10_54lq6"]
@@ -245,7 +245,7 @@ environment = ExtResource("7_epkef")
 [node name="Npcs" type="Node3D" parent="."]
 
 [node name="Player" parent="." node_paths=PackedStringArray("camRes", "camKit") instance=ExtResource("12_ip4nm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15352, 0.00353631, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.15352, 0.00353631, -9.09514)
 move_speed = 4.0
 acceleration = 200.0
 rotation_speed = 10.0
@@ -255,7 +255,6 @@ camKit = NodePath("../KitchenCam")
 [node name="CameraRestaurant" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.689645, 0.724148, 0, -0.724148, 0.689645, 0, 6.325, 6.924)
 environment = ExtResource("7_epkef")
-current = true
 fov = 51.1
 size = 0.089
 near = 0.032
@@ -270,6 +269,7 @@ shadow_blur = 3.067
 [node name="KitchenCam" type="Camera3D" parent="."]
 transform = Transform3D(-0.0474536, -0.694281, 0.718138, -0.0559421, 0.719666, 0.692063, -0.997306, -0.00733327, -0.0729903, 5.44817, 6.67309, -10.3831)
 environment = ExtResource("7_epkef")
+current = true
 
 [node name="ActionMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("menu", "ingredients", "moneyLabel")]
 script = ExtResource("11_pw6y6")

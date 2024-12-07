@@ -19,19 +19,19 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if global.pauzed:
+	if global.pauzed || owner.inAttackForm:
 		return	
 	state.handle_input(event)
 
 
 func _process(delta: float) -> void:
-	if global.pauzed:
+	if global.pauzed || owner.inAttackForm:
 		return
 	state.update(delta)
 
 
 func _physics_process(delta: float) -> void:
-	if global.pauzed:
+	if global.pauzed || owner.inAttackForm:
 		return
 	state.physics_update(delta)
 

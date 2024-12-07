@@ -11,8 +11,19 @@ func _ready() -> void:
 	init_recipes()
 	get_node("/root/Events").in_menu.connect(_on_pauze)
 	get_node("/root/Events").tutorial_switch.connect(_on_tut_switch)
+	get_node("/root/Events").loot_generated.connect(_loot_generated)
 	pass
 	
+	
+func _loot_generated(name: String, amount: int) -> void:
+	var ingName = name
+	match name:
+		"BabyGreens":
+			ingName = "carn_vines"
+	if game_state["ingredientsHold"].has(ingName):
+		game_state["ingredientsHold"][ingName] += amount
+	else:
+		game_state["ingredientsHold"][ingName] = amount
 	
 func _on_tut_switch(nr: int) -> void:
 	inTutorial = true
@@ -84,6 +95,7 @@ var config_data: Dictionary = {
 var game_state: Dictionary = {
 	"gold": 3.6,
 	"tutorialStep": -1,
+	"firstFightDone": false,
 	"slotsAvailable": 5,
 	"dayPartsAvailable": 1,
 	"currentDayPart": 0,
@@ -104,7 +116,7 @@ var game_state: Dictionary = {
 		"onion": 0
 	},
 	"chosenRecipies": [],
-	"recipesAvailable": ['burger', 'hotdog', 'milkshake', 'gardensalad', 'soup'],
+	"recipesAvailable": ['burger', 'hotdog', 'milkshake', 'gardensalad', 'soup', 'carn_burger'],
 	"level": 0,
 }
 
@@ -191,6 +203,12 @@ func getIngredient(name: String):
 			"image": "res://assets/images/ingredients/onion.png",
 			"price": 0.7,
 			"description": "Flavorful onion"
+		},
+		"carn_vines": {
+			"title": "BabyGreens",
+			"image": "res://assets/images/ingredients/carn_vines.png",
+			"price": 2.0,
+			"description": "Carnivorous vines"
 		}
 	}
 	return ingredients[name]

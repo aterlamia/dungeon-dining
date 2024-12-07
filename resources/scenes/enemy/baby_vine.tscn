@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c54x7uopvayan"]
+
+[ext_resource type="Script" uid="uid://bul1043or26qc" path="res://src/Enemies/enemy.gd" id="1_irhuw"]
+[ext_resource type="Script" uid="uid://by4g488wpn3dk" path="res://src/Enemies/loot.gd" id="2_ajbgw"]
+[ext_resource type="Script" uid="uid://cpclxqbiqnuce" path="res://src/Enemies/loot_table.gd" id="2_csl1x"]
+[ext_resource type="PackedScene" uid="uid://ctdcv7loj5axh" path="res://assets/models/enemies/TENTACLE.glb" id="4_csl1x"]
+
+[node name="BabyVine" type="Node3D"]
+script = ExtResource("1_irhuw")
+battleSpeed = 10.0
+attacks = Dictionary[String, float]({
+"Slash": 2.0,
+"Swing": 1.4
+})
+
+[node name="LootTable" type="Node" parent="."]
+script = ExtResource("2_csl1x")
+
+[node name="BabyGreens" type="Node" parent="LootTable"]
+script = ExtResource("2_ajbgw")
+chance = 1.0
+maxAmount = 1
+lootName = "BabyGreens"
+
+[node name="BabyGreensMore" type="Node" parent="LootTable"]
+script = ExtResource("2_ajbgw")
+chance = 0.3
+lootName = "BabyGreens"
+
+[node name="EnemyModel" parent="." instance=ExtResource("4_csl1x")]
+transform = Transform3D(-2.20006e-08, 0, -0.503316, 0, 0.503316, 0, 0.503316, 0, -2.20006e-08, 0, 0, 0)

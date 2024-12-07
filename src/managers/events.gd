@@ -24,7 +24,11 @@ signal diner_opened
 signal gold_changed
 signal availability_updated
 signal ingredient_selected
+signal loot_generated(name:String, amount:int)
 signal tutorial_switch
+signal start_battle(name:String, lvl:int)
+signal end_battle
+signal damage_player
 var log
 
 func _ready() -> void: 
@@ -34,6 +38,22 @@ func _ready() -> void:
 func on_tutorial_switch(nr: int)  -> void: 
 	self.log.log_info("Switched to tutorial step" + str(nr), log.LogType.LOG_SIGNAL)
 	emit_signal("tutorial_switch", nr)
+
+func on_loot_generated(name: String, amount: int)  -> void: 
+	self.log.log_info("GeneratedLoot" + name + " - " + str(amount), log.LogType.LOG_SIGNAL)
+	emit_signal("loot_generated", name, amount)
+
+func on_damage_player(nr: float)  -> void: 
+	self.log.log_info("Player damaged" + str(nr), log.LogType.LOG_SIGNAL)
+	emit_signal("damage_player", nr)
+	
+func on_start_battle(name:String, lvl:int)  -> void: 
+	self.log.log_info("Started battle with a " + name + " at lvl " + str(lvl), log.LogType.LOG_SIGNAL)
+	emit_signal("start_battle", name, lvl)
+	
+func on_end_battle()  -> void: 
+	self.log.log_info("Ended battle", log.LogType.LOG_SIGNAL)
+	emit_signal("end_battle")
 	
 func on_customer_seated(customer: Npc)  -> void: 
 	self.log.log_info("Customer seated" + customer.customerName, log.LogType.LOG_SIGNAL)

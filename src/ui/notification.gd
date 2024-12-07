@@ -29,6 +29,9 @@ func setAction(action: String) -> void:
 	if(action == "down"):
 		var texture = load("res://assets/images/food/downstairs.png")
 		holder.texture = texture
+	if(action == "up"):
+		var texture = load("res://assets/images/food/upstairs.png")
+		holder.texture = texture
 	if(action == "search"):
 		var texture = load("res://assets/images/food/search.png")
 		holder.texture = texture

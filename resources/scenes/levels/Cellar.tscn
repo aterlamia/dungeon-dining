@@ -18,6 +18,9 @@
 [ext_resource type="Theme" uid="uid://dgw6rmwx6uf82" path="res://resources/theme/buttontexttheme.tres" id="15_0fplg"]
 [ext_resource type="Texture2D" uid="uid://bfafb2kgykoqk" path="res://assets/story/story3.png" id="16_4qjso"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d7wdg"]
+radius = 1.18066
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_r0ols"]
 size = Vector3(1.77246, 2.00726, 2.28125)
 
@@ -27,10 +30,8 @@ radius = 0.932617
 [sub_resource type="BoxShape3D" id="BoxShape3D_s4cvb"]
 size = Vector3(1, 4.97046, 5.56873)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_d7wdg"]
-radius = 1.18066
-
-[sub_resource type="BoxMesh" id="BoxMesh_i1l8x"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_i1l8x"]
+size = Vector3(2.22064, 2.37158, 1.81555)
 
 [node name="Cellar" type="Node3D"]
 script = ExtResource("1_evapf")
@@ -39,12 +40,10 @@ script = ExtResource("1_evapf")
 environment = ExtResource("12_ker2c")
 
 [node name="Player" parent="." instance=ExtResource("13_lnjth")]
-transform = Transform3D(-0.0092676, 0, -0.999957, 0, 1, 0, 0.999957, 0, -0.0092676, 2.82541, -1.36406, -5.76857)
+transform = Transform3D(-0.0092676, 0, -0.999957, 0, 1, 0, 0.999957, 0, -0.0092676, 1.55011, -1.36406, -5.76857)
 in3thPerson = true
 move_speed = 7.0
 acceleration = 200.0
-gravity = null
-jump_impulse = null
 
 [node name="cellar" parent="." instance=ExtResource("4_x4feg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333535, 0.0257308, 3.89572)
@@ -104,6 +103,15 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.877
 [node name="simplebarrel12" parent="Objects" instance=ExtResource("5_acn4y")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -7.87708, 0.784576, 1.39581)
 
+[node name="simplebox40" parent="Objects" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.882143, 0, 0.470981, 0, 1, 0, -0.470981, 0, 0.882143, 0.982343, -0.856273, -1.48358)
+
+[node name="simplebox41" parent="Objects" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.882143, 0, 0.470981, 0, 1, 0, -0.470981, 0, 0.882143, 0.840422, -0.856273, -2.69359)
+
+[node name="simplebox42" parent="Objects" instance=ExtResource("5_havdt")]
+transform = Transform3D(0.882143, 0, 0.470981, 0, 1, 0, -0.470981, 0, 0.882143, 1.1927, 0.0771539, -2.05884)
+
 [node name="WallBoxes" type="Node3D" parent="Objects"]
 
 [node name="simplebox" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
@@ -141,15 +149,6 @@ transform = Transform3D(0.933774, 0, -0.357863, 0, 1, 0, 0.357863, 0, 0.933774, 
 
 [node name="simplebox39" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
 transform = Transform3D(0.947746, 0, 0.319025, 0, 1, 0, -0.319025, 0, 0.947746, 2.27937, -0.859849, -1.92895)
-
-[node name="simplebox40" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
-transform = Transform3D(0.882143, 0, 0.470981, 0, 1, 0, -0.470981, 0, 0.882143, 0.982343, -0.859849, -1.48358)
-
-[node name="simplebox41" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
-transform = Transform3D(0.882143, 0, 0.470981, 0, 1, 0, -0.470981, 0, 0.882143, 0.840422, -0.859849, -2.69359)
-
-[node name="simplebox42" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
-transform = Transform3D(0.882143, 0, 0.470981, 0, 1, 0, -0.470981, 0, 0.882143, 1.1927, 0.0771539, -2.05884)
 
 [node name="simplebox36" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
 transform = Transform3D(0.751627, 0, -0.659275, 0, 0.999793, 0, 0.659275, 0, 0.751627, 0.00487804, -0.859849, 5.47004)
@@ -229,6 +228,15 @@ transform = Transform3D(0.560322, 0, 0.250949, 0, 0.613951, 0, -0.250949, 0, 0.5
 [node name="simplebox33" parent="Objects/WallBoxes" instance=ExtResource("5_havdt")]
 transform = Transform3D(0.940727, 0, -0.339165, 0, 1, 0, 0.339165, 0, 0.940727, -1.58145, 1.83158, 7.86732)
 
+[node name="BoxesWall" type="Area3D" parent="Objects/WallBoxes" node_paths=PackedStringArray("dialog")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.50735)
+script = ExtResource("8_yvtl1")
+dialog = NodePath("../../../Dialog")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/WallBoxes/BoxesWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08538, 0, 0.677158)
+shape = SubResource("CylinderShape3D_d7wdg")
+
 [node name="Dialog" parent="." instance=ExtResource("7_r0ols")]
 visible = false
 
@@ -259,20 +267,11 @@ dialog = NodePath("../Dialog")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.23229, -0.756277, 0.0162964)
 shape = SubResource("BoxShape3D_s4cvb")
 
-[node name="BoxesWall" type="Area3D" parent="." node_paths=PackedStringArray("dialog")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.50735)
-script = ExtResource("8_yvtl1")
-dialog = NodePath("../Dialog")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxesWall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08538, 0, 0.677158)
-shape = SubResource("CylinderShape3D_d7wdg")
-
 [node name="Story" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("9_i1l8x")
 
 [node name="Story1" type="Panel" parent="Story"]
+visible = false
 offset_left = 347.0
 offset_top = 38.0
 offset_right = 805.0
@@ -499,12 +498,252 @@ offset_bottom = 32.0
 theme = ExtResource("15_0fplg")
 text = "Defend"
 
-[node name="Enemy" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.69461)
+[node name="Story5" type="Panel" parent="Story"]
+visible = false
+offset_left = 347.0
+offset_top = 38.0
+offset_right = 805.0
+offset_bottom = 525.0
+theme = ExtResource("9_uaulb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
-mesh = SubResource("BoxMesh_i1l8x")
+[node name="Label" type="Label" parent="Story/Story5"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 14.0
+offset_right = 278.0
+offset_bottom = 30.0
+text = "Whats this!!"
 
+[node name="Label2" type="Label" parent="Story/Story5"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 358.0
+offset_right = 429.0
+offset_bottom = 431.0
+text = "This smells just like pickels!! do i dare?"
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Story/Story5"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 37.0
+offset_right = 363.0
+offset_bottom = 511.0
+texture = ExtResource("16_4qjso")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Btn5" type="TextureButton" parent="Story/Story5"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 413.0
+offset_right = 298.0
+offset_bottom = 458.0
+texture_normal = ExtResource("11_ki0nk")
+texture_pressed = ExtResource("12_7phll")
+texture_hover = ExtResource("13_hv12c")
+texture_disabled = ExtResource("14_u3uke")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Story/Story5/Btn5"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 11.0
+offset_right = 98.0
+offset_bottom = 32.0
+theme = ExtResource("15_0fplg")
+text = "Next"
+
+[node name="Story6" type="Panel" parent="Story"]
+visible = false
+offset_left = 347.0
+offset_top = 38.0
+offset_right = 805.0
+offset_bottom = 525.0
+theme = ExtResource("9_uaulb")
+
+[node name="Label" type="Label" parent="Story/Story6"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 14.0
+offset_right = 357.0
+offset_bottom = 30.0
+text = "Whats the worse that can happen"
+
+[node name="Label2" type="Label" parent="Story/Story6"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 348.0
+offset_right = 410.0
+offset_bottom = 421.0
+text = "You taste a bit of the tentacle
+!WOW!
+This taste like pickels but so much better"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Story/Story6"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 37.0
+offset_right = 363.0
+offset_bottom = 511.0
+texture = ExtResource("16_4qjso")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Btn6" type="TextureButton" parent="Story/Story6"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 413.0
+offset_right = 298.0
+offset_bottom = 458.0
+texture_normal = ExtResource("11_ki0nk")
+texture_pressed = ExtResource("12_7phll")
+texture_hover = ExtResource("13_hv12c")
+texture_disabled = ExtResource("14_u3uke")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Story/Story6/Btn6"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 11.0
+offset_right = 98.0
+offset_bottom = 32.0
+theme = ExtResource("15_0fplg")
+text = "Next"
+
+[node name="Story7" type="Panel" parent="Story"]
+visible = false
+offset_left = 347.0
+offset_top = 38.0
+offset_right = 805.0
+offset_bottom = 552.0
+theme = ExtResource("9_uaulb")
+
+[node name="Label" type="Label" parent="Story/Story7"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 13.0
+offset_right = 460.0
+offset_bottom = 29.0
+text = "Why not!"
+
+[node name="Label2" type="Label" parent="Story/Story7"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 348.0
+offset_right = 410.0
+offset_bottom = 421.0
+text = "I realy cant afford to get bad reviews to my diner already.
+Its the only greens i have, and they taste amazing. I will use it for the burger"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Story/Story7"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 37.0
+offset_right = 363.0
+offset_bottom = 511.0
+texture = ExtResource("16_4qjso")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Btn7" type="TextureButton" parent="Story/Story7"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 445.0
+offset_right = 314.0
+offset_bottom = 490.0
+texture_normal = ExtResource("11_ki0nk")
+texture_pressed = ExtResource("12_7phll")
+texture_hover = ExtResource("13_hv12c")
+texture_disabled = ExtResource("14_u3uke")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Story/Story7/Btn7"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 11.0
+offset_right = 98.0
+offset_bottom = 32.0
+theme = ExtResource("15_0fplg")
+text = "Next"
+
+[node name="Story8" type="Panel" parent="Story"]
+visible = false
+offset_left = 347.0
+offset_top = 38.0
+offset_right = 805.0
+offset_bottom = 566.0
+theme = ExtResource("9_uaulb")
+
+[node name="Label" type="Label" parent="Story/Story8"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 16.0
+offset_right = 407.0
+offset_bottom = 32.0
+text = "New recipe unlocked"
+
+[node name="Label2" type="Label" parent="Story/Story8"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 348.0
+offset_right = 410.0
+offset_bottom = 421.0
+text = "You can now make Monsterous burgers.
+
+Maybe later can find more ingredients that add a kick to your food
+
+Nobody has to know it is your secret"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Story/Story8"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 35.0
+offset_right = 387.0
+offset_bottom = 542.0
+texture = ExtResource("16_4qjso")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Btn8" type="TextureButton" parent="Story/Story8"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 468.0
+offset_right = 298.0
+offset_bottom = 513.0
+texture_normal = ExtResource("11_ki0nk")
+texture_pressed = ExtResource("12_7phll")
+texture_hover = ExtResource("13_hv12c")
+texture_disabled = ExtResource("14_u3uke")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Story/Story8/Btn8"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 10.0
+offset_right = 110.0
+offset_bottom = 31.0
+theme = ExtResource("15_0fplg")
+text = "FInish"
+
+[node name="Stairs" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.26983, -0.685791, -6.19754)
+shape = SubResource("BoxShape3D_i1l8x")
+
+[connection signal="area_entered" from="Objects/WallBoxes/BoxesWall" to="Objects/WallBoxes/BoxesWall" method="_on_area_entered" flags=6]
+[connection signal="area_exited" from="Objects/WallBoxes/BoxesWall" to="Objects/WallBoxes/BoxesWall" method="_on_area_exited"]
 [connection signal="dialog_done" from="Dialog" to="Story" method="_on_dialog_dialog_done"]
 [connection signal="area_entered" from="Boxes1Area" to="Boxes1Area" method="_on_area_entered"]
 [connection signal="area_exited" from="Boxes1Area" to="Boxes1Area" method="_on_area_exited"]
@@ -512,9 +751,11 @@ mesh = SubResource("BoxMesh_i1l8x")
 [connection signal="area_exited" from="Barrels1Area" to="Barrels1Area" method="_on_area_exited"]
 [connection signal="area_entered" from="Barrels2Area" to="Barrels2Area" method="_on_area_entered"]
 [connection signal="area_exited" from="Barrels2Area" to="Barrels2Area" method="_on_area_exited"]
-[connection signal="area_entered" from="BoxesWall" to="BoxesWall" method="_on_area_entered" flags=6]
-[connection signal="area_exited" from="BoxesWall" to="BoxesWall" method="_on_area_exited"]
 [connection signal="pressed" from="Story/Story1/Btn1" to="Story" method="_on_btn_1_pressed"]
 [connection signal="pressed" from="Story/Story2/Btn2" to="Story" method="_on_btn_2_pressed"]
 [connection signal="pressed" from="Story/Story3/Btn3" to="Story" method="_on_btn_3_pressed"]
 [connection signal="pressed" from="Story/Story4/Btn4" to="Story" method="_on_btn_4_pressed"]
+[connection signal="pressed" from="Story/Story5/Btn5" to="Story" method="_on_btn_5_pressed"]
+[connection signal="pressed" from="Story/Story6/Btn6" to="Story" method="_on_btn_6_pressed"]
+[connection signal="pressed" from="Story/Story7/Btn7" to="Story" method="_on_btn_7_pressed"]
+[connection signal="pressed" from="Story/Story8/Btn8" to="Story" method="_on_btn_8_pressed"]

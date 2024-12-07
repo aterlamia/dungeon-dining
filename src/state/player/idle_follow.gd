@@ -13,6 +13,9 @@ func enter(previous_state_path: String, data := {}) -> void:
 	anim.loop_mode =(Animation.LOOP_LINEAR)
 	
 func update(_delta: float) -> void:
+	if(player.inAttackForm):
+		finished.emit(FIGHTINGIDLE)
+		return
 	if(player.velocity.length() > 0.1):
 		if !player.in3thPerson:
 			print("Walking24")

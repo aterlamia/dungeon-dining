@@ -7,6 +7,8 @@ const WALKING3TH = "WalkingFollow"
 const IDLEFOLLOW = "IdleFollow"
 const IDLE = "Idle"
 const IDLEHOLD = "IdleHold"
+const FIGHTINGIDLE = "FightingIdle"
+const ATTACK = "Attack"
 
 var player: Player
 

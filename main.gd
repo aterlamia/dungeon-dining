@@ -14,8 +14,28 @@ func _ready() -> void:
 
 	self.log = get_node("/root/Log")
 	self.log.init(self.log_level, self.log_type)
+	events.start_battle.connect(_on_battle_started)
+	events.end_battle.connect(_on_battle_ended)
 	pass
 
+func _on_battle_started(name: String, lvl: int) -> void:
+	$LevelManager.get_child(0).visible = false
+	$BattleScene.visible = true
+	$BattleScene.get_node("BattlessCamera").make_current()
+	$BattleScene.get_node("BattleMenu").visible = true
+	$BattleScene.get_node("Turns").turnsRunning = true
+	pass
+
+func _on_battle_ended() -> void:
+	print("dssdsd")
+	$LevelManager.get_child(0).visible = true
+	$BattleScene.visible = false
+	$BattleScene.get_node("BattlessCamera").make_current()
+	$BattleScene.get_node("BattleMenu").visible = false
+	$BattleScene.get_node("Result").visible = false
+	$BattleScene.get_node("Turns").turnsRunning = false
+	events.on_camera_switch("player")
+	pass
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:

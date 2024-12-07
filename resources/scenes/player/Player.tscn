@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cfr4u784045c3"]
+[gd_scene load_steps=20 format=3 uid="uid://cfr4u784045c3"]
 
 [ext_resource type="Script" uid="uid://c65j5usrpu3xl" path="res://src/player/player.gd" id="1_gyjmf"]
 [ext_resource type="PackedScene" uid="uid://b6l4ba2mw5ptb" path="res://assets/models/people/player.glb" id="2_23cr1"]
@@ -7,10 +7,12 @@
 [ext_resource type="Script" uid="uid://b6j0ob2x55x2c" path="res://src/state/player/PlayerStateMachine.gd" id="5_kbc0o"]
 [ext_resource type="Script" uid="uid://bw82pvsnpfl2h" path="res://src/state/player/walking.gd" id="6_6oh2q"]
 [ext_resource type="Script" uid="uid://cw63y4l4oq0sv" path="res://src/state/player/idle.gd" id="6_l8rqh"]
-[ext_resource type="Script" path="res://src/state/player/idle_follow.gd" id="8_olh3c"]
+[ext_resource type="Script" uid="uid://8x2ks6hk8lwc" path="res://src/state/player/idle_follow.gd" id="8_olh3c"]
 [ext_resource type="Script" uid="uid://ced1j67tr65nn" path="res://src/state/player/idle_hold.gd" id="8_qtksq"]
+[ext_resource type="Script" path="res://src/state/player/idle_battle.gd" id="8_xdqv0"]
 [ext_resource type="Script" uid="uid://7trgeu6slqmn" path="res://src/state/player/serving.gd" id="9_2htuf"]
 [ext_resource type="Script" uid="uid://0llivi3o1wqy" path="res://src/state/player/walking_follow.gd" id="10_1h7gp"]
+[ext_resource type="Script" path="res://src/state/player/fight.gd" id="13_5tyfv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b4hyn"]
 radius = 0.3
@@ -36,12 +38,9 @@ viewport_path = NodePath("SubViewport")
 collision_layer = 391
 collision_mask = 271
 script = ExtResource("1_gyjmf")
-in3thPerson = null
 move_speed = 1.5
 acceleration = 1.0
 rotation_speed = 50.0
-gravity = null
-jump_impulse = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0188602, 0.6371, 0.000407938)
@@ -77,17 +76,6 @@ margin = 0.0
 [node name="Camera3D" type="Camera3D" parent="CameraController/SpringArm3D"]
 environment = ExtResource("3_t7tmm")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.766073, 4.09946)
-visible = false
-light_color = Color(1, 0.775581, 0.474847, 1)
-light_energy = 6.853
-light_indirect_energy = 7.074
-light_size = 0.898
-light_specular = 1.537
-distance_fade_begin = 2467.26
-distance_fade_length = 2513.11
-
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
 transparent_bg = true
@@ -95,14 +83,18 @@ size = Vector2i(259, 250)
 
 [node name="Notifications" parent="SubViewport" instance=ExtResource("4_23cr1")]
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_kbc0o")
+initial_state = NodePath("Idle")
 
 [node name="Walking" type="Node" parent="StateMachine"]
 script = ExtResource("6_6oh2q")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("6_l8rqh")
+
+[node name="FightingIdle" type="Node" parent="StateMachine"]
+script = ExtResource("8_xdqv0")
 
 [node name="IdleFollow" type="Node" parent="StateMachine"]
 script = ExtResource("8_olh3c")
@@ -111,12 +103,16 @@ script = ExtResource("8_olh3c")
 script = ExtResource("8_qtksq")
 
 [node name="Fighting" type="Node" parent="StateMachine"]
+script = ExtResource("13_5tyfv")
 
 [node name="Serving" type="Node" parent="StateMachine"]
 script = ExtResource("9_2htuf")
 
 [node name="WalkingFollow" type="Node" parent="StateMachine"]
 script = ExtResource("10_1h7gp")
+
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("13_5tyfv")
 
 [connection signal="area_entered" from="ColDetectorPlayer" to="." method="_on_col_detector_area_entered"]
 [connection signal="area_exited" from="ColDetectorPlayer" to="." method="_on_col_detector_area_exited"]

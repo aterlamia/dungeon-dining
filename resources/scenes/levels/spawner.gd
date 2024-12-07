@@ -72,6 +72,8 @@ func spawnUser() -> void:
 	freeTable.setOccupied(true)
 	
 	if(global.game_state["tutorialStep"] == 18):
+		if(tutorialGuests == 4 && npcContainer.get_child_count() > 0):
+			return
 		tutorialGuests += 1
 		print("Tutorial guests: " + str(tutorialGuests))
 		if(tutorialGuests == 5):
